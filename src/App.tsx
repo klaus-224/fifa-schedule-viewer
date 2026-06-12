@@ -8,7 +8,6 @@ import {
   MapPinned,
   RotateCcw,
   Search,
-  ShieldCheck,
 } from "lucide-react";
 import { DivIcon } from "leaflet";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
@@ -146,15 +145,6 @@ function App() {
         )}
       </section>
     </main>
-  );
-}
-
-function Stat({ label, value }: { label: string; value: string | number }) {
-  return (
-    <div className="stat-card">
-      <span>{label}</span>
-      <strong>{value}</strong>
-    </div>
   );
 }
 
