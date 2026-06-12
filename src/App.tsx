@@ -6,8 +6,10 @@ import {
   List,
   Loader2,
   MapPinned,
+  MoonStar,
   RotateCcw,
   Search,
+  SunMedium,
 } from "lucide-react";
 import { DivIcon } from "leaflet";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
@@ -20,10 +22,14 @@ import {
   formatLongDate,
   formatMonthDay,
   getUniqueOptions,
+  isMatchDayPlayed,
+  isMatchPlayed,
   groupMatchesByCity,
   groupMatchesByDate,
   parseMatches,
 } from "./data";
+import { formatMatchTitle } from "./teams";
+import { applyTheme, getInitialTheme, persistTheme } from "./theme";
 import type { Match, MatchFilters, ViewMode } from "./types";
 
 const views: Array<{ id: ViewMode; label: string; icon: typeof List }> = [
@@ -40,6 +46,8 @@ function App() {
   const [error, setError] = useState("");
   const [view, setView] = useState<ViewMode>("list");
   const [filters, setFilters] = useState<MatchFilters>(EMPTY_FILTERS);
+  const [now, setNow] = useState(() => new Date());
+  const [theme, setTheme] = useState(getInitialTheme);
 
   useEffect(() => {
     fetch("/data/matches.csv")
@@ -60,6 +68,16 @@ function App() {
         setStatus("error");
       });
   }, []);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => setNow(new Date()), 60_000);
+    return () => window.clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    applyTheme(theme);
+    persistTheme(theme);
+  }, [theme]);
 
   const filteredMatches = useMemo(
     () => filterMatches(matches, filters),
@@ -92,27 +110,33 @@ function App() {
   return (
     <main className="app-shell">
       <header className="site-header" aria-label="Primary">
+        <div className="header-spacer" aria-hidden="true" />
         <a className="brand" href="#top" aria-label="FIFA Schedule 2026 home">
-          <span className="brand-mark">Fifa World Cup 2026 Schedule</span>
+          <span className="brand-mark">FIFA World Cup 2026 Schedule</span>
         </a>
-        <nav className="view-nav" aria-label="View switcher">
-          {views.map(({ id, label, icon: Icon }) => (
-            <button
-              className={view === id ? "nav-item active" : "nav-item"}
-              key={id}
-              type="button"
-              onClick={() => setView(id)}
-              aria-pressed={view === id}
-            >
-              <Icon size={16} aria-hidden="true" />
-              {label}
-            </button>
-          ))}
-        </nav>
-        <a className="source-link" href="/data/matches.csv" download>
-          CSV
-          <ExternalLink size={15} aria-hidden="true" />
-        </a>
+        <div className="header-actions">
+          <button
+            className="theme-toggle"
+            type="button"
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            aria-label={
+              theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
+            }
+            title={
+              theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
+            }
+          >
+            {theme === "dark" ? (
+              <SunMedium size={18} aria-hidden="true" />
+            ) : (
+              <MoonStar size={18} aria-hidden="true" />
+            )}
+          </button>
+          <a className="source-link" href="/data/matches.csv" download>
+            CSV
+            <ExternalLink size={15} aria-hidden="true" />
+          </a>
+        </div>
       </header>
 
       <section className="workspace" aria-label="Schedule explorer">
@@ -123,6 +147,22 @@ function App() {
           onChange={updateFilter}
           onReset={() => setFilters(EMPTY_FILTERS)}
         />
+        <div className="view-switcher-row">
+          <nav className="view-nav" aria-label="View switcher">
+            {views.map(({ id, label, icon: Icon }) => (
+              <button
+                className={view === id ? "nav-item active" : "nav-item"}
+                key={id}
+                type="button"
+                onClick={() => setView(id)}
+                aria-pressed={view === id}
+              >
+                <Icon size={16} aria-hidden="true" />
+                {label}
+              </button>
+            ))}
+          </nav>
+        </div>
 
         {status === "loading" && <LoadingState />}
         {status === "error" && (
@@ -136,12 +176,16 @@ function App() {
         )}
         {status === "ready" &&
           filteredMatches.length > 0 &&
-          view === "list" && <ListView groupedByDate={groupedByDate} />}
+          view === "list" && (
+            <ListView groupedByDate={groupedByDate} now={now} />
+          )}
         {status === "ready" &&
           filteredMatches.length > 0 &&
-          view === "calendar" && <CalendarView groupedByDate={groupedByDate} />}
+          view === "calendar" && (
+            <CalendarView groupedByDate={groupedByDate} now={now} />
+          )}
         {status === "ready" && filteredMatches.length > 0 && view === "map" && (
-          <MapView groupedByCity={groupedByCity} />
+          <MapView groupedByCity={groupedByCity} theme={theme} />
         )}
       </section>
     </main>
@@ -247,8 +291,10 @@ function SelectFilter({
 
 function ListView({
   groupedByDate,
+  now,
 }: {
   groupedByDate: Record<string, Match[]>;
+  now: Date;
 }) {
   return (
     <div className="list-view">
@@ -262,7 +308,7 @@ function ListView({
           </div>
           <div className="match-grid">
             {matches.map((match) => (
-              <MatchCard key={match.matchNo} match={match} />
+              <MatchCard key={match.matchNo} match={match} now={now} />
             ))}
           </div>
         </section>
@@ -271,14 +317,19 @@ function ListView({
   );
 }
 
-function MatchCard({ match }: { match: Match }) {
+function MatchCard({ match, now }: { match: Match; now: Date }) {
+  const played = isMatchPlayed(match, now);
+
   return (
-    <article className="match-card">
+    <article
+      className={played ? "match-card is-played" : "match-card"}
+      aria-disabled={played}
+    >
       <div className="match-card-top">
         <span className="match-no">Match {match.matchNo}</span>
         <span className="stage-pill">{match.group || match.stage}</span>
       </div>
-      <h4>{match.teams}</h4>
+      <h4>{formatMatchTitle(match.teams)}</h4>
       <div className="match-meta">
         <span>{match.stage}</span>
         <span>{match.stadium}</span>
@@ -286,21 +337,10 @@ function MatchCard({ match }: { match: Match }) {
       </div>
       <div className="time-grid">
         <div>
-          <span>Schedule local</span>
-          <strong>
-            {match.date} at {match.time}
-          </strong>
-        </div>
-        <div>
-          <span>Your time</span>
           <strong>{formatLocalTime(match.utcDateTime)}</strong>
         </div>
       </div>
       <div className="card-actions">
-        <a href={match.matchSourceUrl} target="_blank" rel="noreferrer">
-          Match source
-          <ChevronRight size={15} aria-hidden="true" />
-        </a>
         <a
           href={match.officialFifaSchedulePdf}
           target="_blank"
@@ -316,13 +356,25 @@ function MatchCard({ match }: { match: Match }) {
 
 function CalendarView({
   groupedByDate,
+  now,
 }: {
   groupedByDate: Record<string, Match[]>;
+  now: Date;
 }) {
   return (
     <div className="calendar-view">
-      <MonthCalendar year={2026} monthIndex={5} groupedByDate={groupedByDate} />
-      <MonthCalendar year={2026} monthIndex={6} groupedByDate={groupedByDate} />
+      <MonthCalendar
+        year={2026}
+        monthIndex={5}
+        groupedByDate={groupedByDate}
+        now={now}
+      />
+      <MonthCalendar
+        year={2026}
+        monthIndex={6}
+        groupedByDate={groupedByDate}
+        now={now}
+      />
     </div>
   );
 }
@@ -331,10 +383,12 @@ function MonthCalendar({
   year,
   monthIndex,
   groupedByDate,
+  now,
 }: {
   year: number;
   monthIndex: number;
   groupedByDate: Record<string, Match[]>;
+  now: Date;
 }) {
   const label = new Intl.DateTimeFormat(undefined, {
     month: "long",
@@ -352,10 +406,18 @@ function MonthCalendar({
       <div className="calendar-grid">
         {calendarDays(year, monthIndex).map((date, index) => {
           const matches = date ? (groupedByDate[date] ?? []) : [];
+          const fullyPlayed = isMatchDayPlayed(matches, now);
           return (
             <div
-              className={matches.length > 0 ? "day-cell has-match" : "day-cell"}
+              className={
+                matches.length > 0
+                  ? fullyPlayed
+                    ? "day-cell has-match is-played"
+                    : "day-cell has-match"
+                  : "day-cell"
+              }
               key={date ?? `blank-${index}`}
+              aria-disabled={fullyPlayed || undefined}
             >
               {date && (
                 <span className="day-number">{Number(date.slice(-2))}</span>
@@ -367,17 +429,26 @@ function MonthCalendar({
                     {matches.length === 1 ? "match" : "matches"}
                   </summary>
                   <div className="day-matches">
-                    {matches.map((match) => (
-                      <a
-                        href={match.matchSourceUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        key={match.matchNo}
-                      >
-                        <strong>{match.time}</strong>
-                        {match.teams}
-                      </a>
-                    ))}
+                    {matches.map((match) =>
+                      isMatchPlayed(match, now) ? (
+                        <span
+                          className="day-match-link is-played"
+                          key={match.matchNo}
+                        >
+                          {formatMatchTitle(match.teams)}
+                        </span>
+                      ) : (
+                        <a
+                          href={match.matchSourceUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          key={match.matchNo}
+                          className="day-match-link"
+                        >
+                          {formatMatchTitle(match.teams)}
+                        </a>
+                      ),
+                    )}
                   </div>
                 </details>
               )}
@@ -391,8 +462,10 @@ function MonthCalendar({
 
 function MapView({
   groupedByCity,
+  theme,
 }: {
   groupedByCity: Record<string, Match[]>;
+  theme: "light" | "dark";
 }) {
   const markerIcon = new DivIcon({
     className: "city-marker",
@@ -410,8 +483,13 @@ function MapView({
         className="map-canvas"
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
+          url={
+            theme === "dark"
+              ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+              : "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+          }
+          key={theme}
         />
         {Object.entries(groupedByCity).map(([city, matches]) => {
           const location = CITY_LOCATIONS[city];
@@ -433,7 +511,8 @@ function MapView({
                       rel="noreferrer"
                       key={match.matchNo}
                     >
-                      {formatMonthDay(match.date)} - {match.teams}
+                      {formatMonthDay(match.date)} -{" "}
+                      {formatMatchTitle(match.teams)}
                     </a>
                   ))}
                   {matches.length > 6 && <em>+ {matches.length - 6} more</em>}

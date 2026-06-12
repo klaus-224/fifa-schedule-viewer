@@ -67,6 +67,15 @@ export const formatLocalTime = (utcDateTime: string) =>
     timeZoneName: 'short',
   }).format(new Date(`${utcDateTime.replace(' ', 'T')}Z`))
 
+export const parseUtcDateTime = (utcDateTime: string) =>
+  new Date(`${utcDateTime.replace(' ', 'T')}Z`)
+
+export const isMatchPlayed = (match: Match, now = new Date()) =>
+  parseUtcDateTime(match.utcDateTime).getTime() < now.getTime()
+
+export const isMatchDayPlayed = (matches: Match[], now = new Date()) =>
+  matches.length > 0 && matches.every((match) => isMatchPlayed(match, now))
+
 export const getUniqueOptions = (matches: Match[], key: keyof Match) =>
   Array.from(new Set(matches.map((match) => String(match[key])).filter(Boolean))).sort((a, b) =>
     a.localeCompare(b),

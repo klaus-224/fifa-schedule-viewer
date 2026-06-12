@@ -6,9 +6,12 @@ import {
   calendarDays,
   filterMatches,
   formatLocalTime,
+  isMatchDayPlayed,
+  isMatchPlayed,
   groupMatchesByCity,
   parseMatches,
 } from './data'
+import { formatMatchTitle } from './teams'
 
 const csv = `match_no,mdt_date,mdt_time,teams,stage,group,stadium,city,utc_datetime,match_source_url,official_fifa_schedule_pdf
 1,2026-06-11,13:00,Mexico vs South Africa,Group stage,Group A,Estadio Azteca,Mexico City,2026-06-11 19:00,https://example.com/1,https://example.com/pdf
@@ -73,5 +76,19 @@ describe('schedule data utilities', () => {
 
     expect(matches).toHaveLength(104)
     expect(cities.every((city) => CITY_LOCATIONS[city])).toBe(true)
+  })
+
+  it('formats the visible match title with flags and punctuation', () => {
+    expect(formatMatchTitle('Mexico vs South Africa')).toBe('Mexico 🇲🇽 vs. South Africa 🇿🇦')
+  })
+
+  it('marks played matches and played days using the current time', () => {
+    const matches = parseMatches(csv)
+    const afterFirstMatch = new Date('2026-06-12T00:00:00Z')
+    const beforeFirstMatch = new Date('2026-06-11T18:59:59Z')
+
+    expect(isMatchPlayed(matches[0], afterFirstMatch)).toBe(true)
+    expect(isMatchPlayed(matches[0], beforeFirstMatch)).toBe(false)
+    expect(isMatchDayPlayed(matches, afterFirstMatch)).toBe(false)
   })
 })
