@@ -7,8 +7,10 @@ import {
   filterMatches,
   formatLocalTime,
   isMatchDayPlayed,
+  isMatchLive,
   isMatchPlayed,
   groupMatchesByCity,
+  groupMatchesByTeam,
   parseMatches,
 } from './data'
 import { formatMatchTitle } from './teams'
@@ -37,10 +39,11 @@ describe('schedule data utilities', () => {
     expect(matches[1].stage).toBe('Final')
   })
 
-  it('filters by search, stage, group, city, and dates', () => {
+  it('filters by search, team, stage, group, city, and dates', () => {
     const matches = parseMatches(csv)
     const filtered = filterMatches(matches, {
       query: 'azteca',
+      team: 'Mexico',
       stage: 'Group stage',
       group: 'Group A',
       city: 'Mexico City',
@@ -55,6 +58,13 @@ describe('schedule data utilities', () => {
     const matches = parseMatches(csv)
 
     expect(groupMatchesByCity(matches)['New York/New Jersey']).toHaveLength(1)
+  })
+
+  it('aggregates matches by team', () => {
+    const matches = parseMatches(csv)
+
+    expect(groupMatchesByTeam(matches)['Mexico']).toHaveLength(1)
+    expect(groupMatchesByTeam(matches)['South Africa']).toHaveLength(1)
   })
 
   it('builds padded calendar days for June 2026', () => {
@@ -82,13 +92,20 @@ describe('schedule data utilities', () => {
     expect(formatMatchTitle('Mexico vs South Africa')).toBe('Mexico 🇲🇽 vs. South Africa 🇿🇦')
   })
 
-  it('marks played matches and played days using the current time', () => {
+  it('marks played matches and played days using the current date', () => {
     const matches = parseMatches(csv)
-    const afterFirstMatch = new Date('2026-06-12T00:00:00Z')
-    const beforeFirstMatch = new Date('2026-06-11T18:59:59Z')
+    const afterMatchDate = new Date('2026-06-12T12:00:00Z')
+    const sameMatchDate = new Date('2026-06-11T18:59:59Z')
 
-    expect(isMatchPlayed(matches[0], afterFirstMatch)).toBe(true)
-    expect(isMatchPlayed(matches[0], beforeFirstMatch)).toBe(false)
-    expect(isMatchDayPlayed(matches, afterFirstMatch)).toBe(false)
+    expect(isMatchPlayed(matches[0], afterMatchDate)).toBe(true)
+    expect(isMatchPlayed(matches[0], sameMatchDate)).toBe(false)
+    expect(isMatchDayPlayed(matches, afterMatchDate)).toBe(false)
+  })
+
+  it('marks live matches within the match window', () => {
+    const matches = parseMatches(csv)
+
+    expect(isMatchLive(matches[0], new Date('2026-06-11T20:00:00Z'))).toBe(true)
+    expect(isMatchLive(matches[0], new Date('2026-06-11T23:15:00Z'))).toBe(false)
   })
 })

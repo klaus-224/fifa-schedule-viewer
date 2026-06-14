@@ -3,6 +3,7 @@ import type { Match, MatchFilters, MatchRow } from './types'
 
 export const EMPTY_FILTERS: MatchFilters = {
   query: '',
+  team: 'all',
   stage: 'all',
   group: 'all',
   city: 'all',
@@ -70,8 +71,24 @@ export const formatLocalTime = (utcDateTime: string) =>
 export const parseUtcDateTime = (utcDateTime: string) =>
   new Date(`${utcDateTime.replace(' ', 'T')}Z`)
 
+const MATCH_DURATION_MINUTES = 120
+const getLocalDateKey = (date: Date) =>
+  new Intl.DateTimeFormat('en-CA', {
+    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(date)
+
+export const isMatchLive = (match: Match, now = new Date()) => {
+  const start = parseUtcDateTime(match.utcDateTime).getTime()
+  const end = start + MATCH_DURATION_MINUTES * 60 * 1000
+  const current = now.getTime()
+  return current >= start && current < end
+}
+
 export const isMatchPlayed = (match: Match, now = new Date()) =>
-  parseUtcDateTime(match.utcDateTime).getTime() < now.getTime()
+  match.date < getLocalDateKey(now)
 
 export const isMatchDayPlayed = (matches: Match[], now = new Date()) =>
   matches.length > 0 && matches.every((match) => isMatchPlayed(match, now))
@@ -83,6 +100,7 @@ export const getUniqueOptions = (matches: Match[], key: keyof Match) =>
 
 export const filterMatches = (matches: Match[], filters: MatchFilters) => {
   const query = filters.query.trim().toLowerCase()
+  const team = filters.team.trim().toLowerCase()
 
   return matches.filter((match) => {
     const haystack = [
@@ -96,8 +114,14 @@ export const filterMatches = (matches: Match[], filters: MatchFilters) => {
       .join(' ')
       .toLowerCase()
 
+    const teamMatches =
+      !team ||
+      team === 'all' ||
+      match.teams.toLowerCase().includes(team)
+
     return (
       (!query || haystack.includes(query)) &&
+      teamMatches &&
       (filters.stage === 'all' || match.stage === filters.stage) &&
       (filters.group === 'all' || match.group === filters.group) &&
       (filters.city === 'all' || match.city === filters.city) &&
@@ -118,6 +142,19 @@ export const groupMatchesByCity = (matches: Match[]) =>
   matches.reduce<Record<string, Match[]>>((groups, match) => {
     groups[match.city] = groups[match.city] ?? []
     groups[match.city].push(match)
+    return groups
+  }, {})
+
+export const groupMatchesByTeam = (matches: Match[]) =>
+  matches.reduce<Record<string, Match[]>>((groups, match) => {
+    match.teams
+      .split(/\s+vs\.?\s+/i)
+      .map((team) => team.trim())
+      .filter(Boolean)
+      .forEach((team) => {
+        groups[team] = groups[team] ?? []
+        groups[team].push(match)
+      })
     return groups
   }, {})
 

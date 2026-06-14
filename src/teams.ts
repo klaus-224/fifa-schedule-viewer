@@ -59,6 +59,10 @@ const formatSide = (raw: string) => {
   return flag ? `${team} ${flag}` : team
 }
 
+export const getTeamFlag = (team: string) => TEAM_FLAGS[team.trim()] ?? ''
+
+export const formatTeamWithFlag = (team: string) => formatSide(team)
+
 export const formatMatchTitle = (teams: string) => {
   const parts = teams.split(/\s+vs\.?\s+/i)
   if (parts.length !== 2) {

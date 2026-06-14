@@ -4,7 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "sync:standings": "node scripts/sync-standings.mjs",
+    "predev": "npm run sync:standings",
     "dev": "vite",
+    "prebuild": "npm run sync:standings",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
