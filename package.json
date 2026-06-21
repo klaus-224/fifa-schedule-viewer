@@ -5,11 +5,9 @@
   "type": "module",
   "scripts": {
     "sync:standings": "node scripts/sync-standings.mjs",
-    "sync:worldcup-results": "node scripts/sync-worldcup-results.mjs",
-    "sync:data": "npm run sync:standings && npm run sync:worldcup-results",
-    "predev": "npm run sync:data",
+    "predev": "npm run sync:standings",
     "dev": "vite",
-    "prebuild": "npm run sync:data",
+    "prebuild": "npm run sync:standings",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
@@ -39,7 +37,7 @@
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.6.0",
     "jsdom": "^29.1.1",
-    "typescript": "~6.0.2",
+    "typescript": "~6.0.3",
     "typescript-eslint": "^8.59.2",
     "vite": "^8.0.12",
     "vitest": "^4.1.8"

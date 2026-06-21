@@ -1,49 +1,29 @@
 {
-  "id": "STATSCOM:FIFA_WC:2026:76:DIVISION",
-  "leagueId": 76,
-  "provider": "STATSCOM",
-  "redLines": [
-    2
-  ],
-  "season": 2026,
-  "seasonType": "Regular Season",
-  "seasonTypeId": 1,
-  "type": "DIVISION",
   "divisionStandings": [
     {
       "name": "Group A",
       "competitorStandings": [
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7583",
-            "competitorId": 7583,
             "name": "Mexico",
             "shortName": "MEX",
-            "club": "Mexico",
-            "recordOverall": "1-0-0",
-            "streak": null,
-            "ranking": "1st Group A",
-            "rankingFr": "1er Groupe A",
-            "seoIdentifier": "mexico",
+            "club": "",
+            "ranking": "1",
             "place": 1,
-            "seed": 1,
-            "location": "Mexico",
-            "primaryColor": "006341",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.569Z"
+            "location": "",
+            "primaryColor": ""
           },
           "place": 1,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "1"
+              "value": "2"
             },
             "wins": {
               "displayName": "Wins",
               "shortName": "W",
-              "value": "1"
+              "value": "2"
             },
             "draws": {
               "displayName": "Draws",
@@ -58,52 +38,41 @@
             "points": {
               "displayName": "Points",
               "shortName": "PTS",
-              "value": "3"
+              "value": "6"
             },
             "goalsFor": {
-              "displayName": "Goals For",
+              "displayName": "Goals for",
               "shortName": "GF",
-              "value": "2"
+              "value": "3"
             },
             "goalsAgainst": {
-              "displayName": "Goals Against",
+              "displayName": "Goals against",
               "shortName": "GA",
               "value": "0"
             },
             "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "+2"
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "3"
             }
-          },
-          "playoffStatus": null
+          }
         },
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7617",
-            "competitorId": 7617,
             "name": "Korea Republic",
             "shortName": "KOR",
-            "club": "Korea Republic",
-            "recordOverall": "1-0-0",
-            "streak": null,
-            "ranking": "2nd Group A",
-            "rankingFr": "2e Groupe A",
-            "seoIdentifier": "korea-republic",
+            "club": "",
+            "ranking": "2",
             "place": 2,
-            "seed": 2,
-            "location": "Korea Republic",
-            "primaryColor": "0F64CD",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.570Z"
+            "location": "",
+            "primaryColor": ""
           },
           "place": 2,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "1"
+              "value": "2"
             },
             "wins": {
               "displayName": "Wins",
@@ -118,7 +87,7 @@
             "losses": {
               "displayName": "Losses",
               "shortName": "L",
-              "value": "0"
+              "value": "1"
             },
             "points": {
               "displayName": "Points",
@@ -126,49 +95,38 @@
               "value": "3"
             },
             "goalsFor": {
-              "displayName": "Goals For",
+              "displayName": "Goals for",
               "shortName": "GF",
               "value": "2"
             },
             "goalsAgainst": {
-              "displayName": "Goals Against",
+              "displayName": "Goals against",
               "shortName": "GA",
-              "value": "1"
+              "value": "2"
             },
             "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "+1"
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "0"
             }
-          },
-          "playoffStatus": null
+          }
         },
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7656",
-            "competitorId": 7656,
             "name": "Czechia",
             "shortName": "CZE",
-            "club": "Czechia",
-            "recordOverall": "0-0-1",
-            "streak": null,
-            "ranking": "3rd Group A",
-            "rankingFr": "3e Groupe A",
-            "seoIdentifier": "czechia",
+            "club": "",
+            "ranking": "3",
             "place": 3,
-            "seed": 3,
-            "location": "Czechia",
-            "primaryColor": "11457E",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.571Z"
+            "location": "",
+            "primaryColor": ""
           },
           "place": 3,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "1"
+              "value": "2"
             },
             "wins": {
               "displayName": "Wins",
@@ -178,7 +136,7 @@
             "draws": {
               "displayName": "Draws",
               "shortName": "D",
-              "value": "0"
+              "value": "1"
             },
             "losses": {
               "displayName": "Losses",
@@ -188,52 +146,41 @@
             "points": {
               "displayName": "Points",
               "shortName": "PTS",
-              "value": "0"
-            },
-            "goalsFor": {
-              "displayName": "Goals For",
-              "shortName": "GF",
               "value": "1"
             },
-            "goalsAgainst": {
-              "displayName": "Goals Against",
-              "shortName": "GA",
+            "goalsFor": {
+              "displayName": "Goals for",
+              "shortName": "GF",
               "value": "2"
             },
+            "goalsAgainst": {
+              "displayName": "Goals against",
+              "shortName": "GA",
+              "value": "3"
+            },
             "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
+              "displayName": "Goal difference",
+              "shortName": "GD",
               "value": "-1"
             }
-          },
-          "playoffStatus": null
+          }
         },
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7606",
-            "competitorId": 7606,
             "name": "South Africa",
             "shortName": "RSA",
-            "club": "South Africa",
-            "recordOverall": "0-0-1",
-            "streak": null,
-            "ranking": "4th Group A",
-            "rankingFr": "4e Groupe A",
-            "seoIdentifier": "south-africa",
+            "club": "",
+            "ranking": "4",
             "place": 4,
-            "seed": 4,
-            "location": "South Africa",
-            "primaryColor": "007749",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.572Z"
+            "location": "",
+            "primaryColor": ""
           },
           "place": 4,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "1"
+              "value": "2"
             },
             "wins": {
               "displayName": "Wins",
@@ -243,7 +190,7 @@
             "draws": {
               "displayName": "Draws",
               "shortName": "D",
-              "value": "0"
+              "value": "1"
             },
             "losses": {
               "displayName": "Losses",
@@ -253,25 +200,24 @@
             "points": {
               "displayName": "Points",
               "shortName": "PTS",
-              "value": "0"
+              "value": "1"
             },
             "goalsFor": {
-              "displayName": "Goals For",
+              "displayName": "Goals for",
               "shortName": "GF",
-              "value": "0"
+              "value": "1"
             },
             "goalsAgainst": {
-              "displayName": "Goals Against",
+              "displayName": "Goals against",
               "shortName": "GA",
-              "value": "2"
+              "value": "3"
             },
             "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
+              "displayName": "Goal difference",
+              "shortName": "GD",
               "value": "-2"
             }
-          },
-          "playoffStatus": null
+          }
         }
       ]
     },
@@ -280,35 +226,25 @@
       "competitorStandings": [
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7641",
-            "competitorId": 7641,
-            "name": "Switzerland",
-            "shortName": "SUI",
-            "club": "Switzerland",
-            "recordOverall": "0-1-0",
-            "streak": null,
-            "ranking": "1st Group B",
-            "rankingFr": "1er Groupe B",
-            "seoIdentifier": "switzerland",
+            "name": "Canada",
+            "shortName": "CAN",
+            "club": "",
+            "ranking": "1",
             "place": 1,
-            "seed": 1,
-            "location": "Switzerland",
-            "primaryColor": "DA291C",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.573Z"
+            "location": "",
+            "primaryColor": ""
           },
           "place": 1,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "1"
+              "value": "2"
             },
             "wins": {
               "displayName": "Wins",
               "shortName": "W",
-              "value": "0"
+              "value": "1"
             },
             "draws": {
               "displayName": "Draws",
@@ -323,57 +259,46 @@
             "points": {
               "displayName": "Points",
               "shortName": "PTS",
-              "value": "1"
+              "value": "4"
             },
             "goalsFor": {
-              "displayName": "Goals For",
+              "displayName": "Goals for",
               "shortName": "GF",
-              "value": "1"
+              "value": "7"
             },
             "goalsAgainst": {
-              "displayName": "Goals Against",
+              "displayName": "Goals against",
               "shortName": "GA",
               "value": "1"
             },
             "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "0"
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "6"
             }
-          },
-          "playoffStatus": null
+          }
         },
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7590",
-            "competitorId": 7590,
-            "name": "Canada",
-            "shortName": "CAN",
-            "club": "Canada",
-            "recordOverall": "0-1-0",
-            "streak": null,
-            "ranking": "2nd Group B",
-            "rankingFr": "2e Groupe B",
-            "seoIdentifier": "canada",
+            "name": "Switzerland",
+            "shortName": "SUI",
+            "club": "",
+            "ranking": "2",
             "place": 2,
-            "seed": 2,
-            "location": "Canada",
-            "primaryColor": "D80621",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.574Z"
+            "location": "",
+            "primaryColor": ""
           },
           "place": 2,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "1"
+              "value": "2"
             },
             "wins": {
               "displayName": "Wins",
               "shortName": "W",
-              "value": "0"
+              "value": "1"
             },
             "draws": {
               "displayName": "Draws",
@@ -388,52 +313,41 @@
             "points": {
               "displayName": "Points",
               "shortName": "PTS",
-              "value": "1"
+              "value": "4"
             },
             "goalsFor": {
-              "displayName": "Goals For",
+              "displayName": "Goals for",
               "shortName": "GF",
-              "value": "1"
+              "value": "5"
             },
             "goalsAgainst": {
-              "displayName": "Goals Against",
+              "displayName": "Goals against",
               "shortName": "GA",
-              "value": "1"
+              "value": "2"
             },
             "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "0"
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "3"
             }
-          },
-          "playoffStatus": null
+          }
         },
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7673",
-            "competitorId": 7673,
-            "name": "Qatar",
-            "shortName": "QAT",
-            "club": "Qatar",
-            "recordOverall": "0-1-0",
-            "streak": null,
-            "ranking": "3rd Group B",
-            "rankingFr": "3e Groupe B",
-            "seoIdentifier": "qatar",
+            "name": "Bosnia & Herzegovina",
+            "shortName": "BIH",
+            "club": "",
+            "ranking": "3",
             "place": 3,
-            "seed": 3,
-            "location": "Qatar",
-            "primaryColor": "8A1538",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.575Z"
+            "location": "",
+            "primaryColor": ""
           },
           "place": 3,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "1"
+              "value": "2"
             },
             "wins": {
               "displayName": "Wins",
@@ -448,7 +362,7 @@
             "losses": {
               "displayName": "Losses",
               "shortName": "L",
-              "value": "0"
+              "value": "1"
             },
             "points": {
               "displayName": "Points",
@@ -456,49 +370,38 @@
               "value": "1"
             },
             "goalsFor": {
-              "displayName": "Goals For",
+              "displayName": "Goals for",
               "shortName": "GF",
-              "value": "1"
+              "value": "2"
             },
             "goalsAgainst": {
-              "displayName": "Goals Against",
+              "displayName": "Goals against",
               "shortName": "GA",
-              "value": "1"
+              "value": "5"
             },
             "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "0"
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "-3"
             }
-          },
-          "playoffStatus": null
+          }
         },
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7661",
-            "competitorId": 7661,
-            "name": "Bosnia-Herzegovina",
-            "shortName": "BIH",
-            "club": "Bosnia-Herzegovina",
-            "recordOverall": "0-1-0",
-            "streak": null,
-            "ranking": "4th Group B",
-            "rankingFr": "4e Groupe B",
-            "seoIdentifier": "bosnia-herzegovina",
+            "name": "Qatar",
+            "shortName": "QAT",
+            "club": "",
+            "ranking": "4",
             "place": 4,
-            "seed": 4,
-            "location": "Bosnia-Herzegovina",
-            "primaryColor": "002F6C",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.576Z"
+            "location": "",
+            "primaryColor": ""
           },
           "place": 4,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "1"
+              "value": "2"
             },
             "wins": {
               "displayName": "Wins",
@@ -513,7 +416,7 @@
             "losses": {
               "displayName": "Losses",
               "shortName": "L",
-              "value": "0"
+              "value": "1"
             },
             "points": {
               "displayName": "Points",
@@ -521,22 +424,21 @@
               "value": "1"
             },
             "goalsFor": {
-              "displayName": "Goals For",
+              "displayName": "Goals for",
               "shortName": "GF",
               "value": "1"
             },
             "goalsAgainst": {
-              "displayName": "Goals Against",
+              "displayName": "Goals against",
               "shortName": "GA",
-              "value": "1"
+              "value": "7"
             },
             "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "0"
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "-6"
             }
-          },
-          "playoffStatus": null
+          }
         }
       ]
     },
@@ -545,30 +447,128 @@
       "competitorStandings": [
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7638",
-            "competitorId": 7638,
-            "name": "Scotland",
-            "shortName": "SCO",
-            "club": "Scotland",
-            "recordOverall": "1-0-0",
-            "streak": null,
-            "ranking": "1st Group C",
-            "rankingFr": "1er Groupe C",
-            "seoIdentifier": "scotland",
+            "name": "Brazil",
+            "shortName": "BRA",
+            "club": "",
+            "ranking": "1",
             "place": 1,
-            "seed": 1,
-            "location": "Scotland",
-            "primaryColor": "005EB8",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.577Z"
+            "location": "",
+            "primaryColor": ""
           },
           "place": 1,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
+              "value": "2"
+            },
+            "wins": {
+              "displayName": "Wins",
+              "shortName": "W",
               "value": "1"
+            },
+            "draws": {
+              "displayName": "Draws",
+              "shortName": "D",
+              "value": "1"
+            },
+            "losses": {
+              "displayName": "Losses",
+              "shortName": "L",
+              "value": "0"
+            },
+            "points": {
+              "displayName": "Points",
+              "shortName": "PTS",
+              "value": "4"
+            },
+            "goalsFor": {
+              "displayName": "Goals for",
+              "shortName": "GF",
+              "value": "4"
+            },
+            "goalsAgainst": {
+              "displayName": "Goals against",
+              "shortName": "GA",
+              "value": "1"
+            },
+            "differential": {
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "3"
+            }
+          }
+        },
+        {
+          "competitor": {
+            "name": "Morocco",
+            "shortName": "MAR",
+            "club": "",
+            "ranking": "2",
+            "place": 2,
+            "location": "",
+            "primaryColor": ""
+          },
+          "place": 2,
+          "stats": {
+            "gamesPlayed": {
+              "displayName": "Games played",
+              "shortName": "GP",
+              "value": "2"
+            },
+            "wins": {
+              "displayName": "Wins",
+              "shortName": "W",
+              "value": "1"
+            },
+            "draws": {
+              "displayName": "Draws",
+              "shortName": "D",
+              "value": "1"
+            },
+            "losses": {
+              "displayName": "Losses",
+              "shortName": "L",
+              "value": "0"
+            },
+            "points": {
+              "displayName": "Points",
+              "shortName": "PTS",
+              "value": "4"
+            },
+            "goalsFor": {
+              "displayName": "Goals for",
+              "shortName": "GF",
+              "value": "2"
+            },
+            "goalsAgainst": {
+              "displayName": "Goals against",
+              "shortName": "GA",
+              "value": "1"
+            },
+            "differential": {
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "1"
+            }
+          }
+        },
+        {
+          "competitor": {
+            "name": "Scotland",
+            "shortName": "SCO",
+            "club": "",
+            "ranking": "3",
+            "place": 3,
+            "location": "",
+            "primaryColor": ""
+          },
+          "place": 3,
+          "stats": {
+            "gamesPlayed": {
+              "displayName": "Games played",
+              "shortName": "GP",
+              "value": "2"
             },
             "wins": {
               "displayName": "Wins",
@@ -583,7 +583,7 @@
             "losses": {
               "displayName": "Losses",
               "shortName": "L",
-              "value": "0"
+              "value": "1"
             },
             "points": {
               "displayName": "Points",
@@ -591,179 +591,38 @@
               "value": "3"
             },
             "goalsFor": {
-              "displayName": "Goals For",
+              "displayName": "Goals for",
               "shortName": "GF",
               "value": "1"
             },
             "goalsAgainst": {
-              "displayName": "Goals Against",
-              "shortName": "GA",
-              "value": "0"
-            },
-            "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "+1"
-            }
-          },
-          "playoffStatus": null
-        },
-        {
-          "competitor": {
-            "id": "STATSCOM:FIFA_WC:7604",
-            "competitorId": 7604,
-            "name": "Morocco",
-            "shortName": "MAR",
-            "club": "Morocco",
-            "recordOverall": "0-1-0",
-            "streak": null,
-            "ranking": "2nd Group C",
-            "rankingFr": "2e Groupe C",
-            "seoIdentifier": "morocco",
-            "place": 2,
-            "seed": 2,
-            "location": "Morocco",
-            "primaryColor": "C1272D",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.577Z"
-          },
-          "place": 2,
-          "stats": {
-            "gamesPlayed": {
-              "displayName": "Games played",
-              "shortName": "GP",
-              "value": "1"
-            },
-            "wins": {
-              "displayName": "Wins",
-              "shortName": "W",
-              "value": "0"
-            },
-            "draws": {
-              "displayName": "Draws",
-              "shortName": "D",
-              "value": "1"
-            },
-            "losses": {
-              "displayName": "Losses",
-              "shortName": "L",
-              "value": "0"
-            },
-            "points": {
-              "displayName": "Points",
-              "shortName": "PTS",
-              "value": "1"
-            },
-            "goalsFor": {
-              "displayName": "Goals For",
-              "shortName": "GF",
-              "value": "1"
-            },
-            "goalsAgainst": {
-              "displayName": "Goals Against",
+              "displayName": "Goals against",
               "shortName": "GA",
               "value": "1"
             },
             "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
+              "displayName": "Goal difference",
+              "shortName": "GD",
               "value": "0"
             }
-          },
-          "playoffStatus": null
+          }
         },
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7589",
-            "competitorId": 7589,
-            "name": "Brazil",
-            "shortName": "BRA",
-            "club": "Brazil",
-            "recordOverall": "0-1-0",
-            "streak": null,
-            "ranking": "3rd Group C",
-            "rankingFr": "3e Groupe C",
-            "seoIdentifier": "brazil",
-            "place": 3,
-            "seed": 3,
-            "location": "Brazil",
-            "primaryColor": "FEDD00",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.578Z"
-          },
-          "place": 3,
-          "stats": {
-            "gamesPlayed": {
-              "displayName": "Games played",
-              "shortName": "GP",
-              "value": "1"
-            },
-            "wins": {
-              "displayName": "Wins",
-              "shortName": "W",
-              "value": "0"
-            },
-            "draws": {
-              "displayName": "Draws",
-              "shortName": "D",
-              "value": "1"
-            },
-            "losses": {
-              "displayName": "Losses",
-              "shortName": "L",
-              "value": "0"
-            },
-            "points": {
-              "displayName": "Points",
-              "shortName": "PTS",
-              "value": "1"
-            },
-            "goalsFor": {
-              "displayName": "Goals For",
-              "shortName": "GF",
-              "value": "1"
-            },
-            "goalsAgainst": {
-              "displayName": "Goals Against",
-              "shortName": "GA",
-              "value": "1"
-            },
-            "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "0"
-            }
-          },
-          "playoffStatus": null
-        },
-        {
-          "competitor": {
-            "id": "STATSCOM:FIFA_WC:7599",
-            "competitorId": 7599,
             "name": "Haiti",
             "shortName": "HAI",
-            "club": "Haiti",
-            "recordOverall": "0-0-1",
-            "streak": null,
-            "ranking": "4th Group C",
-            "rankingFr": "4e Groupe C",
-            "seoIdentifier": "haiti",
+            "club": "",
+            "ranking": "4",
             "place": 4,
-            "seed": 4,
-            "location": "Haiti",
-            "primaryColor": "00209F",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.579Z"
+            "location": "",
+            "primaryColor": ""
           },
           "place": 4,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "1"
+              "value": "2"
             },
             "wins": {
               "displayName": "Wins",
@@ -778,7 +637,7 @@
             "losses": {
               "displayName": "Losses",
               "shortName": "L",
-              "value": "1"
+              "value": "2"
             },
             "points": {
               "displayName": "Points",
@@ -786,22 +645,21 @@
               "value": "0"
             },
             "goalsFor": {
-              "displayName": "Goals For",
+              "displayName": "Goals for",
               "shortName": "GF",
               "value": "0"
             },
             "goalsAgainst": {
-              "displayName": "Goals Against",
+              "displayName": "Goals against",
               "shortName": "GA",
-              "value": "1"
+              "value": "4"
             },
             "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "-1"
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "-4"
             }
-          },
-          "playoffStatus": null
+          }
         }
       ]
     },
@@ -810,35 +668,25 @@
       "competitorStandings": [
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7585",
-            "competitorId": 7585,
             "name": "United States",
             "shortName": "USA",
-            "club": "United States",
-            "recordOverall": "1-0-0",
-            "streak": null,
-            "ranking": "1st Group D",
-            "rankingFr": "1er Groupe D",
-            "seoIdentifier": "united-states",
+            "club": "",
+            "ranking": "1",
             "place": 1,
-            "seed": 1,
-            "location": "United States",
-            "primaryColor": "0A3161",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.580Z"
+            "location": "",
+            "primaryColor": ""
           },
           "place": 1,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "1"
+              "value": "2"
             },
             "wins": {
               "displayName": "Wins",
               "shortName": "W",
-              "value": "1"
+              "value": "2"
             },
             "draws": {
               "displayName": "Draws",
@@ -853,52 +701,41 @@
             "points": {
               "displayName": "Points",
               "shortName": "PTS",
-              "value": "3"
+              "value": "6"
             },
             "goalsFor": {
-              "displayName": "Goals For",
+              "displayName": "Goals for",
               "shortName": "GF",
-              "value": "4"
+              "value": "6"
             },
             "goalsAgainst": {
-              "displayName": "Goals Against",
+              "displayName": "Goals against",
               "shortName": "GA",
               "value": "1"
             },
             "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "+3"
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "5"
             }
-          },
-          "playoffStatus": null
+          }
         },
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7609",
-            "competitorId": 7609,
             "name": "Australia",
             "shortName": "AUS",
-            "club": "Australia",
-            "recordOverall": "1-0-0",
-            "streak": null,
-            "ranking": "2nd Group D",
-            "rankingFr": "2e Groupe D",
-            "seoIdentifier": "australia",
+            "club": "",
+            "ranking": "2",
             "place": 2,
-            "seed": 2,
-            "location": "Australia",
-            "primaryColor": "012169",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.581Z"
+            "location": "",
+            "primaryColor": ""
           },
           "place": 2,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "1"
+              "value": "2"
             },
             "wins": {
               "displayName": "Wins",
@@ -913,7 +750,7 @@
             "losses": {
               "displayName": "Losses",
               "shortName": "L",
-              "value": "0"
+              "value": "1"
             },
             "points": {
               "displayName": "Points",
@@ -921,54 +758,43 @@
               "value": "3"
             },
             "goalsFor": {
-              "displayName": "Goals For",
+              "displayName": "Goals for",
               "shortName": "GF",
               "value": "2"
             },
             "goalsAgainst": {
-              "displayName": "Goals Against",
+              "displayName": "Goals against",
               "shortName": "GA",
-              "value": "0"
+              "value": "2"
             },
             "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "+2"
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "0"
             }
-          },
-          "playoffStatus": null
+          }
         },
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7642",
-            "competitorId": 7642,
-            "name": "Turkiye",
-            "shortName": "TUR",
-            "club": "Turkiye",
-            "recordOverall": "0-0-1",
-            "streak": null,
-            "ranking": "3rd Group D",
-            "rankingFr": "3e Groupe D",
-            "seoIdentifier": "turkiye",
+            "name": "Paraguay",
+            "shortName": "PAR",
+            "club": "",
+            "ranking": "3",
             "place": 3,
-            "seed": 3,
-            "location": "Turkiye",
-            "primaryColor": "C8102E",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.582Z"
+            "location": "",
+            "primaryColor": ""
           },
           "place": 3,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "1"
+              "value": "2"
             },
             "wins": {
               "displayName": "Wins",
               "shortName": "W",
-              "value": "0"
+              "value": "1"
             },
             "draws": {
               "displayName": "Draws",
@@ -983,52 +809,41 @@
             "points": {
               "displayName": "Points",
               "shortName": "PTS",
-              "value": "0"
+              "value": "3"
             },
             "goalsFor": {
-              "displayName": "Goals For",
+              "displayName": "Goals for",
               "shortName": "GF",
-              "value": "0"
-            },
-            "goalsAgainst": {
-              "displayName": "Goals Against",
-              "shortName": "GA",
               "value": "2"
             },
+            "goalsAgainst": {
+              "displayName": "Goals against",
+              "shortName": "GA",
+              "value": "4"
+            },
             "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
+              "displayName": "Goal difference",
+              "shortName": "GD",
               "value": "-2"
             }
-          },
-          "playoffStatus": null
+          }
         },
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7594",
-            "competitorId": 7594,
-            "name": "Paraguay",
-            "shortName": "PAR",
-            "club": "Paraguay",
-            "recordOverall": "0-0-1",
-            "streak": null,
-            "ranking": "4th Group D",
-            "rankingFr": "4e Groupe D",
-            "seoIdentifier": "paraguay",
+            "name": "Türkiye",
+            "shortName": "TUR",
+            "club": "",
+            "ranking": "4",
             "place": 4,
-            "seed": 4,
-            "location": "Paraguay",
-            "primaryColor": "D52B1E",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.582Z"
+            "location": "",
+            "primaryColor": ""
           },
           "place": 4,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "1"
+              "value": "2"
             },
             "wins": {
               "displayName": "Wins",
@@ -1043,7 +858,7 @@
             "losses": {
               "displayName": "Losses",
               "shortName": "L",
-              "value": "1"
+              "value": "2"
             },
             "points": {
               "displayName": "Points",
@@ -1051,22 +866,21 @@
               "value": "0"
             },
             "goalsFor": {
-              "displayName": "Goals For",
+              "displayName": "Goals for",
               "shortName": "GF",
-              "value": "1"
+              "value": "0"
             },
             "goalsAgainst": {
-              "displayName": "Goals Against",
+              "displayName": "Goals against",
               "shortName": "GA",
-              "value": "4"
+              "value": "3"
             },
             "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
+              "displayName": "Goal difference",
+              "shortName": "GD",
               "value": "-3"
             }
-          },
-          "playoffStatus": null
+          }
         }
       ]
     },
@@ -1075,23 +889,13 @@
       "competitorStandings": [
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7627",
-            "competitorId": 7627,
             "name": "Germany",
             "shortName": "GER",
-            "club": "Germany",
-            "recordOverall": "1-0-0",
-            "streak": null,
-            "ranking": "1st Group E",
-            "rankingFr": "1er Groupe E",
-            "seoIdentifier": "germany",
+            "club": "",
+            "ranking": "1",
             "place": 1,
-            "seed": 1,
-            "location": "Germany",
-            "primaryColor": "000000",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.583Z"
+            "location": "",
+            "primaryColor": ""
           },
           "place": 1,
           "stats": {
@@ -1121,42 +925,31 @@
               "value": "3"
             },
             "goalsFor": {
-              "displayName": "Goals For",
+              "displayName": "Goals for",
               "shortName": "GF",
               "value": "7"
             },
             "goalsAgainst": {
-              "displayName": "Goals Against",
+              "displayName": "Goals against",
               "shortName": "GA",
               "value": "1"
             },
             "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "+6"
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "6"
             }
-          },
-          "playoffStatus": null
+          }
         },
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7665",
-            "competitorId": 7665,
-            "name": "Cote d'Ivoire",
-            "shortName": "CIV",
-            "club": "Cote d'Ivoire",
-            "recordOverall": "1-0-0",
-            "streak": null,
-            "ranking": "2nd Group E",
-            "rankingFr": "2e Groupe E",
-            "seoIdentifier": "cote-divoire",
+            "name": "Ecuador",
+            "shortName": "ECU",
+            "club": "",
+            "ranking": "2",
             "place": 2,
-            "seed": 2,
-            "location": "Cote d'Ivoire",
-            "primaryColor": "FF8200",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.584Z"
+            "location": "",
+            "primaryColor": ""
           },
           "place": 2,
           "stats": {
@@ -1168,12 +961,12 @@
             "wins": {
               "displayName": "Wins",
               "shortName": "W",
-              "value": "1"
+              "value": "0"
             },
             "draws": {
               "displayName": "Draws",
               "shortName": "D",
-              "value": "0"
+              "value": "1"
             },
             "losses": {
               "displayName": "Losses",
@@ -1183,52 +976,41 @@
             "points": {
               "displayName": "Points",
               "shortName": "PTS",
-              "value": "3"
-            },
-            "goalsFor": {
-              "displayName": "Goals For",
-              "shortName": "GF",
               "value": "1"
             },
+            "goalsFor": {
+              "displayName": "Goals for",
+              "shortName": "GF",
+              "value": "0"
+            },
             "goalsAgainst": {
-              "displayName": "Goals Against",
+              "displayName": "Goals against",
               "shortName": "GA",
               "value": "0"
             },
             "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "+1"
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "0"
             }
-          },
-          "playoffStatus": null
+          }
         },
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7593",
-            "competitorId": 7593,
-            "name": "Ecuador",
-            "shortName": "ECU",
-            "club": "Ecuador",
-            "recordOverall": "0-0-1",
-            "streak": null,
-            "ranking": "3rd Group E",
-            "rankingFr": "3e Groupe E",
-            "seoIdentifier": "ecuador",
+            "name": "Curaçao",
+            "shortName": "CUW",
+            "club": "",
+            "ranking": "3",
             "place": 3,
-            "seed": 3,
-            "location": "Ecuador",
-            "primaryColor": "FFDD00",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.585Z"
+            "location": "",
+            "primaryColor": ""
           },
           "place": 3,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "1"
+              "value": "2"
             },
             "wins": {
               "displayName": "Wins",
@@ -1238,7 +1020,7 @@
             "draws": {
               "displayName": "Draws",
               "shortName": "D",
-              "value": "0"
+              "value": "1"
             },
             "losses": {
               "displayName": "Losses",
@@ -1248,52 +1030,41 @@
             "points": {
               "displayName": "Points",
               "shortName": "PTS",
-              "value": "0"
-            },
-            "goalsFor": {
-              "displayName": "Goals For",
-              "shortName": "GF",
-              "value": "0"
-            },
-            "goalsAgainst": {
-              "displayName": "Goals Against",
-              "shortName": "GA",
               "value": "1"
             },
+            "goalsFor": {
+              "displayName": "Goals for",
+              "shortName": "GF",
+              "value": "1"
+            },
+            "goalsAgainst": {
+              "displayName": "Goals against",
+              "shortName": "GA",
+              "value": "7"
+            },
             "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "-1"
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "-6"
             }
-          },
-          "playoffStatus": null
+          }
         },
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:23925",
-            "competitorId": 23925,
-            "name": "Curacao",
-            "shortName": "CUW",
-            "club": "Curacao",
-            "recordOverall": "0-0-1",
-            "streak": null,
-            "ranking": "4th Group E",
-            "rankingFr": "4e Groupe E",
-            "seoIdentifier": "curacao",
+            "name": "Côte d’Ivoire",
+            "shortName": "",
+            "club": "",
+            "ranking": "4",
             "place": 4,
-            "seed": 4,
-            "location": "Curacao",
-            "primaryColor": "002B7F",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.586Z"
+            "location": "",
+            "primaryColor": ""
           },
           "place": 4,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "1"
+              "value": "0"
             },
             "wins": {
               "displayName": "Wins",
@@ -1308,7 +1079,7 @@
             "losses": {
               "displayName": "Losses",
               "shortName": "L",
-              "value": "1"
+              "value": "0"
             },
             "points": {
               "displayName": "Points",
@@ -1316,22 +1087,21 @@
               "value": "0"
             },
             "goalsFor": {
-              "displayName": "Goals For",
+              "displayName": "Goals for",
               "shortName": "GF",
-              "value": "1"
+              "value": "0"
             },
             "goalsAgainst": {
-              "displayName": "Goals Against",
+              "displayName": "Goals against",
               "shortName": "GA",
-              "value": "7"
+              "value": "0"
             },
             "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "-6"
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "0"
             }
-          },
-          "playoffStatus": null
+          }
         }
       ]
     },
@@ -1340,23 +1110,676 @@
       "competitorStandings": [
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7640",
-            "competitorId": 7640,
+            "name": "Netherlands",
+            "shortName": "NED",
+            "club": "",
+            "ranking": "1",
+            "place": 1,
+            "location": "",
+            "primaryColor": ""
+          },
+          "place": 1,
+          "stats": {
+            "gamesPlayed": {
+              "displayName": "Games played",
+              "shortName": "GP",
+              "value": "2"
+            },
+            "wins": {
+              "displayName": "Wins",
+              "shortName": "W",
+              "value": "1"
+            },
+            "draws": {
+              "displayName": "Draws",
+              "shortName": "D",
+              "value": "1"
+            },
+            "losses": {
+              "displayName": "Losses",
+              "shortName": "L",
+              "value": "0"
+            },
+            "points": {
+              "displayName": "Points",
+              "shortName": "PTS",
+              "value": "4"
+            },
+            "goalsFor": {
+              "displayName": "Goals for",
+              "shortName": "GF",
+              "value": "7"
+            },
+            "goalsAgainst": {
+              "displayName": "Goals against",
+              "shortName": "GA",
+              "value": "3"
+            },
+            "differential": {
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "4"
+            }
+          }
+        },
+        {
+          "competitor": {
+            "name": "Japan",
+            "shortName": "JPN",
+            "club": "",
+            "ranking": "2",
+            "place": 2,
+            "location": "",
+            "primaryColor": ""
+          },
+          "place": 2,
+          "stats": {
+            "gamesPlayed": {
+              "displayName": "Games played",
+              "shortName": "GP",
+              "value": "2"
+            },
+            "wins": {
+              "displayName": "Wins",
+              "shortName": "W",
+              "value": "1"
+            },
+            "draws": {
+              "displayName": "Draws",
+              "shortName": "D",
+              "value": "1"
+            },
+            "losses": {
+              "displayName": "Losses",
+              "shortName": "L",
+              "value": "0"
+            },
+            "points": {
+              "displayName": "Points",
+              "shortName": "PTS",
+              "value": "4"
+            },
+            "goalsFor": {
+              "displayName": "Goals for",
+              "shortName": "GF",
+              "value": "6"
+            },
+            "goalsAgainst": {
+              "displayName": "Goals against",
+              "shortName": "GA",
+              "value": "2"
+            },
+            "differential": {
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "4"
+            }
+          }
+        },
+        {
+          "competitor": {
             "name": "Sweden",
             "shortName": "SWE",
-            "club": "Sweden",
-            "recordOverall": "1-0-0",
-            "streak": null,
-            "ranking": "1st Group F",
-            "rankingFr": "1er Groupe F",
-            "seoIdentifier": "sweden",
+            "club": "",
+            "ranking": "3",
+            "place": 3,
+            "location": "",
+            "primaryColor": ""
+          },
+          "place": 3,
+          "stats": {
+            "gamesPlayed": {
+              "displayName": "Games played",
+              "shortName": "GP",
+              "value": "2"
+            },
+            "wins": {
+              "displayName": "Wins",
+              "shortName": "W",
+              "value": "1"
+            },
+            "draws": {
+              "displayName": "Draws",
+              "shortName": "D",
+              "value": "0"
+            },
+            "losses": {
+              "displayName": "Losses",
+              "shortName": "L",
+              "value": "1"
+            },
+            "points": {
+              "displayName": "Points",
+              "shortName": "PTS",
+              "value": "3"
+            },
+            "goalsFor": {
+              "displayName": "Goals for",
+              "shortName": "GF",
+              "value": "6"
+            },
+            "goalsAgainst": {
+              "displayName": "Goals against",
+              "shortName": "GA",
+              "value": "6"
+            },
+            "differential": {
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "0"
+            }
+          }
+        },
+        {
+          "competitor": {
+            "name": "Tunisia",
+            "shortName": "TUN",
+            "club": "",
+            "ranking": "4",
+            "place": 4,
+            "location": "",
+            "primaryColor": ""
+          },
+          "place": 4,
+          "stats": {
+            "gamesPlayed": {
+              "displayName": "Games played",
+              "shortName": "GP",
+              "value": "2"
+            },
+            "wins": {
+              "displayName": "Wins",
+              "shortName": "W",
+              "value": "0"
+            },
+            "draws": {
+              "displayName": "Draws",
+              "shortName": "D",
+              "value": "0"
+            },
+            "losses": {
+              "displayName": "Losses",
+              "shortName": "L",
+              "value": "2"
+            },
+            "points": {
+              "displayName": "Points",
+              "shortName": "PTS",
+              "value": "0"
+            },
+            "goalsFor": {
+              "displayName": "Goals for",
+              "shortName": "GF",
+              "value": "1"
+            },
+            "goalsAgainst": {
+              "displayName": "Goals against",
+              "shortName": "GA",
+              "value": "9"
+            },
+            "differential": {
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "-8"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Group G",
+      "competitorStandings": [
+        {
+          "competitor": {
+            "name": "Iran",
+            "shortName": "IRN",
+            "club": "",
+            "ranking": "1",
             "place": 1,
-            "seed": 1,
-            "location": "Sweden",
-            "primaryColor": "FECC02",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.586Z"
+            "location": "",
+            "primaryColor": ""
+          },
+          "place": 1,
+          "stats": {
+            "gamesPlayed": {
+              "displayName": "Games played",
+              "shortName": "GP",
+              "value": "2"
+            },
+            "wins": {
+              "displayName": "Wins",
+              "shortName": "W",
+              "value": "0"
+            },
+            "draws": {
+              "displayName": "Draws",
+              "shortName": "D",
+              "value": "2"
+            },
+            "losses": {
+              "displayName": "Losses",
+              "shortName": "L",
+              "value": "0"
+            },
+            "points": {
+              "displayName": "Points",
+              "shortName": "PTS",
+              "value": "2"
+            },
+            "goalsFor": {
+              "displayName": "Goals for",
+              "shortName": "GF",
+              "value": "2"
+            },
+            "goalsAgainst": {
+              "displayName": "Goals against",
+              "shortName": "GA",
+              "value": "2"
+            },
+            "differential": {
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "0"
+            }
+          }
+        },
+        {
+          "competitor": {
+            "name": "Belgium",
+            "shortName": "BEL",
+            "club": "",
+            "ranking": "2",
+            "place": 2,
+            "location": "",
+            "primaryColor": ""
+          },
+          "place": 2,
+          "stats": {
+            "gamesPlayed": {
+              "displayName": "Games played",
+              "shortName": "GP",
+              "value": "2"
+            },
+            "wins": {
+              "displayName": "Wins",
+              "shortName": "W",
+              "value": "0"
+            },
+            "draws": {
+              "displayName": "Draws",
+              "shortName": "D",
+              "value": "2"
+            },
+            "losses": {
+              "displayName": "Losses",
+              "shortName": "L",
+              "value": "0"
+            },
+            "points": {
+              "displayName": "Points",
+              "shortName": "PTS",
+              "value": "2"
+            },
+            "goalsFor": {
+              "displayName": "Goals for",
+              "shortName": "GF",
+              "value": "1"
+            },
+            "goalsAgainst": {
+              "displayName": "Goals against",
+              "shortName": "GA",
+              "value": "1"
+            },
+            "differential": {
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "0"
+            }
+          }
+        },
+        {
+          "competitor": {
+            "name": "New Zealand",
+            "shortName": "NZL",
+            "club": "",
+            "ranking": "3",
+            "place": 3,
+            "location": "",
+            "primaryColor": ""
+          },
+          "place": 3,
+          "stats": {
+            "gamesPlayed": {
+              "displayName": "Games played",
+              "shortName": "GP",
+              "value": "1"
+            },
+            "wins": {
+              "displayName": "Wins",
+              "shortName": "W",
+              "value": "0"
+            },
+            "draws": {
+              "displayName": "Draws",
+              "shortName": "D",
+              "value": "1"
+            },
+            "losses": {
+              "displayName": "Losses",
+              "shortName": "L",
+              "value": "0"
+            },
+            "points": {
+              "displayName": "Points",
+              "shortName": "PTS",
+              "value": "1"
+            },
+            "goalsFor": {
+              "displayName": "Goals for",
+              "shortName": "GF",
+              "value": "2"
+            },
+            "goalsAgainst": {
+              "displayName": "Goals against",
+              "shortName": "GA",
+              "value": "2"
+            },
+            "differential": {
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "0"
+            }
+          }
+        },
+        {
+          "competitor": {
+            "name": "Egypt",
+            "shortName": "EGY",
+            "club": "",
+            "ranking": "4",
+            "place": 4,
+            "location": "",
+            "primaryColor": ""
+          },
+          "place": 4,
+          "stats": {
+            "gamesPlayed": {
+              "displayName": "Games played",
+              "shortName": "GP",
+              "value": "1"
+            },
+            "wins": {
+              "displayName": "Wins",
+              "shortName": "W",
+              "value": "0"
+            },
+            "draws": {
+              "displayName": "Draws",
+              "shortName": "D",
+              "value": "1"
+            },
+            "losses": {
+              "displayName": "Losses",
+              "shortName": "L",
+              "value": "0"
+            },
+            "points": {
+              "displayName": "Points",
+              "shortName": "PTS",
+              "value": "1"
+            },
+            "goalsFor": {
+              "displayName": "Goals for",
+              "shortName": "GF",
+              "value": "1"
+            },
+            "goalsAgainst": {
+              "displayName": "Goals against",
+              "shortName": "GA",
+              "value": "1"
+            },
+            "differential": {
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Group H",
+      "competitorStandings": [
+        {
+          "competitor": {
+            "name": "Spain",
+            "shortName": "ESP",
+            "club": "",
+            "ranking": "1",
+            "place": 1,
+            "location": "",
+            "primaryColor": ""
+          },
+          "place": 1,
+          "stats": {
+            "gamesPlayed": {
+              "displayName": "Games played",
+              "shortName": "GP",
+              "value": "2"
+            },
+            "wins": {
+              "displayName": "Wins",
+              "shortName": "W",
+              "value": "1"
+            },
+            "draws": {
+              "displayName": "Draws",
+              "shortName": "D",
+              "value": "1"
+            },
+            "losses": {
+              "displayName": "Losses",
+              "shortName": "L",
+              "value": "0"
+            },
+            "points": {
+              "displayName": "Points",
+              "shortName": "PTS",
+              "value": "4"
+            },
+            "goalsFor": {
+              "displayName": "Goals for",
+              "shortName": "GF",
+              "value": "4"
+            },
+            "goalsAgainst": {
+              "displayName": "Goals against",
+              "shortName": "GA",
+              "value": "0"
+            },
+            "differential": {
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "4"
+            }
+          }
+        },
+        {
+          "competitor": {
+            "name": "Uruguay",
+            "shortName": "URU",
+            "club": "",
+            "ranking": "2",
+            "place": 2,
+            "location": "",
+            "primaryColor": ""
+          },
+          "place": 2,
+          "stats": {
+            "gamesPlayed": {
+              "displayName": "Games played",
+              "shortName": "GP",
+              "value": "1"
+            },
+            "wins": {
+              "displayName": "Wins",
+              "shortName": "W",
+              "value": "0"
+            },
+            "draws": {
+              "displayName": "Draws",
+              "shortName": "D",
+              "value": "1"
+            },
+            "losses": {
+              "displayName": "Losses",
+              "shortName": "L",
+              "value": "0"
+            },
+            "points": {
+              "displayName": "Points",
+              "shortName": "PTS",
+              "value": "1"
+            },
+            "goalsFor": {
+              "displayName": "Goals for",
+              "shortName": "GF",
+              "value": "1"
+            },
+            "goalsAgainst": {
+              "displayName": "Goals against",
+              "shortName": "GA",
+              "value": "1"
+            },
+            "differential": {
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "0"
+            }
+          }
+        },
+        {
+          "competitor": {
+            "name": "Cape Verde",
+            "shortName": "CPV",
+            "club": "",
+            "ranking": "3",
+            "place": 3,
+            "location": "",
+            "primaryColor": ""
+          },
+          "place": 3,
+          "stats": {
+            "gamesPlayed": {
+              "displayName": "Games played",
+              "shortName": "GP",
+              "value": "1"
+            },
+            "wins": {
+              "displayName": "Wins",
+              "shortName": "W",
+              "value": "0"
+            },
+            "draws": {
+              "displayName": "Draws",
+              "shortName": "D",
+              "value": "1"
+            },
+            "losses": {
+              "displayName": "Losses",
+              "shortName": "L",
+              "value": "0"
+            },
+            "points": {
+              "displayName": "Points",
+              "shortName": "PTS",
+              "value": "1"
+            },
+            "goalsFor": {
+              "displayName": "Goals for",
+              "shortName": "GF",
+              "value": "0"
+            },
+            "goalsAgainst": {
+              "displayName": "Goals against",
+              "shortName": "GA",
+              "value": "0"
+            },
+            "differential": {
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "0"
+            }
+          }
+        },
+        {
+          "competitor": {
+            "name": "Saudi Arabia",
+            "shortName": "KSA",
+            "club": "",
+            "ranking": "4",
+            "place": 4,
+            "location": "",
+            "primaryColor": ""
+          },
+          "place": 4,
+          "stats": {
+            "gamesPlayed": {
+              "displayName": "Games played",
+              "shortName": "GP",
+              "value": "2"
+            },
+            "wins": {
+              "displayName": "Wins",
+              "shortName": "W",
+              "value": "0"
+            },
+            "draws": {
+              "displayName": "Draws",
+              "shortName": "D",
+              "value": "1"
+            },
+            "losses": {
+              "displayName": "Losses",
+              "shortName": "L",
+              "value": "1"
+            },
+            "points": {
+              "displayName": "Points",
+              "shortName": "PTS",
+              "value": "1"
+            },
+            "goalsFor": {
+              "displayName": "Goals for",
+              "shortName": "GF",
+              "value": "1"
+            },
+            "goalsAgainst": {
+              "displayName": "Goals against",
+              "shortName": "GA",
+              "value": "5"
+            },
+            "differential": {
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "-4"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Group I",
+      "competitorStandings": [
+        {
+          "competitor": {
+            "name": "Norway",
+            "shortName": "NOR",
+            "club": "",
+            "ranking": "1",
+            "place": 1,
+            "location": "",
+            "primaryColor": ""
           },
           "place": 1,
           "stats": {
@@ -1386,849 +1809,43 @@
               "value": "3"
             },
             "goalsFor": {
-              "displayName": "Goals For",
+              "displayName": "Goals for",
               "shortName": "GF",
-              "value": "5"
+              "value": "4"
             },
             "goalsAgainst": {
-              "displayName": "Goals Against",
+              "displayName": "Goals against",
               "shortName": "GA",
               "value": "1"
             },
             "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "+4"
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "3"
             }
-          },
-          "playoffStatus": null
+          }
         },
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7613",
-            "competitorId": 7613,
-            "name": "Japan",
-            "shortName": "JPN",
-            "club": "Japan",
-            "recordOverall": "0-1-0",
-            "streak": null,
-            "ranking": "2nd Group F",
-            "rankingFr": "2e Groupe F",
-            "seoIdentifier": "japan",
-            "place": 2,
-            "seed": 2,
-            "location": "Japan",
-            "primaryColor": "26438D",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.587Z"
-          },
-          "place": 2,
-          "stats": {
-            "gamesPlayed": {
-              "displayName": "Games played",
-              "shortName": "GP",
-              "value": "1"
-            },
-            "wins": {
-              "displayName": "Wins",
-              "shortName": "W",
-              "value": "0"
-            },
-            "draws": {
-              "displayName": "Draws",
-              "shortName": "D",
-              "value": "1"
-            },
-            "losses": {
-              "displayName": "Losses",
-              "shortName": "L",
-              "value": "0"
-            },
-            "points": {
-              "displayName": "Points",
-              "shortName": "PTS",
-              "value": "1"
-            },
-            "goalsFor": {
-              "displayName": "Goals For",
-              "shortName": "GF",
-              "value": "2"
-            },
-            "goalsAgainst": {
-              "displayName": "Goals Against",
-              "shortName": "GA",
-              "value": "2"
-            },
-            "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "0"
-            }
-          },
-          "playoffStatus": null
-        },
-        {
-          "competitor": {
-            "id": "STATSCOM:FIFA_WC:7632",
-            "competitorId": 7632,
-            "name": "Netherlands",
-            "shortName": "NED",
-            "club": "Netherlands",
-            "recordOverall": "0-1-0",
-            "streak": null,
-            "ranking": "3rd Group F",
-            "rankingFr": "3e Groupe F",
-            "seoIdentifier": "netherlands",
-            "place": 3,
-            "seed": 3,
-            "location": "Netherlands",
-            "primaryColor": "F36C21",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.588Z"
-          },
-          "place": 3,
-          "stats": {
-            "gamesPlayed": {
-              "displayName": "Games played",
-              "shortName": "GP",
-              "value": "1"
-            },
-            "wins": {
-              "displayName": "Wins",
-              "shortName": "W",
-              "value": "0"
-            },
-            "draws": {
-              "displayName": "Draws",
-              "shortName": "D",
-              "value": "1"
-            },
-            "losses": {
-              "displayName": "Losses",
-              "shortName": "L",
-              "value": "0"
-            },
-            "points": {
-              "displayName": "Points",
-              "shortName": "PTS",
-              "value": "1"
-            },
-            "goalsFor": {
-              "displayName": "Goals For",
-              "shortName": "GF",
-              "value": "2"
-            },
-            "goalsAgainst": {
-              "displayName": "Goals Against",
-              "shortName": "GA",
-              "value": "2"
-            },
-            "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "0"
-            }
-          },
-          "playoffStatus": null
-        },
-        {
-          "competitor": {
-            "id": "STATSCOM:FIFA_WC:7607",
-            "competitorId": 7607,
-            "name": "Tunisia",
-            "shortName": "TUN",
-            "club": "Tunisia",
-            "recordOverall": "0-0-1",
-            "streak": null,
-            "ranking": "4th Group F",
-            "rankingFr": "4e Groupe F",
-            "seoIdentifier": "tunisia",
-            "place": 4,
-            "seed": 4,
-            "location": "Tunisia",
-            "primaryColor": "C8102E",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.589Z"
-          },
-          "place": 4,
-          "stats": {
-            "gamesPlayed": {
-              "displayName": "Games played",
-              "shortName": "GP",
-              "value": "1"
-            },
-            "wins": {
-              "displayName": "Wins",
-              "shortName": "W",
-              "value": "0"
-            },
-            "draws": {
-              "displayName": "Draws",
-              "shortName": "D",
-              "value": "0"
-            },
-            "losses": {
-              "displayName": "Losses",
-              "shortName": "L",
-              "value": "1"
-            },
-            "points": {
-              "displayName": "Points",
-              "shortName": "PTS",
-              "value": "0"
-            },
-            "goalsFor": {
-              "displayName": "Goals For",
-              "shortName": "GF",
-              "value": "1"
-            },
-            "goalsAgainst": {
-              "displayName": "Goals Against",
-              "shortName": "GA",
-              "value": "5"
-            },
-            "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "-4"
-            }
-          },
-          "playoffStatus": null
-        }
-      ]
-    },
-    {
-      "name": "Group G",
-      "competitorStandings": [
-        {
-          "competitor": {
-            "id": "STATSCOM:FIFA_WC:7619",
-            "competitorId": 7619,
-            "name": "Belgium",
-            "shortName": "BEL",
-            "club": "Belgium",
-            "recordOverall": "0-1-0",
-            "streak": null,
-            "ranking": "1st Group G",
-            "rankingFr": "1er Groupe G",
-            "seoIdentifier": "belgium",
-            "place": 1,
-            "seed": 1,
-            "location": "Belgium",
-            "primaryColor": "C8102E",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.590Z"
-          },
-          "place": 1,
-          "stats": {
-            "gamesPlayed": {
-              "displayName": "Games played",
-              "shortName": "GP",
-              "value": "1"
-            },
-            "wins": {
-              "displayName": "Wins",
-              "shortName": "W",
-              "value": "0"
-            },
-            "draws": {
-              "displayName": "Draws",
-              "shortName": "D",
-              "value": "1"
-            },
-            "losses": {
-              "displayName": "Losses",
-              "shortName": "L",
-              "value": "0"
-            },
-            "points": {
-              "displayName": "Points",
-              "shortName": "PTS",
-              "value": "1"
-            },
-            "goalsFor": {
-              "displayName": "Goals For",
-              "shortName": "GF",
-              "value": "1"
-            },
-            "goalsAgainst": {
-              "displayName": "Goals Against",
-              "shortName": "GA",
-              "value": "1"
-            },
-            "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "0"
-            }
-          },
-          "playoffStatus": null
-        },
-        {
-          "competitor": {
-            "id": "STATSCOM:FIFA_WC:7603",
-            "competitorId": 7603,
-            "name": "Egypt",
-            "shortName": "EGY",
-            "club": "Egypt",
-            "recordOverall": "0-1-0",
-            "streak": null,
-            "ranking": "2nd Group G",
-            "rankingFr": "2e Groupe G",
-            "seoIdentifier": "egypt",
-            "place": 2,
-            "seed": 2,
-            "location": "Egypt",
-            "primaryColor": "000000",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.590Z"
-          },
-          "place": 2,
-          "stats": {
-            "gamesPlayed": {
-              "displayName": "Games played",
-              "shortName": "GP",
-              "value": "1"
-            },
-            "wins": {
-              "displayName": "Wins",
-              "shortName": "W",
-              "value": "0"
-            },
-            "draws": {
-              "displayName": "Draws",
-              "shortName": "D",
-              "value": "1"
-            },
-            "losses": {
-              "displayName": "Losses",
-              "shortName": "L",
-              "value": "0"
-            },
-            "points": {
-              "displayName": "Points",
-              "shortName": "PTS",
-              "value": "1"
-            },
-            "goalsFor": {
-              "displayName": "Goals For",
-              "shortName": "GF",
-              "value": "1"
-            },
-            "goalsAgainst": {
-              "displayName": "Goals Against",
-              "shortName": "GA",
-              "value": "1"
-            },
-            "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "0"
-            }
-          },
-          "playoffStatus": null
-        },
-        {
-          "competitor": {
-            "id": "STATSCOM:FIFA_WC:7611",
-            "competitorId": 7611,
-            "name": "IR Iran",
-            "shortName": "IRN",
-            "club": "IR Iran",
-            "recordOverall": "0-0-0",
-            "streak": null,
-            "ranking": "3rd Group G",
-            "rankingFr": "3e Groupe G",
-            "seoIdentifier": "ir-iran",
-            "place": 3,
-            "seed": 3,
-            "location": "IR Iran",
-            "primaryColor": "DA0000",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.591Z"
-          },
-          "place": 3,
-          "stats": {
-            "gamesPlayed": {
-              "displayName": "Games played",
-              "shortName": "GP",
-              "value": "0"
-            },
-            "wins": {
-              "displayName": "Wins",
-              "shortName": "W",
-              "value": "0"
-            },
-            "draws": {
-              "displayName": "Draws",
-              "shortName": "D",
-              "value": "0"
-            },
-            "losses": {
-              "displayName": "Losses",
-              "shortName": "L",
-              "value": "0"
-            },
-            "points": {
-              "displayName": "Points",
-              "shortName": "PTS",
-              "value": "0"
-            },
-            "goalsFor": {
-              "displayName": "Goals For",
-              "shortName": "GF",
-              "value": "0"
-            },
-            "goalsAgainst": {
-              "displayName": "Goals Against",
-              "shortName": "GA",
-              "value": "0"
-            },
-            "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "0"
-            }
-          },
-          "playoffStatus": null
-        },
-        {
-          "competitor": {
-            "id": "STATSCOM:FIFA_WC:7610",
-            "competitorId": 7610,
-            "name": "New Zealand",
-            "shortName": "NZL",
-            "club": "New Zealand",
-            "recordOverall": "0-0-0",
-            "streak": null,
-            "ranking": "4th Group G",
-            "rankingFr": "4e Groupe G",
-            "seoIdentifier": "new-zealand",
-            "place": 4,
-            "seed": 4,
-            "location": "New Zealand",
-            "primaryColor": "012169",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.592Z"
-          },
-          "place": 4,
-          "stats": {
-            "gamesPlayed": {
-              "displayName": "Games played",
-              "shortName": "GP",
-              "value": "0"
-            },
-            "wins": {
-              "displayName": "Wins",
-              "shortName": "W",
-              "value": "0"
-            },
-            "draws": {
-              "displayName": "Draws",
-              "shortName": "D",
-              "value": "0"
-            },
-            "losses": {
-              "displayName": "Losses",
-              "shortName": "L",
-              "value": "0"
-            },
-            "points": {
-              "displayName": "Points",
-              "shortName": "PTS",
-              "value": "0"
-            },
-            "goalsFor": {
-              "displayName": "Goals For",
-              "shortName": "GF",
-              "value": "0"
-            },
-            "goalsAgainst": {
-              "displayName": "Goals Against",
-              "shortName": "GA",
-              "value": "0"
-            },
-            "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "0"
-            }
-          },
-          "playoffStatus": null
-        }
-      ]
-    },
-    {
-      "name": "Group H",
-      "competitorStandings": [
-        {
-          "competitor": {
-            "id": "STATSCOM:FIFA_WC:7596",
-            "competitorId": 7596,
-            "name": "Uruguay",
-            "shortName": "URU",
-            "club": "Uruguay",
-            "recordOverall": "0-1-0",
-            "streak": null,
-            "ranking": "1st Group H",
-            "rankingFr": "1er Groupe H",
-            "seoIdentifier": "uruguay",
-            "place": 1,
-            "seed": 1,
-            "location": "Uruguay",
-            "primaryColor": "001489",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.593Z"
-          },
-          "place": 1,
-          "stats": {
-            "gamesPlayed": {
-              "displayName": "Games played",
-              "shortName": "GP",
-              "value": "1"
-            },
-            "wins": {
-              "displayName": "Wins",
-              "shortName": "W",
-              "value": "0"
-            },
-            "draws": {
-              "displayName": "Draws",
-              "shortName": "D",
-              "value": "1"
-            },
-            "losses": {
-              "displayName": "Losses",
-              "shortName": "L",
-              "value": "0"
-            },
-            "points": {
-              "displayName": "Points",
-              "shortName": "PTS",
-              "value": "1"
-            },
-            "goalsFor": {
-              "displayName": "Goals For",
-              "shortName": "GF",
-              "value": "1"
-            },
-            "goalsAgainst": {
-              "displayName": "Goals Against",
-              "shortName": "GA",
-              "value": "1"
-            },
-            "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "0"
-            }
-          },
-          "playoffStatus": null
-        },
-        {
-          "competitor": {
-            "id": "STATSCOM:FIFA_WC:7616",
-            "competitorId": 7616,
-            "name": "Saudi Arabia",
-            "shortName": "KSA",
-            "club": "Saudi Arabia",
-            "recordOverall": "0-1-0",
-            "streak": null,
-            "ranking": "2nd Group H",
-            "rankingFr": "2e Groupe H",
-            "seoIdentifier": "saudi-arabia",
-            "place": 2,
-            "seed": 2,
-            "location": "Saudi Arabia",
-            "primaryColor": "165d31",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.594Z"
-          },
-          "place": 2,
-          "stats": {
-            "gamesPlayed": {
-              "displayName": "Games played",
-              "shortName": "GP",
-              "value": "1"
-            },
-            "wins": {
-              "displayName": "Wins",
-              "shortName": "W",
-              "value": "0"
-            },
-            "draws": {
-              "displayName": "Draws",
-              "shortName": "D",
-              "value": "1"
-            },
-            "losses": {
-              "displayName": "Losses",
-              "shortName": "L",
-              "value": "0"
-            },
-            "points": {
-              "displayName": "Points",
-              "shortName": "PTS",
-              "value": "1"
-            },
-            "goalsFor": {
-              "displayName": "Goals For",
-              "shortName": "GF",
-              "value": "1"
-            },
-            "goalsAgainst": {
-              "displayName": "Goals Against",
-              "shortName": "GA",
-              "value": "1"
-            },
-            "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "0"
-            }
-          },
-          "playoffStatus": null
-        },
-        {
-          "competitor": {
-            "id": "STATSCOM:FIFA_WC:7730",
-            "competitorId": 7730,
-            "name": "Cabo Verde",
-            "shortName": "CPV",
-            "club": "Cabo Verde",
-            "recordOverall": "0-1-0",
-            "streak": null,
-            "ranking": "3rd Group H",
-            "rankingFr": "3e Groupe H",
-            "seoIdentifier": "cabo-verde",
-            "place": 3,
-            "seed": 3,
-            "location": "Cabo Verde",
-            "primaryColor": "003DA5",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.595Z"
-          },
-          "place": 3,
-          "stats": {
-            "gamesPlayed": {
-              "displayName": "Games played",
-              "shortName": "GP",
-              "value": "1"
-            },
-            "wins": {
-              "displayName": "Wins",
-              "shortName": "W",
-              "value": "0"
-            },
-            "draws": {
-              "displayName": "Draws",
-              "shortName": "D",
-              "value": "1"
-            },
-            "losses": {
-              "displayName": "Losses",
-              "shortName": "L",
-              "value": "0"
-            },
-            "points": {
-              "displayName": "Points",
-              "shortName": "PTS",
-              "value": "1"
-            },
-            "goalsFor": {
-              "displayName": "Goals For",
-              "shortName": "GF",
-              "value": "0"
-            },
-            "goalsAgainst": {
-              "displayName": "Goals Against",
-              "shortName": "GA",
-              "value": "0"
-            },
-            "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "0"
-            }
-          },
-          "playoffStatus": null
-        },
-        {
-          "competitor": {
-            "id": "STATSCOM:FIFA_WC:7639",
-            "competitorId": 7639,
-            "name": "Spain",
-            "shortName": "ESP",
-            "club": "Spain",
-            "recordOverall": "0-1-0",
-            "streak": null,
-            "ranking": "4th Group H",
-            "rankingFr": "4e Groupe H",
-            "seoIdentifier": "spain",
-            "place": 4,
-            "seed": 4,
-            "location": "Spain",
-            "primaryColor": "AA151B",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.596Z"
-          },
-          "place": 4,
-          "stats": {
-            "gamesPlayed": {
-              "displayName": "Games played",
-              "shortName": "GP",
-              "value": "1"
-            },
-            "wins": {
-              "displayName": "Wins",
-              "shortName": "W",
-              "value": "0"
-            },
-            "draws": {
-              "displayName": "Draws",
-              "shortName": "D",
-              "value": "1"
-            },
-            "losses": {
-              "displayName": "Losses",
-              "shortName": "L",
-              "value": "0"
-            },
-            "points": {
-              "displayName": "Points",
-              "shortName": "PTS",
-              "value": "1"
-            },
-            "goalsFor": {
-              "displayName": "Goals For",
-              "shortName": "GF",
-              "value": "0"
-            },
-            "goalsAgainst": {
-              "displayName": "Goals Against",
-              "shortName": "GA",
-              "value": "0"
-            },
-            "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "0"
-            }
-          },
-          "playoffStatus": null
-        }
-      ]
-    },
-    {
-      "name": "Group I",
-      "competitorStandings": [
-        {
-          "competitor": {
-            "id": "STATSCOM:FIFA_WC:7626",
-            "competitorId": 7626,
             "name": "France",
             "shortName": "FRA",
-            "club": "France",
-            "recordOverall": "0-0-0",
-            "streak": null,
-            "ranking": "1st Group I",
-            "rankingFr": "1er Groupe I",
-            "seoIdentifier": "france",
-            "place": 1,
-            "seed": 1,
-            "location": "France",
-            "primaryColor": "002654",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.596Z"
-          },
-          "place": 1,
-          "stats": {
-            "gamesPlayed": {
-              "displayName": "Games played",
-              "shortName": "GP",
-              "value": "0"
-            },
-            "wins": {
-              "displayName": "Wins",
-              "shortName": "W",
-              "value": "0"
-            },
-            "draws": {
-              "displayName": "Draws",
-              "shortName": "D",
-              "value": "0"
-            },
-            "losses": {
-              "displayName": "Losses",
-              "shortName": "L",
-              "value": "0"
-            },
-            "points": {
-              "displayName": "Points",
-              "shortName": "PTS",
-              "value": "0"
-            },
-            "goalsFor": {
-              "displayName": "Goals For",
-              "shortName": "GF",
-              "value": "0"
-            },
-            "goalsAgainst": {
-              "displayName": "Goals Against",
-              "shortName": "GA",
-              "value": "0"
-            },
-            "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "0"
-            }
-          },
-          "playoffStatus": null
-        },
-        {
-          "competitor": {
-            "id": "STATSCOM:FIFA_WC:7647",
-            "competitorId": 7647,
-            "name": "Senegal",
-            "shortName": "SEN",
-            "club": "Senegal",
-            "recordOverall": "0-0-0",
-            "streak": null,
-            "ranking": "2nd Group I",
-            "rankingFr": "2e Groupe I",
-            "seoIdentifier": "senegal",
+            "club": "",
+            "ranking": "2",
             "place": 2,
-            "seed": 2,
-            "location": "Senegal",
-            "primaryColor": "FDEF42",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.597Z"
+            "location": "",
+            "primaryColor": ""
           },
           "place": 2,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "0"
+              "value": "1"
             },
             "wins": {
               "displayName": "Wins",
               "shortName": "W",
-              "value": "0"
+              "value": "1"
             },
             "draws": {
               "displayName": "Draws",
@@ -2243,52 +1860,41 @@
             "points": {
               "displayName": "Points",
               "shortName": "PTS",
-              "value": "0"
+              "value": "3"
             },
             "goalsFor": {
-              "displayName": "Goals For",
+              "displayName": "Goals for",
               "shortName": "GF",
-              "value": "0"
+              "value": "3"
             },
             "goalsAgainst": {
-              "displayName": "Goals Against",
+              "displayName": "Goals against",
               "shortName": "GA",
-              "value": "0"
+              "value": "1"
             },
             "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "0"
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "2"
             }
-          },
-          "playoffStatus": null
+          }
         },
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7612",
-            "competitorId": 7612,
-            "name": "Iraq",
-            "shortName": "IRQ",
-            "club": "Iraq",
-            "recordOverall": "0-0-0",
-            "streak": null,
-            "ranking": "3rd Group I",
-            "rankingFr": "3e Groupe I",
-            "seoIdentifier": "iraq",
+            "name": "Senegal",
+            "shortName": "SEN",
+            "club": "",
+            "ranking": "3",
             "place": 3,
-            "seed": 3,
-            "location": "Iraq",
-            "primaryColor": "000000",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.598Z"
+            "location": "",
+            "primaryColor": ""
           },
           "place": 3,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "0"
+              "value": "1"
             },
             "wins": {
               "displayName": "Wins",
@@ -2303,7 +1909,7 @@
             "losses": {
               "displayName": "Losses",
               "shortName": "L",
-              "value": "0"
+              "value": "1"
             },
             "points": {
               "displayName": "Points",
@@ -2311,49 +1917,38 @@
               "value": "0"
             },
             "goalsFor": {
-              "displayName": "Goals For",
+              "displayName": "Goals for",
               "shortName": "GF",
-              "value": "0"
+              "value": "1"
             },
             "goalsAgainst": {
-              "displayName": "Goals Against",
+              "displayName": "Goals against",
               "shortName": "GA",
-              "value": "0"
+              "value": "3"
             },
             "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "0"
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "-2"
             }
-          },
-          "playoffStatus": null
+          }
         },
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7648",
-            "competitorId": 7648,
-            "name": "Norway",
-            "shortName": "NOR",
-            "club": "Norway",
-            "recordOverall": "0-0-0",
-            "streak": null,
-            "ranking": "4th Group I",
-            "rankingFr": "4e Groupe I",
-            "seoIdentifier": "norway",
+            "name": "Iraq",
+            "shortName": "IRQ",
+            "club": "",
+            "ranking": "4",
             "place": 4,
-            "seed": 4,
-            "location": "Norway",
-            "primaryColor": "BA0C2F",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.599Z"
+            "location": "",
+            "primaryColor": ""
           },
           "place": 4,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "0"
+              "value": "1"
             },
             "wins": {
               "displayName": "Wins",
@@ -2368,7 +1963,7 @@
             "losses": {
               "displayName": "Losses",
               "shortName": "L",
-              "value": "0"
+              "value": "1"
             },
             "points": {
               "displayName": "Points",
@@ -2376,22 +1971,21 @@
               "value": "0"
             },
             "goalsFor": {
-              "displayName": "Goals For",
+              "displayName": "Goals for",
               "shortName": "GF",
-              "value": "0"
+              "value": "1"
             },
             "goalsAgainst": {
-              "displayName": "Goals Against",
+              "displayName": "Goals against",
               "shortName": "GA",
-              "value": "0"
+              "value": "4"
             },
             "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "0"
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "-3"
             }
-          },
-          "playoffStatus": null
+          }
         }
       ]
     },
@@ -2400,35 +1994,25 @@
       "competitorStandings": [
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7587",
-            "competitorId": 7587,
             "name": "Argentina",
             "shortName": "ARG",
-            "club": "Argentina",
-            "recordOverall": "0-0-0",
-            "streak": null,
-            "ranking": "1st Group J",
-            "rankingFr": "1er Groupe J",
-            "seoIdentifier": "argentina",
+            "club": "",
+            "ranking": "1",
             "place": 1,
-            "seed": 1,
-            "location": "Argentina",
-            "primaryColor": "6CACE4",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.599Z"
+            "location": "",
+            "primaryColor": ""
           },
           "place": 1,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "0"
+              "value": "1"
             },
             "wins": {
               "displayName": "Wins",
               "shortName": "W",
-              "value": "0"
+              "value": "1"
             },
             "draws": {
               "displayName": "Draws",
@@ -2443,57 +2027,46 @@
             "points": {
               "displayName": "Points",
               "shortName": "PTS",
-              "value": "0"
+              "value": "3"
             },
             "goalsFor": {
-              "displayName": "Goals For",
+              "displayName": "Goals for",
               "shortName": "GF",
-              "value": "0"
+              "value": "3"
             },
             "goalsAgainst": {
-              "displayName": "Goals Against",
+              "displayName": "Goals against",
               "shortName": "GA",
               "value": "0"
             },
             "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "0"
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "3"
             }
-          },
-          "playoffStatus": null
+          }
         },
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7601",
-            "competitorId": 7601,
-            "name": "Algeria",
-            "shortName": "ALG",
-            "club": "Algeria",
-            "recordOverall": "0-0-0",
-            "streak": null,
-            "ranking": "2nd Group J",
-            "rankingFr": "2e Groupe J",
-            "seoIdentifier": "algeria",
+            "name": "Austria",
+            "shortName": "AUT",
+            "club": "",
+            "ranking": "2",
             "place": 2,
-            "seed": 2,
-            "location": "Algeria",
-            "primaryColor": "006633",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.600Z"
+            "location": "",
+            "primaryColor": ""
           },
           "place": 2,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "0"
+              "value": "1"
             },
             "wins": {
               "displayName": "Wins",
               "shortName": "W",
-              "value": "0"
+              "value": "1"
             },
             "draws": {
               "displayName": "Draws",
@@ -2508,52 +2081,41 @@
             "points": {
               "displayName": "Points",
               "shortName": "PTS",
-              "value": "0"
+              "value": "3"
             },
             "goalsFor": {
-              "displayName": "Goals For",
+              "displayName": "Goals for",
               "shortName": "GF",
-              "value": "0"
+              "value": "3"
             },
             "goalsAgainst": {
-              "displayName": "Goals Against",
+              "displayName": "Goals against",
               "shortName": "GA",
-              "value": "0"
+              "value": "1"
             },
             "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "0"
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "2"
             }
-          },
-          "playoffStatus": null
+          }
         },
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7618",
-            "competitorId": 7618,
-            "name": "Austria",
-            "shortName": "AUT",
-            "club": "Austria",
-            "recordOverall": "0-0-0",
-            "streak": null,
-            "ranking": "3rd Group J",
-            "rankingFr": "3e Groupe J",
-            "seoIdentifier": "austria",
+            "name": "Jordan",
+            "shortName": "JOR",
+            "club": "",
+            "ranking": "3",
             "place": 3,
-            "seed": 3,
-            "location": "Austria",
-            "primaryColor": "EF3340",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.601Z"
+            "location": "",
+            "primaryColor": ""
           },
           "place": 3,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "0"
+              "value": "1"
             },
             "wins": {
               "displayName": "Wins",
@@ -2568,7 +2130,7 @@
             "losses": {
               "displayName": "Losses",
               "shortName": "L",
-              "value": "0"
+              "value": "1"
             },
             "points": {
               "displayName": "Points",
@@ -2576,49 +2138,38 @@
               "value": "0"
             },
             "goalsFor": {
-              "displayName": "Goals For",
+              "displayName": "Goals for",
               "shortName": "GF",
-              "value": "0"
+              "value": "1"
             },
             "goalsAgainst": {
-              "displayName": "Goals Against",
+              "displayName": "Goals against",
               "shortName": "GA",
-              "value": "0"
+              "value": "3"
             },
             "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "0"
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "-2"
             }
-          },
-          "playoffStatus": null
+          }
         },
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7670",
-            "competitorId": 7670,
-            "name": "Jordan",
-            "shortName": "JOR",
-            "club": "Jordan",
-            "recordOverall": "0-0-0",
-            "streak": null,
-            "ranking": "4th Group J",
-            "rankingFr": "4e Groupe J",
-            "seoIdentifier": "jordan",
+            "name": "Algeria",
+            "shortName": "ALG",
+            "club": "",
+            "ranking": "4",
             "place": 4,
-            "seed": 4,
-            "location": "Jordan",
-            "primaryColor": "CE1126",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.602Z"
+            "location": "",
+            "primaryColor": ""
           },
           "place": 4,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "0"
+              "value": "1"
             },
             "wins": {
               "displayName": "Wins",
@@ -2633,7 +2184,7 @@
             "losses": {
               "displayName": "Losses",
               "shortName": "L",
-              "value": "0"
+              "value": "1"
             },
             "points": {
               "displayName": "Points",
@@ -2641,22 +2192,21 @@
               "value": "0"
             },
             "goalsFor": {
-              "displayName": "Goals For",
+              "displayName": "Goals for",
               "shortName": "GF",
               "value": "0"
             },
             "goalsAgainst": {
-              "displayName": "Goals Against",
+              "displayName": "Goals against",
               "shortName": "GA",
-              "value": "0"
+              "value": "3"
             },
             "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "0"
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "-3"
             }
-          },
-          "playoffStatus": null
+          }
         }
       ]
     },
@@ -2665,35 +2215,25 @@
       "competitorStandings": [
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7635",
-            "competitorId": 7635,
-            "name": "Portugal",
-            "shortName": "POR",
-            "club": "Portugal",
-            "recordOverall": "0-0-0",
-            "streak": null,
-            "ranking": "1st Group K",
-            "rankingFr": "1er Groupe K",
-            "seoIdentifier": "portugal",
+            "name": "Colombia",
+            "shortName": "COL",
+            "club": "",
+            "ranking": "1",
             "place": 1,
-            "seed": 1,
-            "location": "Portugal",
-            "primaryColor": "046A38",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.603Z"
+            "location": "",
+            "primaryColor": ""
           },
           "place": 1,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "0"
+              "value": "1"
             },
             "wins": {
               "displayName": "Wins",
               "shortName": "W",
-              "value": "0"
+              "value": "1"
             },
             "draws": {
               "displayName": "Draws",
@@ -2708,45 +2248,34 @@
             "points": {
               "displayName": "Points",
               "shortName": "PTS",
-              "value": "0"
+              "value": "3"
             },
             "goalsFor": {
-              "displayName": "Goals For",
+              "displayName": "Goals for",
               "shortName": "GF",
-              "value": "0"
+              "value": "3"
             },
             "goalsAgainst": {
-              "displayName": "Goals Against",
+              "displayName": "Goals against",
               "shortName": "GA",
-              "value": "0"
+              "value": "1"
             },
             "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "0"
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "2"
             }
-          },
-          "playoffStatus": null
+          }
         },
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7608",
-            "competitorId": 7608,
-            "name": "Congo DR",
-            "shortName": "COD",
-            "club": "Congo DR",
-            "recordOverall": "0-0-0",
-            "streak": null,
-            "ranking": "2nd Group K",
-            "rankingFr": "2e Groupe K",
-            "seoIdentifier": "congo-dr",
+            "name": "DR Congo",
+            "shortName": "",
+            "club": "",
+            "ranking": "2",
             "place": 2,
-            "seed": 2,
-            "location": "Congo DR",
-            "primaryColor": "0085CA",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.604Z"
+            "location": "",
+            "primaryColor": ""
           },
           "place": 2,
           "stats": {
@@ -2776,42 +2305,31 @@
               "value": "0"
             },
             "goalsFor": {
-              "displayName": "Goals For",
+              "displayName": "Goals for",
               "shortName": "GF",
               "value": "0"
             },
             "goalsAgainst": {
-              "displayName": "Goals Against",
+              "displayName": "Goals against",
               "shortName": "GA",
               "value": "0"
             },
             "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
+              "displayName": "Goal difference",
+              "shortName": "GD",
               "value": "0"
             }
-          },
-          "playoffStatus": null
+          }
         },
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7699",
-            "competitorId": 7699,
-            "name": "Uzbekistan",
-            "shortName": "UZB",
-            "club": "Uzbekistan",
-            "recordOverall": "0-0-0",
-            "streak": null,
-            "ranking": "3rd Group K",
-            "rankingFr": "3e Groupe K",
-            "seoIdentifier": "uzbekistan",
+            "name": "Portugal",
+            "shortName": "",
+            "club": "",
+            "ranking": "3",
             "place": 3,
-            "seed": 3,
-            "location": "Uzbekistan",
-            "primaryColor": "0072CE",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.605Z"
+            "location": "",
+            "primaryColor": ""
           },
           "place": 3,
           "stats": {
@@ -2841,49 +2359,38 @@
               "value": "0"
             },
             "goalsFor": {
-              "displayName": "Goals For",
+              "displayName": "Goals for",
               "shortName": "GF",
               "value": "0"
             },
             "goalsAgainst": {
-              "displayName": "Goals Against",
+              "displayName": "Goals against",
               "shortName": "GA",
               "value": "0"
             },
             "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
+              "displayName": "Goal difference",
+              "shortName": "GD",
               "value": "0"
             }
-          },
-          "playoffStatus": null
+          }
         },
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7592",
-            "competitorId": 7592,
-            "name": "Colombia",
-            "shortName": "COL",
-            "club": "Colombia",
-            "recordOverall": "0-0-0",
-            "streak": null,
-            "ranking": "4th Group K",
-            "rankingFr": "4e Groupe K",
-            "seoIdentifier": "colombia",
+            "name": "Uzbekistan",
+            "shortName": "UZB",
+            "club": "",
+            "ranking": "4",
             "place": 4,
-            "seed": 4,
-            "location": "Colombia",
-            "primaryColor": "FFCD00",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.605Z"
+            "location": "",
+            "primaryColor": ""
           },
           "place": 4,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "0"
+              "value": "1"
             },
             "wins": {
               "displayName": "Wins",
@@ -2898,7 +2405,7 @@
             "losses": {
               "displayName": "Losses",
               "shortName": "L",
-              "value": "0"
+              "value": "1"
             },
             "points": {
               "displayName": "Points",
@@ -2906,22 +2413,21 @@
               "value": "0"
             },
             "goalsFor": {
-              "displayName": "Goals For",
+              "displayName": "Goals for",
               "shortName": "GF",
-              "value": "0"
+              "value": "1"
             },
             "goalsAgainst": {
-              "displayName": "Goals Against",
+              "displayName": "Goals against",
               "shortName": "GA",
-              "value": "0"
+              "value": "3"
             },
             "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "0"
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "-2"
             }
-          },
-          "playoffStatus": null
+          }
         }
       ]
     },
@@ -2930,35 +2436,25 @@
       "competitorStandings": [
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7625",
-            "competitorId": 7625,
             "name": "England",
             "shortName": "ENG",
-            "club": "England",
-            "recordOverall": "0-0-0",
-            "streak": null,
-            "ranking": "1st Group L",
-            "rankingFr": "1er Groupe L",
-            "seoIdentifier": "england",
+            "club": "",
+            "ranking": "1",
             "place": 1,
-            "seed": 1,
-            "location": "England",
-            "primaryColor": "CE1126",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.606Z"
+            "location": "",
+            "primaryColor": ""
           },
           "place": 1,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "0"
+              "value": "1"
             },
             "wins": {
               "displayName": "Wins",
               "shortName": "W",
-              "value": "0"
+              "value": "1"
             },
             "draws": {
               "displayName": "Draws",
@@ -2973,57 +2469,46 @@
             "points": {
               "displayName": "Points",
               "shortName": "PTS",
-              "value": "0"
+              "value": "3"
             },
             "goalsFor": {
-              "displayName": "Goals For",
+              "displayName": "Goals for",
               "shortName": "GF",
-              "value": "0"
+              "value": "4"
             },
             "goalsAgainst": {
-              "displayName": "Goals Against",
+              "displayName": "Goals against",
               "shortName": "GA",
-              "value": "0"
+              "value": "2"
             },
             "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "0"
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "2"
             }
-          },
-          "playoffStatus": null
+          }
         },
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7621",
-            "competitorId": 7621,
-            "name": "Croatia",
-            "shortName": "CRO",
-            "club": "Croatia",
-            "recordOverall": "0-0-0",
-            "streak": null,
-            "ranking": "2nd Group L",
-            "rankingFr": "2e Groupe L",
-            "seoIdentifier": "croatia",
+            "name": "Ghana",
+            "shortName": "GHA",
+            "club": "",
+            "ranking": "2",
             "place": 2,
-            "seed": 2,
-            "location": "Croatia",
-            "primaryColor": "ff0000",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.607Z"
+            "location": "",
+            "primaryColor": ""
           },
           "place": 2,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "0"
+              "value": "1"
             },
             "wins": {
               "displayName": "Wins",
               "shortName": "W",
-              "value": "0"
+              "value": "1"
             },
             "draws": {
               "displayName": "Draws",
@@ -3038,52 +2523,41 @@
             "points": {
               "displayName": "Points",
               "shortName": "PTS",
-              "value": "0"
+              "value": "3"
             },
             "goalsFor": {
-              "displayName": "Goals For",
+              "displayName": "Goals for",
               "shortName": "GF",
-              "value": "0"
+              "value": "1"
             },
             "goalsAgainst": {
-              "displayName": "Goals Against",
+              "displayName": "Goals against",
               "shortName": "GA",
               "value": "0"
             },
             "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "0"
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "1"
             }
-          },
-          "playoffStatus": null
+          }
         },
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7675",
-            "competitorId": 7675,
-            "name": "Ghana",
-            "shortName": "GHA",
-            "club": "Ghana",
-            "recordOverall": "0-0-0",
-            "streak": null,
-            "ranking": "3rd Group L",
-            "rankingFr": "3e Groupe L",
-            "seoIdentifier": "ghana",
+            "name": "Panama",
+            "shortName": "PAN",
+            "club": "",
+            "ranking": "3",
             "place": 3,
-            "seed": 3,
-            "location": "Ghana",
-            "primaryColor": "FFD100",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.608Z"
+            "location": "",
+            "primaryColor": ""
           },
           "place": 3,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "0"
+              "value": "1"
             },
             "wins": {
               "displayName": "Wins",
@@ -3098,7 +2572,7 @@
             "losses": {
               "displayName": "Losses",
               "shortName": "L",
-              "value": "0"
+              "value": "1"
             },
             "points": {
               "displayName": "Points",
@@ -3106,49 +2580,38 @@
               "value": "0"
             },
             "goalsFor": {
-              "displayName": "Goals For",
+              "displayName": "Goals for",
               "shortName": "GF",
               "value": "0"
             },
             "goalsAgainst": {
-              "displayName": "Goals Against",
+              "displayName": "Goals against",
               "shortName": "GA",
-              "value": "0"
+              "value": "1"
             },
             "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "0"
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "-1"
             }
-          },
-          "playoffStatus": null
+          }
         },
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7709",
-            "competitorId": 7709,
-            "name": "Panama",
-            "shortName": "PAN",
-            "club": "Panama",
-            "recordOverall": "0-0-0",
-            "streak": null,
-            "ranking": "4th Group L",
-            "rankingFr": "4e Groupe L",
-            "seoIdentifier": "panama",
+            "name": "Croatia",
+            "shortName": "CRO",
+            "club": "",
+            "ranking": "4",
             "place": 4,
-            "seed": 4,
-            "location": "Panama",
-            "primaryColor": "005EB8",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-16T00:05:36.609Z"
+            "location": "",
+            "primaryColor": ""
           },
           "place": 4,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "0"
+              "value": "1"
             },
             "wins": {
               "displayName": "Wins",
@@ -3163,7 +2626,7 @@
             "losses": {
               "displayName": "Losses",
               "shortName": "L",
-              "value": "0"
+              "value": "1"
             },
             "points": {
               "displayName": "Points",
@@ -3171,22 +2634,21 @@
               "value": "0"
             },
             "goalsFor": {
-              "displayName": "Goals For",
+              "displayName": "Goals for",
               "shortName": "GF",
-              "value": "0"
+              "value": "2"
             },
             "goalsAgainst": {
-              "displayName": "Goals Against",
+              "displayName": "Goals against",
               "shortName": "GA",
-              "value": "0"
+              "value": "4"
             },
             "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "0"
+              "displayName": "Goal difference",
+              "shortName": "GD",
+              "value": "-2"
             }
-          },
-          "playoffStatus": null
+          }
         }
       ]
     }

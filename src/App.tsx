@@ -7,6 +7,7 @@ import {
   List,
   Loader2,
   MapPinned,
+  MoonStar,
   RotateCcw,
   Search,
   SlidersHorizontal,
@@ -25,6 +26,7 @@ import {
   formatMonthDay,
   getUniqueOptions,
   isMatchDayPlayed,
+  isMatchLive,
   isMatchPlayed,
   groupMatchesByCity,
   groupMatchesByDate,
@@ -41,9 +43,16 @@ import type {
   MatchFilters,
   StandingGroup,
   ViewMode,
+  WorldCupPlayer,
+  WorldCupSquad,
 } from "./types";
 
 type SurfaceMode = "schedule" | "overview";
+type LoadStatus = "loading" | "ready" | "error";
+
+const WORLD_CUP_SQUADS_DATA_PATH =
+  "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.squads.json";
+const PLAYER_POSITION_ORDER = ["GK", "DF", "MF", "FW"];
 
 const views: Array<{ id: ViewMode; label: string; icon: typeof List }> = [
   { id: "list", label: "List", icon: List },
@@ -69,6 +78,12 @@ function App() {
     "loading" | "ready" | "error"
   >("loading");
   const [standingsError, setStandingsError] = useState("");
+  const [squads, setSquads] = useState<WorldCupSquad[]>([]);
+  const [squadsStatus, setSquadsStatus] = useState<LoadStatus>("loading");
+  const [squadsError, setSquadsError] = useState("");
+  const [selectedRosterMatch, setSelectedRosterMatch] = useState<Match | null>(
+    null,
+  );
 
   useEffect(() => {
     fetch("/data/matches.csv")
@@ -152,6 +167,36 @@ function App() {
   }, []);
 
   useEffect(() => {
+    const controller = new AbortController();
+
+    fetch(WORLD_CUP_SQUADS_DATA_PATH, { signal: controller.signal })
+      .then((response) => {
+        if (response.status === 404) {
+          return [];
+        }
+        if (!response.ok) {
+          throw new Error(`Could not load squads: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((payload: unknown) => {
+        setSquads(parseWorldCupSquadsResponse(payload));
+        setSquadsStatus("ready");
+      })
+      .catch((caught: unknown) => {
+        if (caught instanceof DOMException && caught.name === "AbortError") {
+          return;
+        }
+        setSquadsError(
+          caught instanceof Error ? caught.message : "Unknown squads error",
+        );
+        setSquadsStatus("error");
+      });
+
+    return () => controller.abort();
+  }, []);
+
+  useEffect(() => {
     applyTheme(theme);
     persistTheme(theme);
   }, [theme]);
@@ -210,48 +255,51 @@ function App() {
   return (
     <main className="app-shell">
       <header className="site-header" aria-label="Primary">
+        <div className="header-spacer" aria-hidden="true" />
         <a className="brand" href="#top" aria-label="FIFA Schedule 2026 home">
-          <span className="brand-mark">Fifa World Cup 2026 Schedule</span>
+          <span className="brand-mark">FIFA World Cup 2026 Schedule</span>
         </a>
-        <nav className="view-nav" aria-label="View switcher">
-          {views.map(({ id, label, icon: Icon }) => (
-            <button
-              className={view === id ? "nav-item active" : "nav-item"}
-              key={id}
-              type="button"
-              onClick={() => setView(id)}
-              aria-pressed={view === id}
-            >
-              <Icon size={16} aria-hidden="true" />
-              {label}
-            </button>
-          ))}
-        </nav>
-        <a className="source-link" href="/data/matches.csv" download>
-          CSV
-          <ExternalLink size={15} aria-hidden="true" />
-        </a>
+        <div className="header-actions">
+          <button
+            className="theme-toggle"
+            type="button"
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            aria-label={
+              theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
+            }
+            title={
+              theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
+            }
+          >
+            {theme === "dark" ? (
+              <SunMedium size={18} aria-hidden="true" />
+            ) : (
+              <MoonStar size={18} aria-hidden="true" />
+            )}
+          </button>
+          <a className="source-link" href="/data/matches.csv" download>
+            CSV
+            <ExternalLink size={15} aria-hidden="true" />
+          </a>
+        </div>
       </header>
 
       <section className="workspace" aria-label="Schedule explorer">
-        <Filters
-          filters={filters}
-          options={options}
-          isFiltered={isFiltered}
-          onChange={updateFilter}
-          onReset={() => setFilters(EMPTY_FILTERS)}
-        />
-        <div className="view-switcher-row">
-          <nav className="view-nav" aria-label="View switcher">
-            {views.map(({ id, label, icon: Icon }) => (
+        <div className="surface-switcher-row">
+          <nav className="surface-nav" aria-label="Surface switcher">
+            {[
+              { id: "schedule" as const, label: "Schedule" },
+              { id: "overview" as const, label: "Overview" },
+            ].map(({ id, label }) => (
               <button
-                className={view === id ? "nav-item active" : "nav-item"}
+                className={
+                  surfaceMode === id ? "surface-nav-item active" : "surface-nav-item"
+                }
                 key={id}
                 type="button"
-                onClick={() => setView(id)}
-                aria-pressed={view === id}
+                onClick={() => setSurfaceMode(id)}
+                aria-pressed={surfaceMode === id}
               >
-                <Icon size={16} aria-hidden="true" />
                 {label}
               </button>
             ))}
@@ -263,6 +311,9 @@ function App() {
             standings={standings}
             standingsStatus={standingsStatus}
             standingsError={standingsError}
+            squads={squads}
+            squadsStatus={squadsStatus}
+            squadsError={squadsError}
           />
         )}
         {surfaceMode === "schedule" && (
@@ -307,28 +358,48 @@ function App() {
         {surfaceMode === "schedule" &&
           status === "ready" &&
           filteredMatches.length > 0 &&
-          view === "list" && (
-            <ListView groupedByDate={groupedByDate} now={now} />
+          view === "list" &&
+          visibleListMatches.length > 0 && (
+            <ListView
+              groupedByDate={groupedByDate}
+              now={now}
+              showPastGames={showPastGames}
+              onTogglePastGames={() => setShowPastGames((current) => !current)}
+              onSelectMatch={setSelectedRosterMatch}
+            />
           )}
-        {status === "ready" &&
+        {surfaceMode === "schedule" &&
+          status === "ready" &&
+          filteredMatches.length > 0 &&
+          view === "list" &&
+          visibleListMatches.length === 0 && (
+            <EmptyState
+              title="No live or upcoming matches"
+              body="Turn on past games to see finished matches."
+            />
+          )}
+        {surfaceMode === "schedule" &&
+          status === "ready" &&
           filteredMatches.length > 0 &&
           view === "calendar" && (
             <CalendarView groupedByDate={groupedByDate} now={now} />
           )}
-        {status === "ready" && filteredMatches.length > 0 && view === "map" && (
-          <MapView groupedByCity={groupedByCity} theme={theme} />
+        {surfaceMode === "schedule" &&
+          status === "ready" &&
+          filteredMatches.length > 0 &&
+          view === "map" && (
+            <MapView groupedByCity={groupedByCity} theme={theme} />
         )}
+        <MatchRosterDrawer
+          open={selectedRosterMatch !== null}
+          match={selectedRosterMatch}
+          squads={squads}
+          status={squadsStatus}
+          error={squadsError}
+          onClose={() => setSelectedRosterMatch(null)}
+        />
       </section>
     </main>
-  );
-}
-
-function Stat({ label, value }: { label: string; value: string | number }) {
-  return (
-    <div className="stat-card">
-      <span>{label}</span>
-      <strong>{value}</strong>
-    </div>
   );
 }
 
@@ -509,6 +580,57 @@ function FilterFields({
   );
 }
 
+function parseWorldCupSquadsResponse(payload: unknown): WorldCupSquad[] {
+  return Array.isArray(payload) ? (payload as WorldCupSquad[]) : [];
+}
+
+function normalizeTeamLookupKey(value: string) {
+  return value
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[’‘]/g, "'")
+    .replace(/[^a-zA-Z0-9'& ]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+
+function splitMatchTeams(teams: string): [string, string] | null {
+  const parts = teams.split(/\s+vs\.?\s+/i).map((team) => team.trim());
+  return parts.length === 2 ? [parts[0], parts[1]] : null;
+}
+
+function getSquadForTeam(squads: WorldCupSquad[], team: string, code?: string) {
+  const teamKey = normalizeTeamLookupKey(team);
+  return squads.find(
+    (squad) =>
+      (code && squad.fifa_code === code) ||
+      normalizeTeamLookupKey(squad.name) === teamKey,
+  );
+}
+
+function groupPlayersByPosition(players: WorldCupPlayer[]) {
+  const groups = players.reduce<Record<string, WorldCupPlayer[]>>(
+    (positionGroups, player) => {
+      const position = player.pos || "Other";
+      positionGroups[position] = positionGroups[position] ?? [];
+      positionGroups[position].push(player);
+      return positionGroups;
+    },
+    {},
+  );
+
+  return Object.fromEntries(
+    Object.entries(groups).sort(([a], [b]) => {
+      const positionA = PLAYER_POSITION_ORDER.indexOf(a);
+      const positionB = PLAYER_POSITION_ORDER.indexOf(b);
+      const rankA = positionA === -1 ? PLAYER_POSITION_ORDER.length : positionA;
+      const rankB = positionB === -1 ? PLAYER_POSITION_ORDER.length : positionB;
+      return rankA - rankB || a.localeCompare(b);
+    }),
+  );
+}
+
 function OverviewSection({
   isMobile,
   standings,
@@ -523,7 +645,7 @@ function OverviewSection({
   standingsStatus: "loading" | "ready" | "error";
   standingsError: string;
   squads: WorldCupSquad[];
-  squadsStatus: "loading" | "ready" | "error";
+  squadsStatus: LoadStatus;
   squadsError: string;
 }) {
   const [selectedGroup, setSelectedGroup] = useState("");
@@ -550,12 +672,7 @@ function OverviewSection({
       return undefined;
     }
 
-    const selectedName = normalizeTeamLookupKey(selectedRosterTeam.name);
-    return squads.find(
-      (squad) =>
-        squad.fifa_code === selectedRosterTeam.code ||
-        normalizeTeamLookupKey(squad.name) === selectedName,
-    );
+    return getSquadForTeam(squads, selectedRosterTeam.name, selectedRosterTeam.code);
   }, [selectedRosterTeam, squads]);
 
   const openRoster = (name: string, code: string) => {
@@ -694,11 +811,11 @@ function OverviewSection({
           )}
         </>
       )}
-      <SquadsOverview
-        squads={squads}
-        status={squadsStatus}
-        error={squadsError}
-      />
+      {standingsStatus === "ready" && filteredStandings.length === 0 && (
+        <div className="overview-panel">
+          <p className="panel-note">No overview results match that group.</p>
+        </div>
+      )}
       <RosterDrawer
         open={selectedRosterTeam !== null}
         teamName={selectedRosterTeam?.name ?? ""}
@@ -707,136 +824,7 @@ function OverviewSection({
         error={squadsError}
         onClose={() => setSelectedRosterTeam(null)}
       />
-      {standingsStatus === "ready" && filteredStandings.length === 0 && (
-        <div className="overview-panel">
-          <p className="panel-note">No overview results match that group.</p>
-        </div>
-      )}
     </section>
-  );
-}
-
-function SquadsOverview({
-  squads,
-  status,
-  error,
-}: {
-  squads: WorldCupSquad[];
-  status: "loading" | "ready" | "error";
-  error: string;
-}) {
-  const [groupFilter, setGroupFilter] = useState("all");
-  const [selectedSquadCode, setSelectedSquadCode] = useState("");
-  const groupedSquads = useMemo(() => groupSquadsByGroup(squads), [squads]);
-  const groupOptions = Object.keys(groupedSquads);
-  const filteredSquads = useMemo(
-    () =>
-      squads
-        .filter(
-          (squad) => groupFilter === "all" || `Group ${squad.group}` === groupFilter,
-        )
-        .sort((a, b) => a.group.localeCompare(b.group) || a.name.localeCompare(b.name)),
-    [groupFilter, squads],
-  );
-  const activeSquad =
-    filteredSquads.find((squad) => squad.fifa_code === selectedSquadCode) ??
-    filteredSquads[0];
-
-  return (
-    <section className="overview-panel squads-overview" aria-label="Tournament squads">
-      <div className="panel-head squads-head">
-        <div>
-          <p className="eyebrow">Squads</p>
-          <h3>Team rosters</h3>
-        </div>
-        {status === "ready" && squads.length > 0 && (
-          <SelectFilter
-            label="Squad group"
-            value={groupFilter}
-            options={groupOptions}
-            onChange={(value) => {
-              setGroupFilter(value);
-              setSelectedSquadCode("");
-            }}
-          />
-        )}
-      </div>
-
-      {status === "loading" && <p className="panel-note">Loading squads...</p>}
-      {status === "error" && <p className="panel-note">{error}</p>}
-      {status === "ready" && squads.length === 0 && (
-        <p className="panel-note">Squads are not available yet.</p>
-      )}
-      {status === "ready" && squads.length > 0 && activeSquad && (
-        <div className="squads-layout">
-          <div className="squad-team-list" aria-label="Squad teams">
-            {filteredSquads.map((squad) => (
-              <button
-                className={
-                  squad.fifa_code === activeSquad.fifa_code
-                    ? "squad-team-card is-active"
-                    : "squad-team-card"
-                }
-                key={squad.fifa_code}
-                type="button"
-                onClick={() => setSelectedSquadCode(squad.fifa_code)}
-                aria-pressed={squad.fifa_code === activeSquad.fifa_code}
-              >
-                <span>{formatTeamWithFlag(squad.name)}</span>
-                <strong>{squad.fifa_code}</strong>
-                <em>{squad.players.length} players</em>
-              </button>
-            ))}
-          </div>
-          <SquadDetail squad={activeSquad} />
-        </div>
-      )}
-    </section>
-  );
-}
-
-function SquadDetail({ squad }: { squad: WorldCupSquad }) {
-  const groupedPlayers = groupPlayersByPosition(squad.players);
-
-  return (
-    <article className="squad-detail">
-      <div className="squad-detail-head">
-        <div>
-          <p className="eyebrow">Group {squad.group}</p>
-          <h4>{formatTeamWithFlag(squad.name)}</h4>
-        </div>
-        <span>{squad.fifa_code}</span>
-      </div>
-      {squad.players.length === 0 ? (
-        <p className="panel-note">Squad not available yet.</p>
-      ) : (
-        <div className="position-groups">
-          {Object.entries(groupedPlayers).map(([position, players]) => (
-            <section className="position-group" key={position}>
-              <h5>
-                {position}
-                <span>{players.length}</span>
-              </h5>
-              <div className="player-list">
-                {players.map((player) => (
-                  <div className="player-row" key={`${player.number}-${player.name}`}>
-                    <span className="player-number">{player.number}</span>
-                    <span className="position-badge">{player.pos}</span>
-                    <div>
-                      <strong>{player.name}</strong>
-                      <span>
-                        {player.club.name || "Club TBD"}
-                        {player.club.country ? ` · ${player.club.country}` : ""}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
-          ))}
-        </div>
-      )}
-    </article>
   );
 }
 
@@ -851,7 +839,7 @@ function RosterDrawer({
   open: boolean;
   teamName: string;
   squad: WorldCupSquad | undefined;
-  status: "loading" | "ready" | "error";
+  status: LoadStatus;
   error: string;
   onClose: () => void;
 }) {
@@ -909,6 +897,146 @@ function RosterDrawer({
         </div>
       </aside>
     </div>
+  );
+}
+
+function MatchRosterDrawer({
+  open,
+  match,
+  squads,
+  status,
+  error,
+  onClose,
+}: {
+  open: boolean;
+  match: Match | null;
+  squads: WorldCupSquad[];
+  status: LoadStatus;
+  error: string;
+  onClose: () => void;
+}) {
+  const teams = match ? splitMatchTeams(match.teams) : null;
+
+  useBodyScrollLock(open);
+
+  useEffect(() => {
+    if (!open) {
+      return undefined;
+    }
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [onClose, open]);
+
+  if (!open || !match) {
+    return null;
+  }
+
+  return (
+    <div className="roster-drawer-backdrop" onClick={onClose}>
+      <aside
+        className="roster-drawer match-roster-drawer"
+        role="dialog"
+        aria-modal="true"
+        aria-label={`Match ${match.matchNo} rosters`}
+        onClick={(event) => event.stopPropagation()}
+      >
+        <div className="roster-drawer-head">
+          <div>
+            <p className="eyebrow">Match {match.matchNo}</p>
+            <h3>{formatMatchTitle(match.teams)}</h3>
+          </div>
+          <button
+            className="mobile-sheet-close"
+            type="button"
+            onClick={onClose}
+            aria-label={`Close Match ${match.matchNo} rosters`}
+          >
+            <X size={16} aria-hidden="true" />
+          </button>
+        </div>
+        <div className="roster-drawer-content">
+          {status === "loading" && <p className="panel-note">Loading squads...</p>}
+          {status === "error" && <p className="panel-note">{error}</p>}
+          {status === "ready" && !teams && (
+            <p className="panel-note">Rosters are not available for this match.</p>
+          )}
+          {status === "ready" && teams && (
+            <div className="match-roster-grid">
+              {teams.map((team) => {
+                const squad = getSquadForTeam(squads, team);
+                return squad ? (
+                  <SquadDetail squad={squad} key={team} />
+                ) : (
+                  <article className="squad-detail" key={team}>
+                    <div className="squad-detail-head">
+                      <div>
+                        <p className="eyebrow">Roster</p>
+                        <h4>{formatTeamWithFlag(team)}</h4>
+                      </div>
+                    </div>
+                    <p className="panel-note">
+                      Roster is not available for this team yet.
+                    </p>
+                  </article>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      </aside>
+    </div>
+  );
+}
+
+function SquadDetail({ squad }: { squad: WorldCupSquad }) {
+  const groupedPlayers = groupPlayersByPosition(squad.players);
+
+  return (
+    <article className="squad-detail">
+      <div className="squad-detail-head">
+        <div>
+          <p className="eyebrow">Group {squad.group}</p>
+          <h4>{formatTeamWithFlag(squad.name)}</h4>
+        </div>
+        <span>{squad.fifa_code}</span>
+      </div>
+      {squad.players.length === 0 ? (
+        <p className="panel-note">Squad not available yet.</p>
+      ) : (
+        <div className="position-groups">
+          {Object.entries(groupedPlayers).map(([position, players]) => (
+            <section className="position-group" key={position}>
+              <h5>
+                {position}
+                <span>{players.length}</span>
+              </h5>
+              <div className="player-list">
+                {players.map((player) => (
+                  <div className="player-row" key={`${player.number}-${player.name}`}>
+                    <span className="player-number">{player.number}</span>
+                    <span className="position-badge">{player.pos}</span>
+                    <div>
+                      <strong>{player.name}</strong>
+                      <span>
+                        {player.club.name || "Club TBD"}
+                        {player.club.country ? ` - ${player.club.country}` : ""}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
+      )}
+    </article>
   );
 }
 
@@ -1148,9 +1276,15 @@ function SelectFilter({
 function ListView({
   groupedByDate,
   now,
+  showPastGames,
+  onTogglePastGames,
+  onSelectMatch,
 }: {
   groupedByDate: Record<string, Match[]>;
   now: Date;
+  showPastGames: boolean;
+  onTogglePastGames: () => void;
+  onSelectMatch: (match: Match) => void;
 }) {
   return (
     <div className="list-view">
@@ -1178,7 +1312,12 @@ function ListView({
           </div>
           <div className="match-grid">
             {matches.map((match) => (
-              <MatchCard key={match.matchNo} match={match} />
+              <MatchCard
+                key={match.matchNo}
+                match={match}
+                now={now}
+                onSelectMatch={onSelectMatch}
+              />
             ))}
           </div>
         </section>
@@ -1187,12 +1326,32 @@ function ListView({
   );
 }
 
-function MatchCard({ match, now }: { match: Match; now: Date }) {
+function MatchCard({
+  match,
+  now,
+  onSelectMatch,
+}: {
+  match: Match;
+  now: Date;
+  onSelectMatch: (match: Match) => void;
+}) {
   const played = isMatchPlayed(match, now);
   const live = isMatchLive(match, now);
 
   return (
-    <article className="match-card">
+    <article
+      className={played ? "match-card is-played" : "match-card"}
+      role="button"
+      tabIndex={0}
+      onClick={() => onSelectMatch(match)}
+      onKeyDown={(event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          onSelectMatch(match);
+        }
+      }}
+      aria-label={`Show rosters for ${formatMatchTitle(match.teams)}`}
+    >
       <div className="match-card-top">
         <span className="match-no">Match {match.matchNo}</span>
         <div className="match-badges">
@@ -1213,13 +1372,6 @@ function MatchCard({ match, now }: { match: Match; now: Date }) {
       </div>
       <div className="time-grid">
         <div>
-          <span>Schedule local</span>
-          <strong>
-            {match.date} at {match.time}
-          </strong>
-        </div>
-        <div>
-          <span>Your time</span>
           <strong>{formatLocalTime(match.utcDateTime)}</strong>
         </div>
       </div>
@@ -1228,6 +1380,7 @@ function MatchCard({ match, now }: { match: Match; now: Date }) {
           href={match.officialFifaSchedulePdf}
           target="_blank"
           rel="noreferrer"
+          onClick={(event) => event.stopPropagation()}
         >
           FIFA PDF
           <ChevronRight size={15} aria-hidden="true" />
@@ -1253,13 +1406,25 @@ function formatMatchTitleWithScore(match: Match) {
 
 function CalendarView({
   groupedByDate,
+  now,
 }: {
   groupedByDate: Record<string, Match[]>;
+  now: Date;
 }) {
   return (
     <div className="calendar-view">
-      <MonthCalendar year={2026} monthIndex={5} groupedByDate={groupedByDate} />
-      <MonthCalendar year={2026} monthIndex={6} groupedByDate={groupedByDate} />
+      <MonthCalendar
+        year={2026}
+        monthIndex={5}
+        groupedByDate={groupedByDate}
+        now={now}
+      />
+      <MonthCalendar
+        year={2026}
+        monthIndex={6}
+        groupedByDate={groupedByDate}
+        now={now}
+      />
     </div>
   );
 }
@@ -1268,10 +1433,12 @@ function MonthCalendar({
   year,
   monthIndex,
   groupedByDate,
+  now,
 }: {
   year: number;
   monthIndex: number;
   groupedByDate: Record<string, Match[]>;
+  now: Date;
 }) {
   const label = new Intl.DateTimeFormat(undefined, {
     month: "long",
@@ -1289,10 +1456,18 @@ function MonthCalendar({
       <div className="calendar-grid">
         {calendarDays(year, monthIndex).map((date, index) => {
           const matches = date ? (groupedByDate[date] ?? []) : [];
+          const fullyPlayed = isMatchDayPlayed(matches, now);
           return (
             <div
-              className={matches.length > 0 ? "day-cell has-match" : "day-cell"}
+              className={
+                matches.length > 0
+                  ? fullyPlayed
+                    ? "day-cell has-match is-played"
+                    : "day-cell has-match"
+                  : "day-cell"
+              }
               key={date ?? `blank-${index}`}
+              aria-disabled={fullyPlayed || undefined}
             >
               {date && (
                 <span className="day-number">{Number(date.slice(-2))}</span>
@@ -1337,8 +1512,10 @@ function MonthCalendar({
 
 function MapView({
   groupedByCity,
+  theme,
 }: {
   groupedByCity: Record<string, Match[]>;
+  theme: "light" | "dark";
 }) {
   const markerIcon = new DivIcon({
     className: "city-marker",
@@ -1356,8 +1533,13 @@ function MapView({
         className="map-canvas"
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
+          url={
+            theme === "dark"
+              ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+              : "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+          }
+          key={theme}
         />
         {Object.entries(groupedByCity).map(([city, matches]) => {
           const location = CITY_LOCATIONS[city];

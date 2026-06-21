@@ -71,8 +71,24 @@ export const formatLocalTime = (utcDateTime: string) =>
 export const parseUtcDateTime = (utcDateTime: string) =>
   new Date(`${utcDateTime.replace(' ', 'T')}Z`)
 
+const MATCH_DURATION_MINUTES = 120
+const getLocalDateKey = (date: Date) =>
+  new Intl.DateTimeFormat('en-CA', {
+    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(date)
+
+export const isMatchLive = (match: Match, now = new Date()) => {
+  const start = parseUtcDateTime(match.utcDateTime).getTime()
+  const end = start + MATCH_DURATION_MINUTES * 60 * 1000
+  const current = now.getTime()
+  return current >= start && current < end
+}
+
 export const isMatchPlayed = (match: Match, now = new Date()) =>
-  parseUtcDateTime(match.utcDateTime).getTime() < now.getTime()
+  match.date < getLocalDateKey(now)
 
 export const isMatchDayPlayed = (matches: Match[], now = new Date()) =>
   matches.length > 0 && matches.every((match) => isMatchPlayed(match, now))
