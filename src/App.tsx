@@ -37,6 +37,13 @@ import {
   parseStandingsResponse,
   STANDINGS_DATA_PATH,
 } from "./standings";
+import {
+  attachResultsToMatches,
+  parseWorldCupResultsResponse,
+  parseWorldCupTeamsResponse,
+  WORLD_CUP_RESULTS_DATA_PATH,
+  WORLD_CUP_TEAMS_DATA_PATH,
+} from "./results";
 import { applyTheme, getInitialTheme, persistTheme } from "./theme";
 import type {
   Match,
@@ -1364,7 +1371,7 @@ function MatchCard({
           <span className="stage-pill">{match.group || match.stage}</span>
         </div>
       </div>
-      <h4>{formatMatchTitle(match.teams)}</h4>
+      <h4>{formatMatchTitleWithScore(match)}</h4>
       <div className="match-meta">
         <span>{match.stage}</span>
         <span>{match.stadium}</span>
