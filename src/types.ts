@@ -19,6 +19,8 @@ export type Match = {
   date: string
   time: string
   teams: string
+  teamCodes?: [string, string]
+  score?: MatchScore
   stage: string
   group: string
   stadium: string
@@ -26,6 +28,72 @@ export type Match = {
   utcDateTime: string
   matchSourceUrl: string
   officialFifaSchedulePdf: string
+}
+
+export type MatchGoal = {
+  name: string
+  minute: string
+  penalty?: boolean
+  owngoal?: boolean
+}
+
+export type MatchScore = {
+  home: number
+  away: number
+  halftime?: [number, number]
+  goalsHome?: MatchGoal[]
+  goalsAway?: MatchGoal[]
+  source: string
+}
+
+export type WorldCupTeam = {
+  name: string
+  name_normalised?: string
+  fifa_code: string
+  group: string
+  confed: string
+}
+
+export type WorldCupResultMatch = {
+  round: string
+  num?: number
+  date: string
+  time: string
+  team1: string
+  team2: string
+  score?: {
+    ft?: [number, number]
+    ht?: [number, number]
+  }
+  goals1?: MatchGoal[]
+  goals2?: MatchGoal[]
+  group?: string
+  ground: string
+}
+
+export type WorldCupResultsResponse = {
+  name: string
+  matches: WorldCupResultMatch[]
+}
+
+export type WorldCupPlayerClub = {
+  name: string
+  country: string
+}
+
+export type WorldCupPlayer = {
+  number: number
+  pos: string
+  name: string
+  club: WorldCupPlayerClub
+  date_of_birth: string
+}
+
+export type WorldCupSquad = {
+  name: string
+  fifa_code: string
+  group: string
+  players: WorldCupPlayer[]
 }
 
 export type MatchFilters = {

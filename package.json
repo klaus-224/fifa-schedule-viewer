@@ -5,9 +5,11 @@
   "type": "module",
   "scripts": {
     "sync:standings": "node scripts/sync-standings.mjs",
-    "predev": "npm run sync:standings",
+    "sync:worldcup-results": "node scripts/sync-worldcup-results.mjs",
+    "sync:data": "npm run sync:standings && npm run sync:worldcup-results",
+    "predev": "npm run sync:data",
     "dev": "vite",
-    "prebuild": "npm run sync:standings",
+    "prebuild": "npm run sync:data",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",

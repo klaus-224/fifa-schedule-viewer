@@ -21,7 +21,7 @@
             "shortName": "MEX",
             "club": "Mexico",
             "recordOverall": "1-0-0",
-            "streak": "W1",
+            "streak": null,
             "ranking": "1st Group A",
             "rankingFr": "1er Groupe A",
             "seoIdentifier": "mexico",
@@ -31,7 +31,7 @@
             "primaryColor": "006341",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.777Z"
+            "lastUpdate": "2026-06-16T00:05:36.569Z"
           },
           "place": 1,
           "stats": {
@@ -86,7 +86,7 @@
             "shortName": "KOR",
             "club": "Korea Republic",
             "recordOverall": "1-0-0",
-            "streak": "W1",
+            "streak": null,
             "ranking": "2nd Group A",
             "rankingFr": "2e Groupe A",
             "seoIdentifier": "korea-republic",
@@ -96,7 +96,7 @@
             "primaryColor": "0F64CD",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.784Z"
+            "lastUpdate": "2026-06-16T00:05:36.570Z"
           },
           "place": 2,
           "stats": {
@@ -151,7 +151,7 @@
             "shortName": "CZE",
             "club": "Czechia",
             "recordOverall": "0-0-1",
-            "streak": "L1",
+            "streak": null,
             "ranking": "3rd Group A",
             "rankingFr": "3e Groupe A",
             "seoIdentifier": "czechia",
@@ -161,7 +161,7 @@
             "primaryColor": "11457E",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.786Z"
+            "lastUpdate": "2026-06-16T00:05:36.571Z"
           },
           "place": 3,
           "stats": {
@@ -216,7 +216,7 @@
             "shortName": "RSA",
             "club": "South Africa",
             "recordOverall": "0-0-1",
-            "streak": "L1",
+            "streak": null,
             "ranking": "4th Group A",
             "rankingFr": "4e Groupe A",
             "seoIdentifier": "south-africa",
@@ -226,7 +226,7 @@
             "primaryColor": "007749",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.787Z"
+            "lastUpdate": "2026-06-16T00:05:36.572Z"
           },
           "place": 4,
           "stats": {
@@ -286,7 +286,7 @@
             "shortName": "SUI",
             "club": "Switzerland",
             "recordOverall": "0-1-0",
-            "streak": "T1",
+            "streak": null,
             "ranking": "1st Group B",
             "rankingFr": "1er Groupe B",
             "seoIdentifier": "switzerland",
@@ -296,7 +296,7 @@
             "primaryColor": "DA291C",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.787Z"
+            "lastUpdate": "2026-06-16T00:05:36.573Z"
           },
           "place": 1,
           "stats": {
@@ -351,7 +351,7 @@
             "shortName": "CAN",
             "club": "Canada",
             "recordOverall": "0-1-0",
-            "streak": "T1",
+            "streak": null,
             "ranking": "2nd Group B",
             "rankingFr": "2e Groupe B",
             "seoIdentifier": "canada",
@@ -361,7 +361,7 @@
             "primaryColor": "D80621",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.788Z"
+            "lastUpdate": "2026-06-16T00:05:36.574Z"
           },
           "place": 2,
           "stats": {
@@ -416,7 +416,7 @@
             "shortName": "QAT",
             "club": "Qatar",
             "recordOverall": "0-1-0",
-            "streak": "T1",
+            "streak": null,
             "ranking": "3rd Group B",
             "rankingFr": "3e Groupe B",
             "seoIdentifier": "qatar",
@@ -426,7 +426,7 @@
             "primaryColor": "8A1538",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.789Z"
+            "lastUpdate": "2026-06-16T00:05:36.575Z"
           },
           "place": 3,
           "stats": {
@@ -481,7 +481,7 @@
             "shortName": "BIH",
             "club": "Bosnia-Herzegovina",
             "recordOverall": "0-1-0",
-            "streak": "T1",
+            "streak": null,
             "ranking": "4th Group B",
             "rankingFr": "4e Groupe B",
             "seoIdentifier": "bosnia-herzegovina",
@@ -491,7 +491,7 @@
             "primaryColor": "002F6C",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.790Z"
+            "lastUpdate": "2026-06-16T00:05:36.576Z"
           },
           "place": 4,
           "stats": {
@@ -551,7 +551,7 @@
             "shortName": "SCO",
             "club": "Scotland",
             "recordOverall": "1-0-0",
-            "streak": "W1",
+            "streak": null,
             "ranking": "1st Group C",
             "rankingFr": "1er Groupe C",
             "seoIdentifier": "scotland",
@@ -561,7 +561,7 @@
             "primaryColor": "005EB8",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.791Z"
+            "lastUpdate": "2026-06-16T00:05:36.577Z"
           },
           "place": 1,
           "stats": {
@@ -616,7 +616,7 @@
             "shortName": "MAR",
             "club": "Morocco",
             "recordOverall": "0-1-0",
-            "streak": "T1",
+            "streak": null,
             "ranking": "2nd Group C",
             "rankingFr": "2e Groupe C",
             "seoIdentifier": "morocco",
@@ -626,7 +626,7 @@
             "primaryColor": "C1272D",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.792Z"
+            "lastUpdate": "2026-06-16T00:05:36.577Z"
           },
           "place": 2,
           "stats": {
@@ -681,7 +681,7 @@
             "shortName": "BRA",
             "club": "Brazil",
             "recordOverall": "0-1-0",
-            "streak": "T1",
+            "streak": null,
             "ranking": "3rd Group C",
             "rankingFr": "3e Groupe C",
             "seoIdentifier": "brazil",
@@ -691,7 +691,7 @@
             "primaryColor": "FEDD00",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.793Z"
+            "lastUpdate": "2026-06-16T00:05:36.578Z"
           },
           "place": 3,
           "stats": {
@@ -746,7 +746,7 @@
             "shortName": "HAI",
             "club": "Haiti",
             "recordOverall": "0-0-1",
-            "streak": "L1",
+            "streak": null,
             "ranking": "4th Group C",
             "rankingFr": "4e Groupe C",
             "seoIdentifier": "haiti",
@@ -756,7 +756,7 @@
             "primaryColor": "00209F",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.794Z"
+            "lastUpdate": "2026-06-16T00:05:36.579Z"
           },
           "place": 4,
           "stats": {
@@ -816,7 +816,7 @@
             "shortName": "USA",
             "club": "United States",
             "recordOverall": "1-0-0",
-            "streak": "W1",
+            "streak": null,
             "ranking": "1st Group D",
             "rankingFr": "1er Groupe D",
             "seoIdentifier": "united-states",
@@ -826,7 +826,7 @@
             "primaryColor": "0A3161",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.794Z"
+            "lastUpdate": "2026-06-16T00:05:36.580Z"
           },
           "place": 1,
           "stats": {
@@ -881,7 +881,7 @@
             "shortName": "AUS",
             "club": "Australia",
             "recordOverall": "1-0-0",
-            "streak": "W1",
+            "streak": null,
             "ranking": "2nd Group D",
             "rankingFr": "2e Groupe D",
             "seoIdentifier": "australia",
@@ -891,7 +891,7 @@
             "primaryColor": "012169",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.795Z"
+            "lastUpdate": "2026-06-16T00:05:36.581Z"
           },
           "place": 2,
           "stats": {
@@ -946,7 +946,7 @@
             "shortName": "TUR",
             "club": "Turkiye",
             "recordOverall": "0-0-1",
-            "streak": "L1",
+            "streak": null,
             "ranking": "3rd Group D",
             "rankingFr": "3e Groupe D",
             "seoIdentifier": "turkiye",
@@ -956,7 +956,7 @@
             "primaryColor": "C8102E",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.796Z"
+            "lastUpdate": "2026-06-16T00:05:36.582Z"
           },
           "place": 3,
           "stats": {
@@ -1011,7 +1011,7 @@
             "shortName": "PAR",
             "club": "Paraguay",
             "recordOverall": "0-0-1",
-            "streak": "L1",
+            "streak": null,
             "ranking": "4th Group D",
             "rankingFr": "4e Groupe D",
             "seoIdentifier": "paraguay",
@@ -1021,7 +1021,7 @@
             "primaryColor": "D52B1E",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.797Z"
+            "lastUpdate": "2026-06-16T00:05:36.582Z"
           },
           "place": 4,
           "stats": {
@@ -1081,7 +1081,7 @@
             "shortName": "GER",
             "club": "Germany",
             "recordOverall": "1-0-0",
-            "streak": "W1",
+            "streak": null,
             "ranking": "1st Group E",
             "rankingFr": "1er Groupe E",
             "seoIdentifier": "germany",
@@ -1091,7 +1091,7 @@
             "primaryColor": "000000",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.798Z"
+            "lastUpdate": "2026-06-16T00:05:36.583Z"
           },
           "place": 1,
           "stats": {
@@ -1145,7 +1145,7 @@
             "name": "Cote d'Ivoire",
             "shortName": "CIV",
             "club": "Cote d'Ivoire",
-            "recordOverall": "0-0-0",
+            "recordOverall": "1-0-0",
             "streak": null,
             "ranking": "2nd Group E",
             "rankingFr": "2e Groupe E",
@@ -1156,19 +1156,19 @@
             "primaryColor": "FF8200",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.799Z"
+            "lastUpdate": "2026-06-16T00:05:36.584Z"
           },
           "place": 2,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "0"
+              "value": "1"
             },
             "wins": {
               "displayName": "Wins",
               "shortName": "W",
-              "value": "0"
+              "value": "1"
             },
             "draws": {
               "displayName": "Draws",
@@ -1183,12 +1183,12 @@
             "points": {
               "displayName": "Points",
               "shortName": "PTS",
-              "value": "0"
+              "value": "3"
             },
             "goalsFor": {
               "displayName": "Goals For",
               "shortName": "GF",
-              "value": "0"
+              "value": "1"
             },
             "goalsAgainst": {
               "displayName": "Goals Against",
@@ -1198,7 +1198,7 @@
             "differential": {
               "displayName": "Differential",
               "shortName": "DIFF",
-              "value": "0"
+              "value": "+1"
             }
           },
           "playoffStatus": null
@@ -1210,7 +1210,7 @@
             "name": "Ecuador",
             "shortName": "ECU",
             "club": "Ecuador",
-            "recordOverall": "0-0-0",
+            "recordOverall": "0-0-1",
             "streak": null,
             "ranking": "3rd Group E",
             "rankingFr": "3e Groupe E",
@@ -1221,14 +1221,14 @@
             "primaryColor": "FFDD00",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.800Z"
+            "lastUpdate": "2026-06-16T00:05:36.585Z"
           },
           "place": 3,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "0"
+              "value": "1"
             },
             "wins": {
               "displayName": "Wins",
@@ -1243,7 +1243,7 @@
             "losses": {
               "displayName": "Losses",
               "shortName": "L",
-              "value": "0"
+              "value": "1"
             },
             "points": {
               "displayName": "Points",
@@ -1258,12 +1258,12 @@
             "goalsAgainst": {
               "displayName": "Goals Against",
               "shortName": "GA",
-              "value": "0"
+              "value": "1"
             },
             "differential": {
               "displayName": "Differential",
               "shortName": "DIFF",
-              "value": "0"
+              "value": "-1"
             }
           },
           "playoffStatus": null
@@ -1276,7 +1276,7 @@
             "shortName": "CUW",
             "club": "Curacao",
             "recordOverall": "0-0-1",
-            "streak": "L1",
+            "streak": null,
             "ranking": "4th Group E",
             "rankingFr": "4e Groupe E",
             "seoIdentifier": "curacao",
@@ -1286,7 +1286,7 @@
             "primaryColor": "002B7F",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.800Z"
+            "lastUpdate": "2026-06-16T00:05:36.586Z"
           },
           "place": 4,
           "stats": {
@@ -1340,12 +1340,77 @@
       "competitorStandings": [
         {
           "competitor": {
+            "id": "STATSCOM:FIFA_WC:7640",
+            "competitorId": 7640,
+            "name": "Sweden",
+            "shortName": "SWE",
+            "club": "Sweden",
+            "recordOverall": "1-0-0",
+            "streak": null,
+            "ranking": "1st Group F",
+            "rankingFr": "1er Groupe F",
+            "seoIdentifier": "sweden",
+            "place": 1,
+            "seed": 1,
+            "location": "Sweden",
+            "primaryColor": "FECC02",
+            "provider": "STATSCOM",
+            "RDSLoggerId": null,
+            "lastUpdate": "2026-06-16T00:05:36.586Z"
+          },
+          "place": 1,
+          "stats": {
+            "gamesPlayed": {
+              "displayName": "Games played",
+              "shortName": "GP",
+              "value": "1"
+            },
+            "wins": {
+              "displayName": "Wins",
+              "shortName": "W",
+              "value": "1"
+            },
+            "draws": {
+              "displayName": "Draws",
+              "shortName": "D",
+              "value": "0"
+            },
+            "losses": {
+              "displayName": "Losses",
+              "shortName": "L",
+              "value": "0"
+            },
+            "points": {
+              "displayName": "Points",
+              "shortName": "PTS",
+              "value": "3"
+            },
+            "goalsFor": {
+              "displayName": "Goals For",
+              "shortName": "GF",
+              "value": "5"
+            },
+            "goalsAgainst": {
+              "displayName": "Goals Against",
+              "shortName": "GA",
+              "value": "1"
+            },
+            "differential": {
+              "displayName": "Differential",
+              "shortName": "DIFF",
+              "value": "+4"
+            }
+          },
+          "playoffStatus": null
+        },
+        {
+          "competitor": {
             "id": "STATSCOM:FIFA_WC:7613",
             "competitorId": 7613,
             "name": "Japan",
             "shortName": "JPN",
             "club": "Japan",
-            "recordOverall": "0-0-0",
+            "recordOverall": "0-1-0",
             "streak": null,
             "ranking": "2nd Group F",
             "rankingFr": "2e Groupe F",
@@ -1353,12 +1418,12 @@
             "place": 2,
             "seed": 2,
             "location": "Japan",
-            "primaryColor": "FFFFFF",
+            "primaryColor": "26438D",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.802Z"
+            "lastUpdate": "2026-06-16T00:05:36.587Z"
           },
-          "place": 1,
+          "place": 2,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
@@ -1410,90 +1475,25 @@
             "name": "Netherlands",
             "shortName": "NED",
             "club": "Netherlands",
-            "recordOverall": "0-0-0",
+            "recordOverall": "0-1-0",
             "streak": null,
-            "ranking": "1st Group F",
-            "rankingFr": "1er Groupe F",
+            "ranking": "3rd Group F",
+            "rankingFr": "3e Groupe F",
             "seoIdentifier": "netherlands",
-            "place": 1,
-            "seed": 1,
+            "place": 3,
+            "seed": 3,
             "location": "Netherlands",
             "primaryColor": "F36C21",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.801Z"
-          },
-          "place": 2,
-          "stats": {
-            "gamesPlayed": {
-              "displayName": "Games played",
-              "shortName": "GP",
-              "value": "1"
-            },
-            "wins": {
-              "displayName": "Wins",
-              "shortName": "W",
-              "value": "0"
-            },
-            "draws": {
-              "displayName": "Draws",
-              "shortName": "D",
-              "value": "1"
-            },
-            "losses": {
-              "displayName": "Losses",
-              "shortName": "L",
-              "value": "0"
-            },
-            "points": {
-              "displayName": "Points",
-              "shortName": "PTS",
-              "value": "1"
-            },
-            "goalsFor": {
-              "displayName": "Goals For",
-              "shortName": "GF",
-              "value": "2"
-            },
-            "goalsAgainst": {
-              "displayName": "Goals Against",
-              "shortName": "GA",
-              "value": "2"
-            },
-            "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "0"
-            }
-          },
-          "playoffStatus": null
-        },
-        {
-          "competitor": {
-            "id": "STATSCOM:FIFA_WC:7640",
-            "competitorId": 7640,
-            "name": "Sweden",
-            "shortName": "SWE",
-            "club": "Sweden",
-            "recordOverall": "0-0-0",
-            "streak": null,
-            "ranking": "3rd Group F",
-            "rankingFr": "3e Groupe F",
-            "seoIdentifier": "sweden",
-            "place": 3,
-            "seed": 3,
-            "location": "Sweden",
-            "primaryColor": "FECC02",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.803Z"
+            "lastUpdate": "2026-06-16T00:05:36.588Z"
           },
           "place": 3,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "0"
+              "value": "1"
             },
             "wins": {
               "displayName": "Wins",
@@ -1503,7 +1503,7 @@
             "draws": {
               "displayName": "Draws",
               "shortName": "D",
-              "value": "0"
+              "value": "1"
             },
             "losses": {
               "displayName": "Losses",
@@ -1513,17 +1513,17 @@
             "points": {
               "displayName": "Points",
               "shortName": "PTS",
-              "value": "0"
+              "value": "1"
             },
             "goalsFor": {
               "displayName": "Goals For",
               "shortName": "GF",
-              "value": "0"
+              "value": "2"
             },
             "goalsAgainst": {
               "displayName": "Goals Against",
               "shortName": "GA",
-              "value": "0"
+              "value": "2"
             },
             "differential": {
               "displayName": "Differential",
@@ -1540,7 +1540,7 @@
             "name": "Tunisia",
             "shortName": "TUN",
             "club": "Tunisia",
-            "recordOverall": "0-0-0",
+            "recordOverall": "0-0-1",
             "streak": null,
             "ranking": "4th Group F",
             "rankingFr": "4e Groupe F",
@@ -1551,14 +1551,14 @@
             "primaryColor": "C8102E",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.804Z"
+            "lastUpdate": "2026-06-16T00:05:36.589Z"
           },
           "place": 4,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "0"
+              "value": "1"
             },
             "wins": {
               "displayName": "Wins",
@@ -1573,7 +1573,7 @@
             "losses": {
               "displayName": "Losses",
               "shortName": "L",
-              "value": "0"
+              "value": "1"
             },
             "points": {
               "displayName": "Points",
@@ -1583,17 +1583,17 @@
             "goalsFor": {
               "displayName": "Goals For",
               "shortName": "GF",
-              "value": "0"
+              "value": "1"
             },
             "goalsAgainst": {
               "displayName": "Goals Against",
               "shortName": "GA",
-              "value": "0"
+              "value": "5"
             },
             "differential": {
               "displayName": "Differential",
               "shortName": "DIFF",
-              "value": "0"
+              "value": "-4"
             }
           },
           "playoffStatus": null
@@ -1610,7 +1610,7 @@
             "name": "Belgium",
             "shortName": "BEL",
             "club": "Belgium",
-            "recordOverall": "0-0-0",
+            "recordOverall": "0-1-0",
             "streak": null,
             "ranking": "1st Group G",
             "rankingFr": "1er Groupe G",
@@ -1621,14 +1621,14 @@
             "primaryColor": "C8102E",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.805Z"
+            "lastUpdate": "2026-06-16T00:05:36.590Z"
           },
           "place": 1,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "0"
+              "value": "1"
             },
             "wins": {
               "displayName": "Wins",
@@ -1638,7 +1638,7 @@
             "draws": {
               "displayName": "Draws",
               "shortName": "D",
-              "value": "0"
+              "value": "1"
             },
             "losses": {
               "displayName": "Losses",
@@ -1648,17 +1648,17 @@
             "points": {
               "displayName": "Points",
               "shortName": "PTS",
-              "value": "0"
+              "value": "1"
             },
             "goalsFor": {
               "displayName": "Goals For",
               "shortName": "GF",
-              "value": "0"
+              "value": "1"
             },
             "goalsAgainst": {
               "displayName": "Goals Against",
               "shortName": "GA",
-              "value": "0"
+              "value": "1"
             },
             "differential": {
               "displayName": "Differential",
@@ -1675,7 +1675,7 @@
             "name": "Egypt",
             "shortName": "EGY",
             "club": "Egypt",
-            "recordOverall": "0-0-0",
+            "recordOverall": "0-1-0",
             "streak": null,
             "ranking": "2nd Group G",
             "rankingFr": "2e Groupe G",
@@ -1686,14 +1686,14 @@
             "primaryColor": "000000",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.806Z"
+            "lastUpdate": "2026-06-16T00:05:36.590Z"
           },
           "place": 2,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "0"
+              "value": "1"
             },
             "wins": {
               "displayName": "Wins",
@@ -1703,7 +1703,7 @@
             "draws": {
               "displayName": "Draws",
               "shortName": "D",
-              "value": "0"
+              "value": "1"
             },
             "losses": {
               "displayName": "Losses",
@@ -1713,17 +1713,17 @@
             "points": {
               "displayName": "Points",
               "shortName": "PTS",
-              "value": "0"
+              "value": "1"
             },
             "goalsFor": {
               "displayName": "Goals For",
               "shortName": "GF",
-              "value": "0"
+              "value": "1"
             },
             "goalsAgainst": {
               "displayName": "Goals Against",
               "shortName": "GA",
-              "value": "0"
+              "value": "1"
             },
             "differential": {
               "displayName": "Differential",
@@ -1751,7 +1751,7 @@
             "primaryColor": "DA0000",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.807Z"
+            "lastUpdate": "2026-06-16T00:05:36.591Z"
           },
           "place": 3,
           "stats": {
@@ -1816,7 +1816,7 @@
             "primaryColor": "012169",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.807Z"
+            "lastUpdate": "2026-06-16T00:05:36.592Z"
           },
           "place": 4,
           "stats": {
@@ -1870,30 +1870,30 @@
       "competitorStandings": [
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7639",
-            "competitorId": 7639,
-            "name": "Spain",
-            "shortName": "ESP",
-            "club": "Spain",
-            "recordOverall": "0-0-0",
+            "id": "STATSCOM:FIFA_WC:7596",
+            "competitorId": 7596,
+            "name": "Uruguay",
+            "shortName": "URU",
+            "club": "Uruguay",
+            "recordOverall": "0-1-0",
             "streak": null,
             "ranking": "1st Group H",
             "rankingFr": "1er Groupe H",
-            "seoIdentifier": "spain",
+            "seoIdentifier": "uruguay",
             "place": 1,
             "seed": 1,
-            "location": "Spain",
-            "primaryColor": "AA151B",
+            "location": "Uruguay",
+            "primaryColor": "001489",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.808Z"
+            "lastUpdate": "2026-06-16T00:05:36.593Z"
           },
           "place": 1,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "0"
+              "value": "1"
             },
             "wins": {
               "displayName": "Wins",
@@ -1903,7 +1903,7 @@
             "draws": {
               "displayName": "Draws",
               "shortName": "D",
-              "value": "0"
+              "value": "1"
             },
             "losses": {
               "displayName": "Losses",
@@ -1913,82 +1913,17 @@
             "points": {
               "displayName": "Points",
               "shortName": "PTS",
-              "value": "0"
+              "value": "1"
             },
             "goalsFor": {
               "displayName": "Goals For",
               "shortName": "GF",
-              "value": "0"
+              "value": "1"
             },
             "goalsAgainst": {
               "displayName": "Goals Against",
               "shortName": "GA",
-              "value": "0"
-            },
-            "differential": {
-              "displayName": "Differential",
-              "shortName": "DIFF",
-              "value": "0"
-            }
-          },
-          "playoffStatus": null
-        },
-        {
-          "competitor": {
-            "id": "STATSCOM:FIFA_WC:7730",
-            "competitorId": 7730,
-            "name": "Cabo Verde",
-            "shortName": "CPV",
-            "club": "Cabo Verde",
-            "recordOverall": "0-0-0",
-            "streak": null,
-            "ranking": "2nd Group H",
-            "rankingFr": "2e Groupe H",
-            "seoIdentifier": "cabo-verde",
-            "place": 2,
-            "seed": 2,
-            "location": "Cabo Verde",
-            "primaryColor": "003DA5",
-            "provider": "STATSCOM",
-            "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.809Z"
-          },
-          "place": 2,
-          "stats": {
-            "gamesPlayed": {
-              "displayName": "Games played",
-              "shortName": "GP",
-              "value": "0"
-            },
-            "wins": {
-              "displayName": "Wins",
-              "shortName": "W",
-              "value": "0"
-            },
-            "draws": {
-              "displayName": "Draws",
-              "shortName": "D",
-              "value": "0"
-            },
-            "losses": {
-              "displayName": "Losses",
-              "shortName": "L",
-              "value": "0"
-            },
-            "points": {
-              "displayName": "Points",
-              "shortName": "PTS",
-              "value": "0"
-            },
-            "goalsFor": {
-              "displayName": "Goals For",
-              "shortName": "GF",
-              "value": "0"
-            },
-            "goalsAgainst": {
-              "displayName": "Goals Against",
-              "shortName": "GA",
-              "value": "0"
+              "value": "1"
             },
             "differential": {
               "displayName": "Differential",
@@ -2005,25 +1940,25 @@
             "name": "Saudi Arabia",
             "shortName": "KSA",
             "club": "Saudi Arabia",
-            "recordOverall": "0-0-0",
+            "recordOverall": "0-1-0",
             "streak": null,
-            "ranking": "3rd Group H",
-            "rankingFr": "3e Groupe H",
+            "ranking": "2nd Group H",
+            "rankingFr": "2e Groupe H",
             "seoIdentifier": "saudi-arabia",
-            "place": 3,
-            "seed": 3,
+            "place": 2,
+            "seed": 2,
             "location": "Saudi Arabia",
             "primaryColor": "165d31",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.810Z"
+            "lastUpdate": "2026-06-16T00:05:36.594Z"
           },
-          "place": 3,
+          "place": 2,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "0"
+              "value": "1"
             },
             "wins": {
               "displayName": "Wins",
@@ -2033,7 +1968,7 @@
             "draws": {
               "displayName": "Draws",
               "shortName": "D",
-              "value": "0"
+              "value": "1"
             },
             "losses": {
               "displayName": "Losses",
@@ -2043,7 +1978,72 @@
             "points": {
               "displayName": "Points",
               "shortName": "PTS",
+              "value": "1"
+            },
+            "goalsFor": {
+              "displayName": "Goals For",
+              "shortName": "GF",
+              "value": "1"
+            },
+            "goalsAgainst": {
+              "displayName": "Goals Against",
+              "shortName": "GA",
+              "value": "1"
+            },
+            "differential": {
+              "displayName": "Differential",
+              "shortName": "DIFF",
               "value": "0"
+            }
+          },
+          "playoffStatus": null
+        },
+        {
+          "competitor": {
+            "id": "STATSCOM:FIFA_WC:7730",
+            "competitorId": 7730,
+            "name": "Cabo Verde",
+            "shortName": "CPV",
+            "club": "Cabo Verde",
+            "recordOverall": "0-1-0",
+            "streak": null,
+            "ranking": "3rd Group H",
+            "rankingFr": "3e Groupe H",
+            "seoIdentifier": "cabo-verde",
+            "place": 3,
+            "seed": 3,
+            "location": "Cabo Verde",
+            "primaryColor": "003DA5",
+            "provider": "STATSCOM",
+            "RDSLoggerId": null,
+            "lastUpdate": "2026-06-16T00:05:36.595Z"
+          },
+          "place": 3,
+          "stats": {
+            "gamesPlayed": {
+              "displayName": "Games played",
+              "shortName": "GP",
+              "value": "1"
+            },
+            "wins": {
+              "displayName": "Wins",
+              "shortName": "W",
+              "value": "0"
+            },
+            "draws": {
+              "displayName": "Draws",
+              "shortName": "D",
+              "value": "1"
+            },
+            "losses": {
+              "displayName": "Losses",
+              "shortName": "L",
+              "value": "0"
+            },
+            "points": {
+              "displayName": "Points",
+              "shortName": "PTS",
+              "value": "1"
             },
             "goalsFor": {
               "displayName": "Goals For",
@@ -2065,30 +2065,30 @@
         },
         {
           "competitor": {
-            "id": "STATSCOM:FIFA_WC:7596",
-            "competitorId": 7596,
-            "name": "Uruguay",
-            "shortName": "URU",
-            "club": "Uruguay",
-            "recordOverall": "0-0-0",
+            "id": "STATSCOM:FIFA_WC:7639",
+            "competitorId": 7639,
+            "name": "Spain",
+            "shortName": "ESP",
+            "club": "Spain",
+            "recordOverall": "0-1-0",
             "streak": null,
             "ranking": "4th Group H",
             "rankingFr": "4e Groupe H",
-            "seoIdentifier": "uruguay",
+            "seoIdentifier": "spain",
             "place": 4,
             "seed": 4,
-            "location": "Uruguay",
-            "primaryColor": "001489",
+            "location": "Spain",
+            "primaryColor": "AA151B",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.811Z"
+            "lastUpdate": "2026-06-16T00:05:36.596Z"
           },
           "place": 4,
           "stats": {
             "gamesPlayed": {
               "displayName": "Games played",
               "shortName": "GP",
-              "value": "0"
+              "value": "1"
             },
             "wins": {
               "displayName": "Wins",
@@ -2098,7 +2098,7 @@
             "draws": {
               "displayName": "Draws",
               "shortName": "D",
-              "value": "0"
+              "value": "1"
             },
             "losses": {
               "displayName": "Losses",
@@ -2108,7 +2108,7 @@
             "points": {
               "displayName": "Points",
               "shortName": "PTS",
-              "value": "0"
+              "value": "1"
             },
             "goalsFor": {
               "displayName": "Goals For",
@@ -2151,7 +2151,7 @@
             "primaryColor": "002654",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.812Z"
+            "lastUpdate": "2026-06-16T00:05:36.596Z"
           },
           "place": 1,
           "stats": {
@@ -2216,7 +2216,7 @@
             "primaryColor": "FDEF42",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.813Z"
+            "lastUpdate": "2026-06-16T00:05:36.597Z"
           },
           "place": 2,
           "stats": {
@@ -2281,7 +2281,7 @@
             "primaryColor": "000000",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.814Z"
+            "lastUpdate": "2026-06-16T00:05:36.598Z"
           },
           "place": 3,
           "stats": {
@@ -2346,7 +2346,7 @@
             "primaryColor": "BA0C2F",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.815Z"
+            "lastUpdate": "2026-06-16T00:05:36.599Z"
           },
           "place": 4,
           "stats": {
@@ -2416,7 +2416,7 @@
             "primaryColor": "6CACE4",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.816Z"
+            "lastUpdate": "2026-06-16T00:05:36.599Z"
           },
           "place": 1,
           "stats": {
@@ -2481,7 +2481,7 @@
             "primaryColor": "006633",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.816Z"
+            "lastUpdate": "2026-06-16T00:05:36.600Z"
           },
           "place": 2,
           "stats": {
@@ -2546,7 +2546,7 @@
             "primaryColor": "EF3340",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.817Z"
+            "lastUpdate": "2026-06-16T00:05:36.601Z"
           },
           "place": 3,
           "stats": {
@@ -2611,7 +2611,7 @@
             "primaryColor": "CE1126",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.818Z"
+            "lastUpdate": "2026-06-16T00:05:36.602Z"
           },
           "place": 4,
           "stats": {
@@ -2681,7 +2681,7 @@
             "primaryColor": "046A38",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.819Z"
+            "lastUpdate": "2026-06-16T00:05:36.603Z"
           },
           "place": 1,
           "stats": {
@@ -2746,7 +2746,7 @@
             "primaryColor": "0085CA",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.820Z"
+            "lastUpdate": "2026-06-16T00:05:36.604Z"
           },
           "place": 2,
           "stats": {
@@ -2811,7 +2811,7 @@
             "primaryColor": "0072CE",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.821Z"
+            "lastUpdate": "2026-06-16T00:05:36.605Z"
           },
           "place": 3,
           "stats": {
@@ -2876,7 +2876,7 @@
             "primaryColor": "FFCD00",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.822Z"
+            "lastUpdate": "2026-06-16T00:05:36.605Z"
           },
           "place": 4,
           "stats": {
@@ -2946,7 +2946,7 @@
             "primaryColor": "CE1126",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.822Z"
+            "lastUpdate": "2026-06-16T00:05:36.606Z"
           },
           "place": 1,
           "stats": {
@@ -3011,7 +3011,7 @@
             "primaryColor": "ff0000",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.823Z"
+            "lastUpdate": "2026-06-16T00:05:36.607Z"
           },
           "place": 2,
           "stats": {
@@ -3076,7 +3076,7 @@
             "primaryColor": "FFD100",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.824Z"
+            "lastUpdate": "2026-06-16T00:05:36.608Z"
           },
           "place": 3,
           "stats": {
@@ -3141,7 +3141,7 @@
             "primaryColor": "005EB8",
             "provider": "STATSCOM",
             "RDSLoggerId": null,
-            "lastUpdate": "2026-06-14T19:10:55.825Z"
+            "lastUpdate": "2026-06-16T00:05:36.609Z"
           },
           "place": 4,
           "stats": {

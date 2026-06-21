@@ -30,9 +30,20 @@ import {
   groupMatchesByDate,
   parseMatches,
 } from "./data";
-import { formatMatchTitle } from "./teams";
+import { formatMatchTitle, formatTeamWithFlag, getTeamFlag } from "./teams";
+import {
+  parseStandingsResponse,
+  STANDINGS_DATA_PATH,
+} from "./standings";
 import { applyTheme, getInitialTheme, persistTheme } from "./theme";
-import type { Match, MatchFilters, ViewMode } from "./types";
+import type {
+  Match,
+  MatchFilters,
+  StandingGroup,
+  ViewMode,
+} from "./types";
+
+type SurfaceMode = "schedule" | "overview";
 
 const views: Array<{ id: ViewMode; label: string; icon: typeof List }> = [
   { id: "list", label: "List", icon: List },
@@ -52,6 +63,12 @@ function App() {
   const [filters, setFilters] = useState<MatchFilters>(EMPTY_FILTERS);
   const [now, setNow] = useState(() => new Date());
   const [theme, setTheme] = useState(getInitialTheme);
+  const [showPastGames, setShowPastGames] = useState(false);
+  const [standings, setStandings] = useState<StandingGroup[]>([]);
+  const [standingsStatus, setStandingsStatus] = useState<
+    "loading" | "ready" | "error"
+  >("loading");
+  const [standingsError, setStandingsError] = useState("");
 
   useEffect(() => {
     fetch("/data/matches.csv")
@@ -61,8 +78,37 @@ function App() {
         }
         return response.text();
       })
-      .then((csv) => {
-        setMatches(parseMatches(csv));
+      .then(async (csv) => {
+        const parsedMatches = parseMatches(csv);
+
+        try {
+          const [resultsResponse, teamsResponse] = await Promise.all([
+            fetch(WORLD_CUP_RESULTS_DATA_PATH),
+            fetch(WORLD_CUP_TEAMS_DATA_PATH),
+          ]);
+
+          if (!resultsResponse.ok || !teamsResponse.ok) {
+            throw new Error("Could not load World Cup results snapshots");
+          }
+
+          const [resultsPayload, teamsPayload] = await Promise.all([
+            resultsResponse.json(),
+            teamsResponse.json(),
+          ]);
+
+          setMatches(
+            attachResultsToMatches(
+              parsedMatches,
+              parseWorldCupResultsResponse(resultsPayload),
+              parseWorldCupTeamsResponse(teamsPayload),
+            ),
+          );
+        } catch (caught) {
+          console.warn(
+            caught instanceof Error ? caught.message : "Could not load match scores",
+          );
+          setMatches(parsedMatches);
+        }
         setStatus("ready");
       })
       .catch((caught: unknown) => {
@@ -76,6 +122,33 @@ function App() {
   useEffect(() => {
     const timer = window.setInterval(() => setNow(new Date()), 60_000);
     return () => window.clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    fetch(STANDINGS_DATA_PATH, { signal: controller.signal })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Could not load standings: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((payload: unknown) => {
+        setStandings(parseStandingsResponse(payload));
+        setStandingsStatus("ready");
+      })
+      .catch((caught: unknown) => {
+        if (caught instanceof DOMException && caught.name === "AbortError") {
+          return;
+        }
+        setStandingsError(
+          caught instanceof Error ? caught.message : "Unknown standings error",
+        );
+        setStandingsStatus("error");
+      });
+
+    return () => controller.abort();
   }, []);
 
   useEffect(() => {
@@ -184,6 +257,42 @@ function App() {
             ))}
           </nav>
         </div>
+        {surfaceMode === "overview" && (
+          <OverviewSection
+            isMobile={isMobile}
+            standings={standings}
+            standingsStatus={standingsStatus}
+            standingsError={standingsError}
+          />
+        )}
+        {surfaceMode === "schedule" && (
+          <>
+            <Filters
+              isMobile={isMobile}
+              filters={filters}
+              options={options}
+              isFiltered={isFiltered}
+              onChange={updateFilter}
+              onReset={() => setFilters(EMPTY_FILTERS)}
+            />
+            <div className="view-switcher-row">
+              <nav className="view-nav" aria-label="View switcher">
+                {views.map(({ id, label, icon: Icon }) => (
+                  <button
+                    className={view === id ? "nav-item active" : "nav-item"}
+                    key={id}
+                    type="button"
+                    onClick={() => setView(id)}
+                    aria-pressed={view === id}
+                  >
+                    <Icon size={16} aria-hidden="true" />
+                    {label}
+                  </button>
+                ))}
+              </nav>
+            </div>
+          </>
+        )}
 
         {surfaceMode === "schedule" && status === "loading" && <LoadingState />}
         {surfaceMode === "schedule" && status === "error" && (
@@ -405,15 +514,25 @@ function OverviewSection({
   standings,
   standingsStatus,
   standingsError,
+  squads,
+  squadsStatus,
+  squadsError,
 }: {
   isMobile: boolean;
   standings: StandingGroup[];
   standingsStatus: "loading" | "ready" | "error";
   standingsError: string;
+  squads: WorldCupSquad[];
+  squadsStatus: "loading" | "ready" | "error";
+  squadsError: string;
 }) {
   const [selectedGroup, setSelectedGroup] = useState("");
   const [overviewGroup, setOverviewGroup] = useState("all");
   const [isStandingsSheetOpen, setIsStandingsSheetOpen] = useState(false);
+  const [selectedRosterTeam, setSelectedRosterTeam] = useState<{
+    name: string;
+    code: string;
+  } | null>(null);
 
   const filteredStandings = useMemo(
     () =>
@@ -426,6 +545,22 @@ function OverviewSection({
   const activeGroup =
     filteredStandings.find((group) => group.name === selectedGroup) ??
     filteredStandings[0];
+  const activeRosterSquad = useMemo(() => {
+    if (!selectedRosterTeam) {
+      return undefined;
+    }
+
+    const selectedName = normalizeTeamLookupKey(selectedRosterTeam.name);
+    return squads.find(
+      (squad) =>
+        squad.fifa_code === selectedRosterTeam.code ||
+        normalizeTeamLookupKey(squad.name) === selectedName,
+    );
+  }, [selectedRosterTeam, squads]);
+
+  const openRoster = (name: string, code: string) => {
+    setSelectedRosterTeam({ name, code });
+  };
 
   return (
     <section className="overview-section" aria-label="Tournament overview">
@@ -479,36 +614,53 @@ function OverviewSection({
               </div>
               <div className="group-card-grid">
                 {filteredStandings.map((group) => (
-                  <button
+                  <article
                     className={
                       group.name === activeGroup.name
                         ? "group-card is-active"
                         : "group-card"
                     }
                     key={group.name}
-                    type="button"
-                    onClick={() => {
-                      setSelectedGroup(group.name);
-                      if (isMobile) {
-                        setIsStandingsSheetOpen(true);
-                      }
-                    }}
                   >
-                    <div className="group-card-head">
+                    <button
+                      className="group-card-selector"
+                      type="button"
+                      onClick={() => {
+                        setSelectedGroup(group.name);
+                        if (isMobile) {
+                          setIsStandingsSheetOpen(true);
+                        }
+                      }}
+                      aria-pressed={group.name === activeGroup.name}
+                    >
                       <strong>{group.name}</strong>
                       <span>{group.competitorStandings.length} teams</span>
-                    </div>
+                    </button>
                     <div className="group-team-list">
                       {group.competitorStandings.map(({ competitor }) => (
-                        <span className="group-team-item" key={competitor.name}>
+                        <button
+                          className={
+                            selectedRosterTeam?.code === competitor.shortName
+                              ? "group-team-item is-active"
+                              : "group-team-item"
+                          }
+                          key={competitor.name}
+                          type="button"
+                          onClick={() => {
+                            setSelectedGroup(group.name);
+                            openRoster(competitor.name, competitor.shortName);
+                          }}
+                          aria-pressed={selectedRosterTeam?.code === competitor.shortName}
+                          aria-label={`Show ${competitor.name} roster`}
+                        >
                           <span className="group-team-flag" aria-hidden="true">
                             {getTeamFlag(competitor.name)}
                           </span>
                           <span>{competitor.name}</span>
-                        </span>
+                        </button>
                       ))}
                     </div>
-                  </button>
+                  </article>
                 ))}
               </div>
             </div>
@@ -518,6 +670,7 @@ function OverviewSection({
                   activeGroup={activeGroup}
                   filteredStandings={filteredStandings}
                   onSelectGroup={setSelectedGroup}
+                  onSelectRoster={openRoster}
                 />
               </div>
             )}
@@ -534,12 +687,26 @@ function OverviewSection({
                 activeGroup={activeGroup}
                 filteredStandings={filteredStandings}
                 onSelectGroup={setSelectedGroup}
+                onSelectRoster={openRoster}
                 mobile
               />
             </MobileSheet>
           )}
         </>
       )}
+      <SquadsOverview
+        squads={squads}
+        status={squadsStatus}
+        error={squadsError}
+      />
+      <RosterDrawer
+        open={selectedRosterTeam !== null}
+        teamName={selectedRosterTeam?.name ?? ""}
+        squad={activeRosterSquad}
+        status={squadsStatus}
+        error={squadsError}
+        onClose={() => setSelectedRosterTeam(null)}
+      />
       {standingsStatus === "ready" && filteredStandings.length === 0 && (
         <div className="overview-panel">
           <p className="panel-note">No overview results match that group.</p>
@@ -549,15 +716,213 @@ function OverviewSection({
   );
 }
 
+function SquadsOverview({
+  squads,
+  status,
+  error,
+}: {
+  squads: WorldCupSquad[];
+  status: "loading" | "ready" | "error";
+  error: string;
+}) {
+  const [groupFilter, setGroupFilter] = useState("all");
+  const [selectedSquadCode, setSelectedSquadCode] = useState("");
+  const groupedSquads = useMemo(() => groupSquadsByGroup(squads), [squads]);
+  const groupOptions = Object.keys(groupedSquads);
+  const filteredSquads = useMemo(
+    () =>
+      squads
+        .filter(
+          (squad) => groupFilter === "all" || `Group ${squad.group}` === groupFilter,
+        )
+        .sort((a, b) => a.group.localeCompare(b.group) || a.name.localeCompare(b.name)),
+    [groupFilter, squads],
+  );
+  const activeSquad =
+    filteredSquads.find((squad) => squad.fifa_code === selectedSquadCode) ??
+    filteredSquads[0];
+
+  return (
+    <section className="overview-panel squads-overview" aria-label="Tournament squads">
+      <div className="panel-head squads-head">
+        <div>
+          <p className="eyebrow">Squads</p>
+          <h3>Team rosters</h3>
+        </div>
+        {status === "ready" && squads.length > 0 && (
+          <SelectFilter
+            label="Squad group"
+            value={groupFilter}
+            options={groupOptions}
+            onChange={(value) => {
+              setGroupFilter(value);
+              setSelectedSquadCode("");
+            }}
+          />
+        )}
+      </div>
+
+      {status === "loading" && <p className="panel-note">Loading squads...</p>}
+      {status === "error" && <p className="panel-note">{error}</p>}
+      {status === "ready" && squads.length === 0 && (
+        <p className="panel-note">Squads are not available yet.</p>
+      )}
+      {status === "ready" && squads.length > 0 && activeSquad && (
+        <div className="squads-layout">
+          <div className="squad-team-list" aria-label="Squad teams">
+            {filteredSquads.map((squad) => (
+              <button
+                className={
+                  squad.fifa_code === activeSquad.fifa_code
+                    ? "squad-team-card is-active"
+                    : "squad-team-card"
+                }
+                key={squad.fifa_code}
+                type="button"
+                onClick={() => setSelectedSquadCode(squad.fifa_code)}
+                aria-pressed={squad.fifa_code === activeSquad.fifa_code}
+              >
+                <span>{formatTeamWithFlag(squad.name)}</span>
+                <strong>{squad.fifa_code}</strong>
+                <em>{squad.players.length} players</em>
+              </button>
+            ))}
+          </div>
+          <SquadDetail squad={activeSquad} />
+        </div>
+      )}
+    </section>
+  );
+}
+
+function SquadDetail({ squad }: { squad: WorldCupSquad }) {
+  const groupedPlayers = groupPlayersByPosition(squad.players);
+
+  return (
+    <article className="squad-detail">
+      <div className="squad-detail-head">
+        <div>
+          <p className="eyebrow">Group {squad.group}</p>
+          <h4>{formatTeamWithFlag(squad.name)}</h4>
+        </div>
+        <span>{squad.fifa_code}</span>
+      </div>
+      {squad.players.length === 0 ? (
+        <p className="panel-note">Squad not available yet.</p>
+      ) : (
+        <div className="position-groups">
+          {Object.entries(groupedPlayers).map(([position, players]) => (
+            <section className="position-group" key={position}>
+              <h5>
+                {position}
+                <span>{players.length}</span>
+              </h5>
+              <div className="player-list">
+                {players.map((player) => (
+                  <div className="player-row" key={`${player.number}-${player.name}`}>
+                    <span className="player-number">{player.number}</span>
+                    <span className="position-badge">{player.pos}</span>
+                    <div>
+                      <strong>{player.name}</strong>
+                      <span>
+                        {player.club.name || "Club TBD"}
+                        {player.club.country ? ` · ${player.club.country}` : ""}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
+      )}
+    </article>
+  );
+}
+
+function RosterDrawer({
+  open,
+  teamName,
+  squad,
+  status,
+  error,
+  onClose,
+}: {
+  open: boolean;
+  teamName: string;
+  squad: WorldCupSquad | undefined;
+  status: "loading" | "ready" | "error";
+  error: string;
+  onClose: () => void;
+}) {
+  useBodyScrollLock(open);
+
+  useEffect(() => {
+    if (!open) {
+      return undefined;
+    }
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [onClose, open]);
+
+  if (!open) {
+    return null;
+  }
+
+  return (
+    <div className="roster-drawer-backdrop" onClick={onClose}>
+      <aside
+        className="roster-drawer"
+        role="dialog"
+        aria-modal="true"
+        aria-label={`${teamName} roster`}
+        onClick={(event) => event.stopPropagation()}
+      >
+        <div className="roster-drawer-head">
+          <div>
+            <p className="eyebrow">Roster</p>
+            <h3>{teamName}</h3>
+          </div>
+          <button
+            className="mobile-sheet-close"
+            type="button"
+            onClick={onClose}
+            aria-label={`Close ${teamName} roster`}
+          >
+            <X size={16} aria-hidden="true" />
+          </button>
+        </div>
+        <div className="roster-drawer-content">
+          {status === "loading" && <p className="panel-note">Loading squads...</p>}
+          {status === "error" && <p className="panel-note">{error}</p>}
+          {status === "ready" && !squad && (
+            <p className="panel-note">Roster is not available for this team yet.</p>
+          )}
+          {status === "ready" && squad && <SquadDetail squad={squad} />}
+        </div>
+      </aside>
+    </div>
+  );
+}
+
 function StandingsBlock({
   activeGroup,
   filteredStandings,
   onSelectGroup,
+  onSelectRoster,
   mobile = false,
 }: {
   activeGroup: StandingGroup;
   filteredStandings: StandingGroup[];
   onSelectGroup: (group: string) => void;
+  onSelectRoster: (name: string, code: string) => void;
   mobile?: boolean;
 }) {
   return (
@@ -594,7 +959,13 @@ function StandingsBlock({
       </div>
       <div className="standings-table">
         {activeGroup.competitorStandings.map(({ competitor, stats }) => (
-          <div className="standing-row" key={competitor.name}>
+          <button
+            className="standing-row"
+            key={competitor.name}
+            type="button"
+            onClick={() => onSelectRoster(competitor.name, competitor.shortName)}
+            aria-label={`Show ${competitor.name} roster`}
+          >
             <span className="standing-place">{competitor.place}</span>
             <div className="standing-team">
               <strong>{formatTeamWithFlag(competitor.name)}</strong>
@@ -607,7 +978,7 @@ function StandingsBlock({
               {stats.goalsFor.value}-{stats.goalsAgainst.value}
             </span>
             <span className="standing-stat">{stats.differential.value}</span>
-          </div>
+          </button>
         ))}
       </div>
     </>
@@ -818,6 +1189,7 @@ function ListView({
 
 function MatchCard({ match, now }: { match: Match; now: Date }) {
   const played = isMatchPlayed(match, now);
+  const live = isMatchLive(match, now);
 
   return (
     <article className="match-card">
@@ -833,7 +1205,7 @@ function MatchCard({ match, now }: { match: Match; now: Date }) {
           <span className="stage-pill">{match.group || match.stage}</span>
         </div>
       </div>
-      <h4>{match.teams}</h4>
+      <h4>{formatMatchTitle(match.teams)}</h4>
       <div className="match-meta">
         <span>{match.stage}</span>
         <span>{match.stadium}</span>
@@ -852,10 +1224,6 @@ function MatchCard({ match, now }: { match: Match; now: Date }) {
         </div>
       </div>
       <div className="card-actions">
-        <a href={match.matchSourceUrl} target="_blank" rel="noreferrer">
-          Match source
-          <ChevronRight size={15} aria-hidden="true" />
-        </a>
         <a
           href={match.officialFifaSchedulePdf}
           target="_blank"
@@ -867,6 +1235,20 @@ function MatchCard({ match, now }: { match: Match; now: Date }) {
       </div>
     </article>
   );
+}
+
+function getScoreTeams(match: Match): [string, string] | null {
+  const teams = match.teams.split(/\s+vs\.?\s+/i).map((team) => team.trim())
+  return teams.length === 2 ? [teams[0], teams[1]] : null
+}
+
+function formatMatchTitleWithScore(match: Match) {
+  if (!match.score) return formatMatchTitle(match.teams)
+
+  const teams = getScoreTeams(match)
+  if (!teams) return formatMatchTitle(match.teams)
+
+  return `${formatTeamWithFlag(teams[0])} ${match.score.home}-${match.score.away} ${formatTeamWithFlag(teams[1])}`
 }
 
 function CalendarView({
@@ -922,17 +1304,26 @@ function MonthCalendar({
                     {matches.length === 1 ? "match" : "matches"}
                   </summary>
                   <div className="day-matches">
-                    {matches.map((match) => (
-                      <a
-                        href={match.matchSourceUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        key={match.matchNo}
-                      >
-                        <strong>{match.time}</strong>
-                        {match.teams}
-                      </a>
-                    ))}
+                    {matches.map((match) =>
+                      isMatchPlayed(match, now) ? (
+                        <span
+                          className="day-match-link is-played"
+                          key={match.matchNo}
+                        >
+                          {formatMatchTitle(match.teams)}
+                        </span>
+                      ) : (
+                        <a
+                          href={match.matchSourceUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          key={match.matchNo}
+                          className="day-match-link"
+                        >
+                          {formatMatchTitle(match.teams)}
+                        </a>
+                      ),
+                    )}
                   </div>
                 </details>
               )}
@@ -988,7 +1379,8 @@ function MapView({
                       rel="noreferrer"
                       key={match.matchNo}
                     >
-                      {formatMonthDay(match.date)} - {match.teams}
+                      {formatMonthDay(match.date)} -{" "}
+                      {formatMatchTitle(match.teams)}
                     </a>
                   ))}
                   {matches.length > 6 && <em>+ {matches.length - 6} more</em>}

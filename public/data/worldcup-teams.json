@@ -1,0 +1,298 @@
+[
+  {
+    "name": "Mexico",
+    "fifa_code": "MEX",
+    "group": "A",
+    "confed": "CONCACAF"
+  },
+  {
+    "name": "South Africa",
+    "fifa_code": "RSA",
+    "group": "A",
+    "confed": "CAF"
+  },
+  {
+    "name": "South Korea",
+    "name_normalised": "Korea Republic",
+    "fifa_code": "KOR",
+    "group": "A",
+    "confed": "AFC"
+  },
+  {
+    "name": "Czech Republic",
+    "name_normalised": "Czechia",
+    "fifa_code": "CZE",
+    "group": "A",
+    "confed": "UEFA"
+  },
+  {
+    "name": "Canada",
+    "fifa_code": "CAN",
+    "group": "B",
+    "confed": "CONCACAF"
+  },
+  {
+    "name": "Bosnia & Herzegovina",
+    "fifa_code": "BIH",
+    "group": "B",
+    "confed": "UEFA"
+  },
+  {
+    "name": "Qatar",
+    "fifa_code": "QAT",
+    "group": "B",
+    "confed": "AFC"
+  },
+  {
+    "name": "Switzerland",
+    "fifa_code": "SUI",
+    "group": "B",
+    "confed": "UEFA"
+  },
+  {
+    "name": "Brazil",
+    "fifa_code": "BRA",
+    "group": "C",
+    "confed": "CONMEBOL"
+  },
+  {
+    "name": "Morocco",
+    "fifa_code": "MAR",
+    "group": "C",
+    "confed": "CAF"
+  },
+  {
+    "name": "Haiti",
+    "fifa_code": "HAI",
+    "group": "C",
+    "confed": "CONCACAF"
+  },
+  {
+    "name": "Scotland",
+    "fifa_code": "SCO",
+    "group": "C",
+    "confed": "UEFA"
+  },
+  {
+    "name": "USA",
+    "name_normalised": "United States",
+    "fifa_code": "USA",
+    "group": "D",
+    "confed": "CONCACAF"
+  },
+  {
+    "name": "Paraguay",
+    "fifa_code": "PAR",
+    "group": "D",
+    "confed": "CONMEBOL"
+  },
+  {
+    "name": "Australia",
+    "fifa_code": "AUS",
+    "group": "D",
+    "confed": "AFC"
+  },
+  {
+    "name": "Turkey",
+    "name_normalised": "Türkiye",
+    "fifa_code": "TUR",
+    "group": "D",
+    "confed": "UEFA"
+  },
+  {
+    "name": "Germany",
+    "fifa_code": "GER",
+    "group": "E",
+    "confed": "UEFA"
+  },
+  {
+    "name": "Curaçao",
+    "fifa_code": "CUW",
+    "group": "E",
+    "confed": "CONCACAF"
+  },
+  {
+    "name": "Ivory Coast",
+    "name_normalised": "Cote d'Ivoire",
+    "fifa_code": "CIV",
+    "group": "E",
+    "confed": "CAF"
+  },
+  {
+    "name": "Ecuador",
+    "fifa_code": "ECU",
+    "group": "E",
+    "confed": "CONMEBOL"
+  },
+  {
+    "name": "Netherlands",
+    "fifa_code": "NED",
+    "group": "F",
+    "confed": "UEFA"
+  },
+  {
+    "name": "Japan",
+    "fifa_code": "JPN",
+    "group": "F",
+    "confed": "AFC"
+  },
+  {
+    "name": "Sweden",
+    "fifa_code": "SWE",
+    "group": "F",
+    "confed": "UEFA"
+  },
+  {
+    "name": "Tunisia",
+    "fifa_code": "TUN",
+    "group": "F",
+    "confed": "CAF"
+  },
+  {
+    "name": "Belgium",
+    "fifa_code": "BEL",
+    "group": "G",
+    "confed": "UEFA"
+  },
+  {
+    "name": "Egypt",
+    "fifa_code": "EGY",
+    "group": "G",
+    "confed": "CAF"
+  },
+  {
+    "name": "Iran",
+    "name_normalised": "IR Iran",
+    "fifa_code": "IRN",
+    "group": "G",
+    "confed": "AFC"
+  },
+  {
+    "name": "New Zealand",
+    "fifa_code": "NZL",
+    "group": "G",
+    "confed": "OFC"
+  },
+  {
+    "name": "Spain",
+    "fifa_code": "ESP",
+    "group": "H",
+    "confed": "UEFA"
+  },
+  {
+    "name": "Cape Verde",
+    "name_normalised": "Cabo Verde",
+    "fifa_code": "CPV",
+    "group": "H",
+    "confed": "CAF"
+  },
+  {
+    "name": "Saudi Arabia",
+    "fifa_code": "KSA",
+    "group": "H",
+    "confed": "AFC"
+  },
+  {
+    "name": "Uruguay",
+    "fifa_code": "URU",
+    "group": "H",
+    "confed": "CONMEBOL"
+  },
+  {
+    "name": "France",
+    "fifa_code": "FRA",
+    "group": "I",
+    "confed": "UEFA"
+  },
+  {
+    "name": "Senegal",
+    "fifa_code": "SEN",
+    "group": "I",
+    "confed": "CAF"
+  },
+  {
+    "name": "Iraq",
+    "fifa_code": "IRQ",
+    "group": "I",
+    "confed": "AFC"
+  },
+  {
+    "name": "Norway",
+    "fifa_code": "NOR",
+    "group": "I",
+    "confed": "UEFA"
+  },
+  {
+    "name": "Argentina",
+    "fifa_code": "ARG",
+    "group": "J",
+    "confed": "CONMEBOL"
+  },
+  {
+    "name": "Algeria",
+    "fifa_code": "ALG",
+    "group": "J",
+    "confed": "CAF"
+  },
+  {
+    "name": "Austria",
+    "fifa_code": "AUT",
+    "group": "J",
+    "confed": "UEFA"
+  },
+  {
+    "name": "Jordan",
+    "fifa_code": "JOR",
+    "group": "J",
+    "confed": "AFC"
+  },
+  {
+    "name": "Portugal",
+    "fifa_code": "POR",
+    "group": "K",
+    "confed": "UEFA"
+  },
+  {
+    "name": "DR Congo",
+    "name_normalised": "Congo DR",
+    "fifa_code": "COD",
+    "group": "K",
+    "confed": "CAF"
+  },
+  {
+    "name": "Uzbekistan",
+    "fifa_code": "UZB",
+    "group": "K",
+    "confed": "AFC"
+  },
+  {
+    "name": "Colombia",
+    "fifa_code": "COL",
+    "group": "K",
+    "confed": "CONMEBOL"
+  },
+  {
+    "name": "England",
+    "fifa_code": "ENG",
+    "group": "L",
+    "confed": "UEFA"
+  },
+  {
+    "name": "Croatia",
+    "fifa_code": "CRO",
+    "group": "L",
+    "confed": "UEFA"
+  },
+  {
+    "name": "Ghana",
+    "fifa_code": "GHA",
+    "group": "L",
+    "confed": "CAF"
+  },
+  {
+    "name": "Panama",
+    "fifa_code": "PAN",
+    "group": "L",
+    "confed": "CONCACAF"
+  }
+]
