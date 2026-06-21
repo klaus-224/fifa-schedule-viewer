@@ -28,6 +28,26 @@ export type Match = {
   officialFifaSchedulePdf: string
 }
 
+export type WorldCupPlayerClub = {
+  name: string
+  country: string
+}
+
+export type WorldCupPlayer = {
+  number: number
+  pos: string
+  name: string
+  club: WorldCupPlayerClub
+  date_of_birth: string
+}
+
+export type WorldCupSquad = {
+  name: string
+  fifa_code: string
+  group: string
+  players: WorldCupPlayer[]
+}
+
 export type MatchFilters = {
   query: string
   team: string

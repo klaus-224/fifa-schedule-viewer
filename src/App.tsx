@@ -43,9 +43,16 @@ import type {
   MatchFilters,
   StandingGroup,
   ViewMode,
+  WorldCupPlayer,
+  WorldCupSquad,
 } from "./types";
 
 type SurfaceMode = "schedule" | "overview";
+type LoadStatus = "loading" | "ready" | "error";
+
+const WORLD_CUP_SQUADS_DATA_PATH =
+  "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.squads.json";
+const PLAYER_POSITION_ORDER = ["GK", "DF", "MF", "FW"];
 
 const views: Array<{ id: ViewMode; label: string; icon: typeof List }> = [
   { id: "list", label: "List", icon: List },
@@ -71,6 +78,12 @@ function App() {
     "loading" | "ready" | "error"
   >("loading");
   const [standingsError, setStandingsError] = useState("");
+  const [squads, setSquads] = useState<WorldCupSquad[]>([]);
+  const [squadsStatus, setSquadsStatus] = useState<LoadStatus>("loading");
+  const [squadsError, setSquadsError] = useState("");
+  const [selectedRosterMatch, setSelectedRosterMatch] = useState<Match | null>(
+    null,
+  );
 
   useEffect(() => {
     fetch("/data/matches.csv")
@@ -119,6 +132,36 @@ function App() {
           caught instanceof Error ? caught.message : "Unknown standings error",
         );
         setStandingsStatus("error");
+      });
+
+    return () => controller.abort();
+  }, []);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    fetch(WORLD_CUP_SQUADS_DATA_PATH, { signal: controller.signal })
+      .then((response) => {
+        if (response.status === 404) {
+          return [];
+        }
+        if (!response.ok) {
+          throw new Error(`Could not load squads: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((payload: unknown) => {
+        setSquads(parseWorldCupSquadsResponse(payload));
+        setSquadsStatus("ready");
+      })
+      .catch((caught: unknown) => {
+        if (caught instanceof DOMException && caught.name === "AbortError") {
+          return;
+        }
+        setSquadsError(
+          caught instanceof Error ? caught.message : "Unknown squads error",
+        );
+        setSquadsStatus("error");
       });
 
     return () => controller.abort();
@@ -239,6 +282,9 @@ function App() {
             standings={standings}
             standingsStatus={standingsStatus}
             standingsError={standingsError}
+            squads={squads}
+            squadsStatus={squadsStatus}
+            squadsError={squadsError}
           />
         )}
         {surfaceMode === "schedule" && (
@@ -290,6 +336,7 @@ function App() {
               now={now}
               showPastGames={showPastGames}
               onTogglePastGames={() => setShowPastGames((current) => !current)}
+              onSelectMatch={setSelectedRosterMatch}
             />
           )}
         {surfaceMode === "schedule" &&
@@ -312,8 +359,16 @@ function App() {
           status === "ready" &&
           filteredMatches.length > 0 &&
           view === "map" && (
-          <MapView groupedByCity={groupedByCity} theme={theme} />
+            <MapView groupedByCity={groupedByCity} theme={theme} />
         )}
+        <MatchRosterDrawer
+          open={selectedRosterMatch !== null}
+          match={selectedRosterMatch}
+          squads={squads}
+          status={squadsStatus}
+          error={squadsError}
+          onClose={() => setSelectedRosterMatch(null)}
+        />
       </section>
     </main>
   );
@@ -496,20 +551,81 @@ function FilterFields({
   );
 }
 
+function parseWorldCupSquadsResponse(payload: unknown): WorldCupSquad[] {
+  return Array.isArray(payload) ? (payload as WorldCupSquad[]) : [];
+}
+
+function normalizeTeamLookupKey(value: string) {
+  return value
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[’‘]/g, "'")
+    .replace(/[^a-zA-Z0-9'& ]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+
+function splitMatchTeams(teams: string): [string, string] | null {
+  const parts = teams.split(/\s+vs\.?\s+/i).map((team) => team.trim());
+  return parts.length === 2 ? [parts[0], parts[1]] : null;
+}
+
+function getSquadForTeam(squads: WorldCupSquad[], team: string, code?: string) {
+  const teamKey = normalizeTeamLookupKey(team);
+  return squads.find(
+    (squad) =>
+      (code && squad.fifa_code === code) ||
+      normalizeTeamLookupKey(squad.name) === teamKey,
+  );
+}
+
+function groupPlayersByPosition(players: WorldCupPlayer[]) {
+  const groups = players.reduce<Record<string, WorldCupPlayer[]>>(
+    (positionGroups, player) => {
+      const position = player.pos || "Other";
+      positionGroups[position] = positionGroups[position] ?? [];
+      positionGroups[position].push(player);
+      return positionGroups;
+    },
+    {},
+  );
+
+  return Object.fromEntries(
+    Object.entries(groups).sort(([a], [b]) => {
+      const positionA = PLAYER_POSITION_ORDER.indexOf(a);
+      const positionB = PLAYER_POSITION_ORDER.indexOf(b);
+      const rankA = positionA === -1 ? PLAYER_POSITION_ORDER.length : positionA;
+      const rankB = positionB === -1 ? PLAYER_POSITION_ORDER.length : positionB;
+      return rankA - rankB || a.localeCompare(b);
+    }),
+  );
+}
+
 function OverviewSection({
   isMobile,
   standings,
   standingsStatus,
   standingsError,
+  squads,
+  squadsStatus,
+  squadsError,
 }: {
   isMobile: boolean;
   standings: StandingGroup[];
   standingsStatus: "loading" | "ready" | "error";
   standingsError: string;
+  squads: WorldCupSquad[];
+  squadsStatus: LoadStatus;
+  squadsError: string;
 }) {
   const [selectedGroup, setSelectedGroup] = useState("");
   const [overviewGroup, setOverviewGroup] = useState("all");
   const [isStandingsSheetOpen, setIsStandingsSheetOpen] = useState(false);
+  const [selectedRosterTeam, setSelectedRosterTeam] = useState<{
+    name: string;
+    code: string;
+  } | null>(null);
 
   const filteredStandings = useMemo(
     () =>
@@ -522,6 +638,17 @@ function OverviewSection({
   const activeGroup =
     filteredStandings.find((group) => group.name === selectedGroup) ??
     filteredStandings[0];
+  const activeRosterSquad = useMemo(() => {
+    if (!selectedRosterTeam) {
+      return undefined;
+    }
+
+    return getSquadForTeam(squads, selectedRosterTeam.name, selectedRosterTeam.code);
+  }, [selectedRosterTeam, squads]);
+
+  const openRoster = (name: string, code: string) => {
+    setSelectedRosterTeam({ name, code });
+  };
 
   return (
     <section className="overview-section" aria-label="Tournament overview">
@@ -575,36 +702,53 @@ function OverviewSection({
               </div>
               <div className="group-card-grid">
                 {filteredStandings.map((group) => (
-                  <button
+                  <article
                     className={
                       group.name === activeGroup.name
                         ? "group-card is-active"
                         : "group-card"
                     }
                     key={group.name}
-                    type="button"
-                    onClick={() => {
-                      setSelectedGroup(group.name);
-                      if (isMobile) {
-                        setIsStandingsSheetOpen(true);
-                      }
-                    }}
                   >
-                    <div className="group-card-head">
+                    <button
+                      className="group-card-selector"
+                      type="button"
+                      onClick={() => {
+                        setSelectedGroup(group.name);
+                        if (isMobile) {
+                          setIsStandingsSheetOpen(true);
+                        }
+                      }}
+                      aria-pressed={group.name === activeGroup.name}
+                    >
                       <strong>{group.name}</strong>
                       <span>{group.competitorStandings.length} teams</span>
-                    </div>
+                    </button>
                     <div className="group-team-list">
                       {group.competitorStandings.map(({ competitor }) => (
-                        <span className="group-team-item" key={competitor.name}>
+                        <button
+                          className={
+                            selectedRosterTeam?.code === competitor.shortName
+                              ? "group-team-item is-active"
+                              : "group-team-item"
+                          }
+                          key={competitor.name}
+                          type="button"
+                          onClick={() => {
+                            setSelectedGroup(group.name);
+                            openRoster(competitor.name, competitor.shortName);
+                          }}
+                          aria-pressed={selectedRosterTeam?.code === competitor.shortName}
+                          aria-label={`Show ${competitor.name} roster`}
+                        >
                           <span className="group-team-flag" aria-hidden="true">
                             {getTeamFlag(competitor.name)}
                           </span>
                           <span>{competitor.name}</span>
-                        </span>
+                        </button>
                       ))}
                     </div>
-                  </button>
+                  </article>
                 ))}
               </div>
             </div>
@@ -614,6 +758,7 @@ function OverviewSection({
                   activeGroup={activeGroup}
                   filteredStandings={filteredStandings}
                   onSelectGroup={setSelectedGroup}
+                  onSelectRoster={openRoster}
                 />
               </div>
             )}
@@ -630,6 +775,7 @@ function OverviewSection({
                 activeGroup={activeGroup}
                 filteredStandings={filteredStandings}
                 onSelectGroup={setSelectedGroup}
+                onSelectRoster={openRoster}
                 mobile
               />
             </MobileSheet>
@@ -641,7 +787,227 @@ function OverviewSection({
           <p className="panel-note">No overview results match that group.</p>
         </div>
       )}
+      <RosterDrawer
+        open={selectedRosterTeam !== null}
+        teamName={selectedRosterTeam?.name ?? ""}
+        squad={activeRosterSquad}
+        status={squadsStatus}
+        error={squadsError}
+        onClose={() => setSelectedRosterTeam(null)}
+      />
     </section>
+  );
+}
+
+function RosterDrawer({
+  open,
+  teamName,
+  squad,
+  status,
+  error,
+  onClose,
+}: {
+  open: boolean;
+  teamName: string;
+  squad: WorldCupSquad | undefined;
+  status: LoadStatus;
+  error: string;
+  onClose: () => void;
+}) {
+  useBodyScrollLock(open);
+
+  useEffect(() => {
+    if (!open) {
+      return undefined;
+    }
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [onClose, open]);
+
+  if (!open) {
+    return null;
+  }
+
+  return (
+    <div className="roster-drawer-backdrop" onClick={onClose}>
+      <aside
+        className="roster-drawer"
+        role="dialog"
+        aria-modal="true"
+        aria-label={`${teamName} roster`}
+        onClick={(event) => event.stopPropagation()}
+      >
+        <div className="roster-drawer-head">
+          <div>
+            <p className="eyebrow">Roster</p>
+            <h3>{teamName}</h3>
+          </div>
+          <button
+            className="mobile-sheet-close"
+            type="button"
+            onClick={onClose}
+            aria-label={`Close ${teamName} roster`}
+          >
+            <X size={16} aria-hidden="true" />
+          </button>
+        </div>
+        <div className="roster-drawer-content">
+          {status === "loading" && <p className="panel-note">Loading squads...</p>}
+          {status === "error" && <p className="panel-note">{error}</p>}
+          {status === "ready" && !squad && (
+            <p className="panel-note">Roster is not available for this team yet.</p>
+          )}
+          {status === "ready" && squad && <SquadDetail squad={squad} />}
+        </div>
+      </aside>
+    </div>
+  );
+}
+
+function MatchRosterDrawer({
+  open,
+  match,
+  squads,
+  status,
+  error,
+  onClose,
+}: {
+  open: boolean;
+  match: Match | null;
+  squads: WorldCupSquad[];
+  status: LoadStatus;
+  error: string;
+  onClose: () => void;
+}) {
+  const teams = match ? splitMatchTeams(match.teams) : null;
+
+  useBodyScrollLock(open);
+
+  useEffect(() => {
+    if (!open) {
+      return undefined;
+    }
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [onClose, open]);
+
+  if (!open || !match) {
+    return null;
+  }
+
+  return (
+    <div className="roster-drawer-backdrop" onClick={onClose}>
+      <aside
+        className="roster-drawer match-roster-drawer"
+        role="dialog"
+        aria-modal="true"
+        aria-label={`Match ${match.matchNo} rosters`}
+        onClick={(event) => event.stopPropagation()}
+      >
+        <div className="roster-drawer-head">
+          <div>
+            <p className="eyebrow">Match {match.matchNo}</p>
+            <h3>{formatMatchTitle(match.teams)}</h3>
+          </div>
+          <button
+            className="mobile-sheet-close"
+            type="button"
+            onClick={onClose}
+            aria-label={`Close Match ${match.matchNo} rosters`}
+          >
+            <X size={16} aria-hidden="true" />
+          </button>
+        </div>
+        <div className="roster-drawer-content">
+          {status === "loading" && <p className="panel-note">Loading squads...</p>}
+          {status === "error" && <p className="panel-note">{error}</p>}
+          {status === "ready" && !teams && (
+            <p className="panel-note">Rosters are not available for this match.</p>
+          )}
+          {status === "ready" && teams && (
+            <div className="match-roster-grid">
+              {teams.map((team) => {
+                const squad = getSquadForTeam(squads, team);
+                return squad ? (
+                  <SquadDetail squad={squad} key={team} />
+                ) : (
+                  <article className="squad-detail" key={team}>
+                    <div className="squad-detail-head">
+                      <div>
+                        <p className="eyebrow">Roster</p>
+                        <h4>{formatTeamWithFlag(team)}</h4>
+                      </div>
+                    </div>
+                    <p className="panel-note">
+                      Roster is not available for this team yet.
+                    </p>
+                  </article>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      </aside>
+    </div>
+  );
+}
+
+function SquadDetail({ squad }: { squad: WorldCupSquad }) {
+  const groupedPlayers = groupPlayersByPosition(squad.players);
+
+  return (
+    <article className="squad-detail">
+      <div className="squad-detail-head">
+        <div>
+          <p className="eyebrow">Group {squad.group}</p>
+          <h4>{formatTeamWithFlag(squad.name)}</h4>
+        </div>
+        <span>{squad.fifa_code}</span>
+      </div>
+      {squad.players.length === 0 ? (
+        <p className="panel-note">Squad not available yet.</p>
+      ) : (
+        <div className="position-groups">
+          {Object.entries(groupedPlayers).map(([position, players]) => (
+            <section className="position-group" key={position}>
+              <h5>
+                {position}
+                <span>{players.length}</span>
+              </h5>
+              <div className="player-list">
+                {players.map((player) => (
+                  <div className="player-row" key={`${player.number}-${player.name}`}>
+                    <span className="player-number">{player.number}</span>
+                    <span className="position-badge">{player.pos}</span>
+                    <div>
+                      <strong>{player.name}</strong>
+                      <span>
+                        {player.club.name || "Club TBD"}
+                        {player.club.country ? ` - ${player.club.country}` : ""}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
+      )}
+    </article>
   );
 }
 
@@ -649,11 +1015,13 @@ function StandingsBlock({
   activeGroup,
   filteredStandings,
   onSelectGroup,
+  onSelectRoster,
   mobile = false,
 }: {
   activeGroup: StandingGroup;
   filteredStandings: StandingGroup[];
   onSelectGroup: (group: string) => void;
+  onSelectRoster: (name: string, code: string) => void;
   mobile?: boolean;
 }) {
   return (
@@ -690,7 +1058,13 @@ function StandingsBlock({
       </div>
       <div className="standings-table">
         {activeGroup.competitorStandings.map(({ competitor, stats }) => (
-          <div className="standing-row" key={competitor.name}>
+          <button
+            className="standing-row"
+            key={competitor.name}
+            type="button"
+            onClick={() => onSelectRoster(competitor.name, competitor.shortName)}
+            aria-label={`Show ${competitor.name} roster`}
+          >
             <span className="standing-place">{competitor.place}</span>
             <div className="standing-team">
               <strong>{formatTeamWithFlag(competitor.name)}</strong>
@@ -703,7 +1077,7 @@ function StandingsBlock({
               {stats.goalsFor.value}-{stats.goalsAgainst.value}
             </span>
             <span className="standing-stat">{stats.differential.value}</span>
-          </div>
+          </button>
         ))}
       </div>
     </>
@@ -875,11 +1249,13 @@ function ListView({
   now,
   showPastGames,
   onTogglePastGames,
+  onSelectMatch,
 }: {
   groupedByDate: Record<string, Match[]>;
   now: Date;
   showPastGames: boolean;
   onTogglePastGames: () => void;
+  onSelectMatch: (match: Match) => void;
 }) {
   return (
     <div className="list-view">
@@ -907,7 +1283,12 @@ function ListView({
           </div>
           <div className="match-grid">
             {matches.map((match) => (
-              <MatchCard key={match.matchNo} match={match} now={now} />
+              <MatchCard
+                key={match.matchNo}
+                match={match}
+                now={now}
+                onSelectMatch={onSelectMatch}
+              />
             ))}
           </div>
         </section>
@@ -916,14 +1297,31 @@ function ListView({
   );
 }
 
-function MatchCard({ match, now }: { match: Match; now: Date }) {
+function MatchCard({
+  match,
+  now,
+  onSelectMatch,
+}: {
+  match: Match;
+  now: Date;
+  onSelectMatch: (match: Match) => void;
+}) {
   const played = isMatchPlayed(match, now);
   const live = isMatchLive(match, now);
 
   return (
     <article
       className={played ? "match-card is-played" : "match-card"}
-      aria-disabled={played}
+      role="button"
+      tabIndex={0}
+      onClick={() => onSelectMatch(match)}
+      onKeyDown={(event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          onSelectMatch(match);
+        }
+      }}
+      aria-label={`Show rosters for ${formatMatchTitle(match.teams)}`}
     >
       <div className="match-card-top">
         <span className="match-no">Match {match.matchNo}</span>
@@ -953,6 +1351,7 @@ function MatchCard({ match, now }: { match: Match; now: Date }) {
           href={match.officialFifaSchedulePdf}
           target="_blank"
           rel="noreferrer"
+          onClick={(event) => event.stopPropagation()}
         >
           FIFA PDF
           <ChevronRight size={15} aria-hidden="true" />
