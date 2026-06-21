@@ -23,6 +23,25 @@ terraform apply
 
 Terraform was not installed in the local shell during implementation, so these commands are intentionally left as a runbook instead of being executed here.
 
+## CI deployer permissions
+
+The GitHub Actions access keys belong to the `static-site-deployer` IAM user. An
+account administrator must attach the policy in
+`static-site-deployer-policy.json` before the workflow can refresh or manage the
+existing Route 53, S3, CloudFront, and ACM resources:
+
+```sh
+aws iam put-user-policy \
+  --user-name static-site-deployer \
+  --policy-name fifa-schedule-2026-terraform-deploy \
+  --policy-document file://infra/static-site-deployer-policy.json
+```
+
+Run the command with administrator credentials from the repository root. The
+policy is scoped to this site's S3 bucket; Route 53 and CloudFront require a
+few account-level read/list operations because their Terraform provider APIs do
+not support resource-level restrictions for all required calls.
+
 ## Important Variables
 
 - `hosted_zone_name`: `rohineshram.com`
